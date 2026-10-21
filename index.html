@@ -358,7 +358,7 @@ function eventsForDate(key){
   });
   const day=dayNumberForDate(key),interval=CONTENT.milestoneEvery;
   if(Number.isInteger(interval)&&interval>0&&day>0&&day%interval===0){
-    events.push({id:'milestone-'+day,date:key,annual:false,title:'第 '+day+' 天紀念日',description:'一起走到了第 '+day+' 天♡',url:''});
+    events.push({id:'milestone-'+day,date:key,annual:false,title:'第 '+day+' 天紀念日',description:'和賢先生一起度過的第 '+day+' 天♡',url:''});
   }
   return events;
 }
