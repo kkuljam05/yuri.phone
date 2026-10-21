@@ -32,6 +32,15 @@
 .contact-card p{font-size:12px;line-height:1.9;color:#967185;margin:12px 0 0}
 .character-name{font-size:21px;font-weight:600;text-align:center;color:#83516d;margin:10px 0 20px}
 .character-detail{background:#fff;border:1px solid #efdee7;border-radius:18px;padding:15px 0 0}
+
+/* 通訊錄卡片：男生頭貼在左，女生頭貼在右。 */
+.contact-card.contact-row{display:flex;align-items:center;gap:14px;padding:18px 14px;min-height:136px;text-align:left}
+.contact-card.contact-reverse{flex-direction:row-reverse}
+.contact-card .contact-portrait{width:90px;height:90px;flex:0 0 90px;object-fit:cover;border-radius:50%;display:block;margin:0;background:#f4e5ee}
+.contact-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:10px}
+.contact-card .contact-name{display:block;font-size:19px;font-weight:700;line-height:1.5;color:#80516c;overflow-wrap:anywhere}
+.contact-caption{display:block;font-size:11px;line-height:1.8;color:#a17a91}
+.contact-reverse .contact-copy{text-align:right}
 </style></head>
 <body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true">🎀</span><span class="charm star" aria-hidden="true">✧</span><span class="charm heart" aria-hidden="true">♡</span><div class="strap" aria-hidden="true"></div><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right" aria-label="訊號良好，電量100%">▮▮▮ ϟ ▰</span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">a pocket full of love</div><div class="lock-art" aria-hidden="true">♡</div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>有一個故事，想讓你知道。</strong><p>解鎖手機，慢慢認識我們。</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
@@ -171,15 +180,13 @@ characterFemale: {title:"女生角色（待填寫）", html:`<article class="cha
 
 contacts:{title:'通訊錄',html:`
 <div class="tag">THE TWO OF US</div>
-<button type="button" class="card contact-card" data-character="characterMale">
-<img class="avatar" src="male.png" alt="賢丹尼爾頭像" style="object-fit:cover;">
-<strong style="text-align:center;>賢丹尼爾</strong>
-<p style="text-align:center;>點擊以查看更多♡</p>
+<button type="button" class="card contact-card contact-row" data-character="characterMale">
+<img class="avatar contact-portrait" src="male.png" alt="賢丹尼爾頭像">
+<span class="contact-copy"><strong class="contact-name">賢丹尼爾</strong><span class="contact-caption">點擊以查看更多♡</span></span>
 </button>
-<button type="button" class="card contact-card" data-character="characterFemale">
-<img class="avatar" src="female.png" alt="都瑠璃頭像" style="object-fit:cover;">
-<strong style="text-align:center;>都瑠璃</strong>
-<p style="text-align:center;>點擊以查看更多♡</p>
+<button type="button" class="card contact-card contact-row contact-reverse" data-character="characterFemale">
+<img class="avatar contact-portrait" src="female.png" alt="都瑠璃頭像">
+<span class="contact-copy"><strong class="contact-name">都瑠璃</strong><span class="contact-caption">點擊以查看更多♡</span></span>
 </button>
 `},
 photos:{title:'相簿',html:'<div class="tag">MOMENTS TO KEEP</div><div class="empty"><div class="symbol">❀</div><h3>等一張屬於我們的照片</h3><p>這裡將收藏委託圖、合照與回憶。<br>目前還沒有加入圖片。</p></div><div class="card"><strong>我們的收藏</strong><p>之後可以加入圖片與繪師署名，點開照片看大圖。</p></div>'},
