@@ -246,7 +246,8 @@ const CONTENT = {
       '故事背景位於現代韓國，大部分都與現實生活無異。',
       '隨著教師的管教權受到限制，校園暴力等問題日益嚴重，為了挽救瀕臨崩壞的教育環境，韓國國會與教育部通過相關法案，成立特殊政府機關——<strong>教權保護局</strong>（簡稱教權局）。',
       '教權保護局在處理案件時擁有凌駕於法律之上的權力，會派遣「監察員」前往教權受到侵害的學校，而賢便是教權局的監察員之一。',
-      '教權局旨在讓教權恢復正常，而非教訓加害者；比起單純以暴力解決問題，更傾向',
+      '\u00a0',
+      '雖然世界觀有點嚴肅，不過夢向的互動基本上不會提到這塊（因為瑠璃是一個與校園暴力完全無緣的普通高中生），所以當作一般的現代背景看待即可！',
     ],
   },
 ],
@@ -294,7 +295,17 @@ const CONTENT = {
 const escapeHTML = v => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function safeURL(value){try{const u=new URL(value,location.href);return ['https:','http:'].includes(u.protocol)?u.href:'';}catch{return '';}}
 function imageURL(value){if(!value)return '';try{const u=new URL(value,location.href);return ['https:','http:','file:'].includes(u.protocol)?u.href:'';}catch{return '';}}
-function paragraphs(items){return items?.length?items.map(p=>'<p class="entry-paragraph">'+escapeHTML(p)+'</p>').join(''):'<p class="content-empty">內容準備中，故事會慢慢補上。</p>';}
+function paragraphs(items){
+  if(!items?.length){
+    return '<p class="content-empty">內容準備中，故事會慢慢補上。</p>';
+  }
+  return items.map(p=>{
+    const text=escapeHTML(p)
+      .replace(/&lt;(\/?)(strong|b|em|i|u|s)&gt;/gi,'<$1$2>')
+      .replace(/&lt;br\s*\/?&gt;/gi,'<br>');
+    return '<p class="entry-paragraph">'+text+'</p>';
+  }).join('');
+}
 function outgoing(url,label){const href=url&&safeURL(url);return href?'<a class="external-link" href="'+escapeHTML(href)+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(label)+' ↗</a>':'';}
 function emptyMessage(symbol,title,text){return '<div class="content-blank"><span aria-hidden="true">'+symbol+'</span><h3>'+escapeHTML(title)+'</h3><p>'+escapeHTML(text)+'</p></div>';}
 function tapCard(kind,index,title,subtitle,symbol){return '<button type="button" class="entry-card" data-entry="'+kind+'" data-index="'+index+'"><span class="entry-symbol" aria-hidden="true">'+symbol+'</span><span><strong>'+escapeHTML(title)+'</strong><small>'+escapeHTML(subtitle)+'</small></span><span class="entry-arrow" aria-hidden="true">›</span></button>';}
