@@ -239,8 +239,16 @@ function updateTime(){const now=new Date();const time=now.toLocaleTimeString('zh
 const CONTENT = {
   // 世界觀：直接把正文分段填進 paragraphs，不需要另外分類。
   worldviews: [
-    { id: 'world', title: '', paragraphs: [] },
-  ],
+  {
+    id: 'world',
+    title: '',
+    paragraphs: [
+      '這裡寫世界觀的第一段。',
+      '這裡寫第二段。',
+      '想寫幾段，就繼續往下增加。',
+    ],
+  },
+],
   // 兩人的故事：title 是同一頁裡的小標題，paragraphs 放該段正文。
   stories: [
     { id: 'meeting', title: '相遇的開始', subtitle: '故事從這裡開始', paragraphs: [] },
