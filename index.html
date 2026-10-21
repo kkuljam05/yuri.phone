@@ -273,6 +273,8 @@ const CONTENT = {
     { id: 'halloween', date: '2000-10-31', annual: true, title: '萬聖節', description: '', url: '' },
     { id: 'christmas', date: '2000-12-25', annual: true, title: '聖誕節', description: '', url: '' },
   ],
+  // 日曆自動標記每 100 天；想改間隔時可調整下方數字。
+  milestoneEvery: 100,
   // 計時起點為台灣時間；2026/06/15 當天算第 1 天，隔日第 2 天。
   startAt: '2026-06-15T00:00:00+08:00',
 };
@@ -350,10 +352,21 @@ function anniversaryTitle(year){
   return (labels[number]||String(number))+'周年';
 }
 function eventsForDate(key){
-  return CONTENT.events.filter(e=>e.annual?key.slice(5)===e.date.slice(5)&&key>=e.date:e.date===key).map(e=>{
+  const events=CONTENT.events.filter(e=>e.annual?key.slice(5)===e.date.slice(5)&&key>=e.date:e.date===key).map(e=>{
     if(!e.anniversary||key.slice(0,4)==='2026')return e;
     return {...e,title:anniversaryTitle(Number(key.slice(0,4))),description:''};
   });
+  const day=dayNumberForDate(key),interval=CONTENT.milestoneEvery;
+  if(Number.isInteger(interval)&&interval>0&&day>0&&day%interval===0){
+    events.push({id:'milestone-'+day,date:key,annual:false,title:'第 '+day+' 天紀念日',description:'一起走到了第 '+day+' 天♡',url:''});
+  }
+  return events;
+}
+// 依台灣日期計算第幾天，起始日就是第 1 天。
+function dayNumberForDate(key){
+  const midnight=Date.parse(key+'T00:00:00+08:00');
+  const firstMidnight=Date.parse(CONTENT.startAt.slice(0,10)+'T00:00:00+08:00');
+  return Math.floor((midnight-firstMidnight)/86400000)+1;
 }
 function elapsedParts(now=Date.now()){
   const total=Math.max(0,Math.floor((now-new Date(CONTENT.startAt).getTime())/1000));
