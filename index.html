@@ -14,6 +14,16 @@
 .wall-thumb{display:block;height:115px;border-radius:9px;background:linear-gradient(140deg,#f7dbe7,#f1b7d2,#e6bedf);background-size:cover;background-position:center}
 .wall-name{display:block;font-size:11px;padding:8px 2px 3px}.icon img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
 @media(max-width:390px){.layout{padding:20px 5px}}
+
+/* 備忘錄：兩份相同格式的角色資料，可點標題收合。 */
+.character-note{border:1px solid #ead6e2;border-radius:18px;background:#fff;margin:14px 0;overflow:hidden}
+.character-note summary{cursor:pointer;padding:18px 16px;color:#83516d;font-size:16px;font-weight:600;background:#faf0f6;line-height:1.5}
+.character-note summary::marker{color:#bc86a5;font-size:12px}
+.character-note summary:focus-visible{outline:2px solid #a04c7d;outline-offset:-4px;border-radius:16px}
+.note-content{padding:2px 16px 20px}.note-content h3{font-size:14px;font-weight:700;color:#895a74;letter-spacing:1px;border-bottom:1px solid #efdee7;padding-bottom:9px;margin:24px 0 13px}
+.note-content p{font-size:13px;line-height:2;color:#765a6a;overflow-wrap:anywhere;margin:0 0 15px}
+.note-content p:last-child{margin-bottom:0}.profile-list{list-style:none;padding:0;margin:0;color:#765a6a;font-size:13px;line-height:2}
+.profile-list li{margin:4px 0}.profile-list strong{font-weight:600;color:#80566f}
 </style></head>
 <body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true">🎀</span><span class="charm star" aria-hidden="true">✧</span><span class="charm heart" aria-hidden="true">♡</span><div class="strap" aria-hidden="true"></div><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right" aria-label="訊號良好，電量100%">▮▮▮ ϟ ▰</span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">a pocket full of love</div><div class="lock-art" aria-hidden="true">♡</div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>有一個故事，想讓你知道。</strong><p>解鎖手機，慢慢認識我們。</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
@@ -29,7 +39,7 @@ const SITE_CONFIG = {
   title: '연애 아이엔지 ⊹ ࣪ ˖ ໒꒱',
   passcode: '0615',
   lockCaption: 'a pocket full of love',
-  notificationTitle: '您好！此為<u>《極權教師》賢丹尼爾</u>的夢向設定網站！',
+  notificationTitle: '此為<strong><u>《極權教師》賢丹尼爾</u></strong>的夢向設定網站！',
   notificationText: '解鎖手機即可閱覽更多內容♡',
   homeTitle: 'Dear, you.',
   homeText: '把每一點喜歡，好好收藏。',
@@ -96,7 +106,72 @@ document.addEventListener('keydown',e=>{if(current!=='pin')return;if(/^\d$/.test
 const pages={
 contacts:{title:'通訊錄',html:'<div class="tag">THE TWO OF US</div><div class="card"><span class="avatar">♙</span><strong>夢角介紹</strong><p>這裡將放入角色的名字、個性與基本資料。</p></div><div class="card"><span class="avatar">♡</span><strong>夢設介紹</strong><p>這裡將放入夢設的名字、外貌與故事。</p></div><p class="hint">第一版預留區・介紹文字之後再一起補上。</p>'},
 photos:{title:'相簿',html:'<div class="tag">MOMENTS TO KEEP</div><div class="empty"><div class="symbol">❀</div><h3>等一張屬於我們的照片</h3><p>這裡將收藏委託圖、合照與回憶。<br>目前還沒有加入圖片。</p></div><div class="card"><strong>我們的收藏</strong><p>之後可以加入圖片與繪師署名，點開照片看大圖。</p></div>'},
-notes:{title:'備忘錄',html:'<div class="tag">A FEW WORDS ABOUT US</div><div class="card"><strong>01 ／ 關於這裡</strong><p>這是一個尚在準備中的夢向介紹網站，所有角色介紹與設定都會慢慢補上。</p></div><div class="card"><strong>02 ／ 我們的故事</strong><p>預留給相遇經過、關係設定與世界觀。</p></div><div class="card"><strong>03 ／ 閱讀前的小提醒</strong><p>預留給交流方式、夢向注意事項與圖片使用說明。</p></div>'},
+notes:{title:'備忘錄',html:`
+<div class="tag">CHARACTER NOTES</div>
+
+<!-- 賢丹尼爾：每一段文字放在 <p> 與 </p> 之間 -->
+<details class="character-note" open>
+<summary>賢丹尼爾</summary>
+<div class="note-content">
+<h3>基本資料</h3>
+<ul class="profile-list">
+<li><strong>姓名：</strong>賢丹尼爾</li>
+<li><strong>性別：</strong>男</li>
+<li><strong>國籍：</strong>美國（韓裔美國人）</li>
+<li><strong>年齡：</strong>25（私設）</li>
+<li><strong>身高：</strong>185（私設）</li>
+<li><strong>職業：</strong>教權保護局監察員</li>
+</ul>
+
+<h3>外貌</h3>
+<p>端正帥氣，或許是因為混血，長相格外精緻俊美。</p>
+<p>淺灰褐色的中分短髮，頭髮有些向外翹起，後腦勺下半的頭髮則推得較平。</p>
+<p>眼眸是明亮鮮豔的薄荷綠，眼型平直而微微上揚，在原作中有特別畫出上下睫毛。平時都戴著一副圓角眼鏡。</p>
+<p>身段頎長，體格並不特別壯碩，但擁有可以輕易制伏格鬥選手的力量，猜測大概屬於穿衣顯瘦的類型。</p>
+
+<h3>性格</h3>
+<p>溫和沉著，情緒穩定，絕大多數時候都能保持冷靜，能設想到各種突發狀況並隨時做好充足的準備，周身散發著可靠的氣場，從各方面來看都是三好青年。</p>
+<p>與教權局其他人不同，反對以暴制暴，但並不是和平主義者，而是認為心靈層面的教訓能帶給人更深刻的影響，因此幾乎不會與人動手，頂多是制伏主動攻擊的對象。</p>
+<p>頭腦聰明、心思縝密，擅長默默佈局後等待對方主動掉進陷阱。即使加害者最終會因為自己的計謀落得非常悲慘的下場，也不會有絲毫同情或動搖；有時理智的程度會讓人感覺稍微缺乏人性，但絕對不是性格惡劣的人。</p>
+<p>在與人的交際上顯得比較被動，除了同事之外大概沒什麼朋友……並沒有排斥或討厭社交，只是不會主動談論工作外的私事，若有人找他搭話或聊天也不會拒絕，是好相處的人。</p>
+<p>個性認真，但也隱約有著惡趣味的一面，言詞偶爾會比較尖銳，或是做出一些壞心眼的事。因為總是面無表情，令人無從分別究竟是無自覺的腹黑還是有意為之。</p>
+
+<h3>背景</h3>
+<p>(還沒寫)</p>
+
+<h3>TMI</h3>
+<p>(還沒寫)</p>
+</div>
+</details>
+
+<!-- 女生版：把「待填寫」換成你的介紹 -->
+<details class="character-note">
+<summary>女生角色（待填寫）</summary>
+<div class="note-content">
+<h3>基本資料</h3>
+<ul class="profile-list">
+<li><strong>姓名：</strong>待填寫</li>
+<li><strong>性別：</strong>女</li>
+<li><strong>國籍：</strong>待填寫</li>
+<li><strong>年齡：</strong>待填寫</li>
+<li><strong>身高：</strong>待填寫</li>
+<li><strong>職業：</strong>待填寫</li>
+</ul>
+
+<h3>外貌</h3>
+<p>(還沒寫)</p>
+
+<h3>性格</h3>
+<p>(還沒寫)</p>
+
+<h3>背景</h3>
+<p>(還沒寫)</p>
+
+<h3>TMI</h3>
+<p>(還沒寫)</p>
+</div>
+</details>
+`},
 messages:{title:'訊息',html:'<div class="tag">WORDS, SAVED FOR LATER</div><div class="empty"><div class="symbol">♡</div><h3>有些話，只想告訴你</h3><p>這裡將放入兩人的聊天與小劇場。<br>目前還沒有加入對話。</p></div>'},
 calendar:{title:'紀念日',html:'<div class="tag">DAYS WORTH REMEMBERING</div><div class="empty"><div class="symbol">▦</div><h3>值得記住的每一天</h3><p>生日、相遇，還有心動的那天。<br>日期與紀念日名稱之後再填入。</p></div>'},
 settings:{title:'設定',html:'<div class="tag">WALLPAPER COLLECTION</div><h3>挑一張喜歡的桌布</h3><div id="wallPreview" class="preview" role="img" aria-label="目前桌布"></div><div id="wallOptions" class="wall-options" aria-label="桌布選項"></div><p class="hint">從本站提供的桌布中挑選。你的選擇只影響這個瀏覽器，不影響其他訪客。</p><p id="settingStatus" role="status" class="hint"></p>'}
