@@ -24,6 +24,14 @@
 .note-content p{font-size:13px;line-height:2;color:#765a6a;overflow-wrap:anywhere;margin:0 0 15px}
 .note-content p:last-child{margin-bottom:0}.profile-list{list-style:none;padding:0;margin:0;color:#765a6a;font-size:13px;line-height:2}
 .profile-list li{margin:4px 0}.profile-list strong{font-weight:600;color:#80566f}
+
+/* 通訊錄列表：點卡片開啟獨立的角色詳情。 */
+.contact-card{display:block;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;transition:background .15s,border-color .15s}
+.contact-card:hover{background:#fffafd;border-color:#c992b2}.contact-card:active{background:#f9edf5}
+.contact-card .avatar{margin:5px auto 15px}.contact-card strong{font-size:13px;font-weight:500}
+.contact-card p{font-size:12px;line-height:1.9;color:#967185;margin:12px 0 0}
+.character-name{font-size:21px;font-weight:600;text-align:center;color:#83516d;margin:10px 0 20px}
+.character-detail{background:#fff;border:1px solid #efdee7;border-radius:18px;padding:15px 0 0}
 </style></head>
 <body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true">🎀</span><span class="charm star" aria-hidden="true">✧</span><span class="charm heart" aria-hidden="true">♡</span><div class="strap" aria-hidden="true"></div><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right" aria-label="訊號良好，電量100%">▮▮▮ ϟ ▰</span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">a pocket full of love</div><div class="lock-art" aria-hidden="true">♡</div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>有一個故事，想讓你知道。</strong><p>解鎖手機，慢慢認識我們。</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
@@ -100,19 +108,14 @@ const letters=['','','ABC','DEF','GHI','JKL','MNO','PQRS','TUV','WXYZ'];
 for(const num of [1,2,3,4,5,6,7,8,9,0]){ const b=document.createElement('button');b.className='key';b.textContent=num;b.setAttribute('aria-label',String(num));if(num===0)b.style.gridColumn='2';const s=document.createElement('small');s.textContent=letters[num]||'\u00a0';b.append(s);b.onclick=()=>digit(String(num));$('keys').append(b); }
 $('unlock').onclick=()=>{entered='';updateDots();$('pinMessage').textContent='解開屬於我們的小小世界';show('pin');};
 $('cancelPin').onclick=()=>{entered='';updateDots();show('lock');};$('deletePin').onclick=()=>{entered=entered.slice(0,-1);updateDots();};
-function goHome(){if(unlocked){show('desktop');} } $('back').onclick=goHome;$('home').onclick=goHome;
+let currentApp='';
+function goHome(){if(unlocked){currentApp='';show('desktop');} }
+$('back').onclick=()=>{if(currentApp==='characterMale'||currentApp==='characterFemale')openApp('contacts');else goHome();};
+$('home').onclick=goHome;
 $('relock').onclick=()=>{unlocked=false;entered='';updateDots();show('lock');};
 document.addEventListener('keydown',e=>{if(current!=='pin')return;if(/^\d$/.test(e.key)){e.preventDefault();digit(e.key);}if(e.key==='Backspace'){e.preventDefault();entered=entered.slice(0,-1);updateDots();}if(e.key==='Escape')$('cancelPin').click();});
 const pages={
-contacts:{title:'通訊錄',html:'<div class="tag">THE TWO OF US</div><div class="card"><span class="avatar">♙</span><strong>夢角介紹</strong><p>這裡將放入角色的名字、個性與基本資料。</p></div><div class="card"><span class="avatar">♡</span><strong>夢設介紹</strong><p>這裡將放入夢設的名字、外貌與故事。</p></div><p class="hint">第一版預留區・介紹文字之後再一起補上。</p>'},
-photos:{title:'相簿',html:'<div class="tag">MOMENTS TO KEEP</div><div class="empty"><div class="symbol">❀</div><h3>等一張屬於我們的照片</h3><p>這裡將收藏委託圖、合照與回憶。<br>目前還沒有加入圖片。</p></div><div class="card"><strong>我們的收藏</strong><p>之後可以加入圖片與繪師署名，點開照片看大圖。</p></div>'},
-notes:{title:'備忘錄',html:`
-<div class="tag">CHARACTER NOTES</div>
-
-<!-- 賢丹尼爾：每一段文字放在 <p> 與 </p> 之間 -->
-<details class="character-note" open>
-<summary>賢丹尼爾</summary>
-<div class="note-content">
+characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><h2 class="character-name">賢丹尼爾</h2><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
 <li><strong>姓名：</strong>賢丹尼爾</li>
@@ -141,13 +144,8 @@ notes:{title:'備忘錄',html:`
 
 <h3>TMI</h3>
 <p>(還沒寫)</p>
-</div>
-</details>
-
-<!-- 女生版：把「待填寫」換成你的介紹 -->
-<details class="character-note">
-<summary>女生角色（待填寫）</summary>
-<div class="note-content">
+</div></article>`},
+characterFemale: {title:"女生角色（待填寫）", html:`<article class="character-detail"><h2 class="character-name">女生角色（待填寫）</h2><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
 <li><strong>姓名：</strong>待填寫</li>
@@ -169,15 +167,29 @@ notes:{title:'備忘錄',html:`
 
 <h3>TMI</h3>
 <p>(還沒寫)</p>
-</div>
-</details>
+</div></article>`},
+
+contacts:{title:'通訊錄',html:`
+<div class="tag">THE TWO OF US</div>
+<button type="button" class="card contact-card" data-character="characterMale">
+<span class="avatar" aria-hidden="true">♙</span>
+<strong>夢角介紹</strong>
+<p>這裡將放入角色的名字、個性與基本資料。</p>
+</button>
+<button type="button" class="card contact-card" data-character="characterFemale">
+<span class="avatar" aria-hidden="true">♡</span>
+<strong>夢設介紹</strong>
+<p>這裡將放入夢設的名字、外貌與故事。</p>
+</button>
 `},
+photos:{title:'相簿',html:'<div class="tag">MOMENTS TO KEEP</div><div class="empty"><div class="symbol">❀</div><h3>等一張屬於我們的照片</h3><p>這裡將收藏委託圖、合照與回憶。<br>目前還沒有加入圖片。</p></div><div class="card"><strong>我們的收藏</strong><p>之後可以加入圖片與繪師署名，點開照片看大圖。</p></div>'},
+notes:{title:'備忘錄',html:'<div class="tag">A FEW WORDS ABOUT US</div><div class="card"><strong>01 ／ 關於這裡</strong><p>這是一個尚在準備中的夢向介紹網站，所有角色介紹與設定都會慢慢補上。</p></div><div class="card"><strong>02 ／ 我們的故事</strong><p>預留給相遇經過、關係設定與世界觀。</p></div><div class="card"><strong>03 ／ 閱讀前的小提醒</strong><p>預留給交流方式、夢向注意事項與圖片使用說明。</p></div>'},
 messages:{title:'訊息',html:'<div class="tag">WORDS, SAVED FOR LATER</div><div class="empty"><div class="symbol">♡</div><h3>有些話，只想告訴你</h3><p>這裡將放入兩人的聊天與小劇場。<br>目前還沒有加入對話。</p></div>'},
 calendar:{title:'紀念日',html:'<div class="tag">DAYS WORTH REMEMBERING</div><div class="empty"><div class="symbol">▦</div><h3>值得記住的每一天</h3><p>生日、相遇，還有心動的那天。<br>日期與紀念日名稱之後再填入。</p></div>'},
 settings:{title:'設定',html:'<div class="tag">WALLPAPER COLLECTION</div><h3>挑一張喜歡的桌布</h3><div id="wallPreview" class="preview" role="img" aria-label="目前桌布"></div><div id="wallOptions" class="wall-options" aria-label="桌布選項"></div><p class="hint">從本站提供的桌布中挑選。你的選擇只影響這個瀏覽器，不影響其他訪客。</p><p id="settingStatus" role="status" class="hint"></p>'}
 
 };
-function openApp(id){ if(!unlocked||!pages[id])return;const p=pages[id];$('pageTitle').textContent=SITE_CONFIG.apps[id]?.name||p.title;$('pageBody').innerHTML=p.html;show('page');$('page').scrollTop=0;if(id==='settings')renderWallpaperChoices(); }
+function openApp(id){ if(!unlocked||!pages[id])return;currentApp=id;const p=pages[id];$('back').textContent=(id==='characterMale'||id==='characterFemale')?'‹ 通訊錄':'‹ 返回';$('pageTitle').textContent=SITE_CONFIG.apps[id]?.name||p.title;$('pageBody').innerHTML=p.html;show('page');$('page').scrollTop=0;if(id==='settings')renderWallpaperChoices();if(id==='contacts')$('pageBody').querySelectorAll('[data-character]').forEach(b=>b.onclick=()=>openApp(b.dataset.character)); }
 document.querySelectorAll('[data-app]').forEach(b=>{
   const config=SITE_CONFIG.apps[b.dataset.app];
   if(config){
