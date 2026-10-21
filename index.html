@@ -144,12 +144,12 @@ const pages={
 characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><h2 class="character-name">賢丹尼爾</h2><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
-<li>✦姓名：賢丹尼爾</li>
-<li>✦性別：男</li>
-<li>✦國籍：美國（韓美混血）</li>
-<li>✦年齡：22～25歲（私設）</li>
-<li>✦身高：185公分（私設）</li>
-<li>✦職業：教權保護局監察員</li>
+<li>・姓名：賢丹尼爾</li>
+<li>・性別：男</li>
+<li>・國籍：美國（韓美混血）</li>
+<li>・年齡：22～25歲（私設）</li>
+<li>・身高：185公分（私設）</li>
+<li>・職業：教權保護局監察員</li>
 </ul>
 
 <h3>外貌</h3>
@@ -171,12 +171,12 @@ characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><h
 characterFemale: {title:"女生角色（待填寫）", html:`<article class="character-detail"><h2 class="character-name">女生角色（待填寫）</h2><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
-<li>✦姓名：都瑠璃</li>
-<li>✦性別：女</li>
-<li>✦國籍：韓國</li>
-<li>✦年齡：17歲</li>
-<li>✦身高：168公分</li>
-<li>✦職業：學生（高中生）</li>
+<li>・姓名：都瑠璃</li>
+<li>・性別：女</li>
+<li>・國籍：韓國</li>
+<li>・年齡：17歲</li>
+<li>・身高：168公分</li>
+<li>・職業：學生（高中生）</li>
 </ul>
 
 <h3>外貌</h3>
@@ -197,6 +197,7 @@ characterFemale: {title:"女生角色（待填寫）", html:`<article class="cha
 
 contacts:{title:'通訊錄',html:`
 <div class="tag">THE TWO OF US</div>
+<p class="section-intro">賢＆瑠璃的個人檔案大揭密！</p>
 <button type="button" class="card contact-card contact-row" data-character="characterMale">
 <img class="avatar contact-portrait" src="male.png" alt="賢丹尼爾頭像">
 <span class="contact-copy"><strong class="contact-name">賢丹尼爾</strong><span class="contact-caption">點擊以查看更多♡</span></span>
@@ -295,18 +296,18 @@ function featurePage(app,title,html,backLabel='‹ 返回'){
 function renderNotes(section='home'){
   featureState={app:'notes',view:section,index:null};
   const categories={
-    worldviews:{title:'世界觀',tag:'OUR UNIVERSE',symbol:'◇',subtitle:'故事發生的世界'},
-    stories:{title:'兩人的故事',tag:'THE TWO OF US',symbol:'♡',subtitle:'相遇・互動・彼此的想法'},
-    paros:{title:'PARO 記錄',tag:'OTHER UNIVERSES',symbol:'✧',subtitle:'不同世界裡的我們'},
+    worldviews:{title:'世界觀',tag:'',symbol:'◇',subtitle:'故事發生的世界'},
+    stories:{title:'兩人的故事',tag:'',symbol:'♡',subtitle:'相遇・互動・對彼此的想法'},
+    paros:{title:'PARO',tag:'',symbol:'✧',subtitle:'What if...?'},
   };
   if(section==='home'){
-    featurePage('notes','備忘錄','<div class="tag">OUR STORYBOOK</div><p class="section-intro">世界的模樣、兩人的故事，與不同時空的我們。</p>'+Object.entries(categories).map(([key,category])=>tapCard(key,0,category.title,category.subtitle,category.symbol)).join(''));
+    featurePage('notes','備忘錄','<div class="tag">OUR STORYBOOK</div><p class="section-intro">關於賢＆瑠璃的各種大小事！</p>'+Object.entries(categories).map(([key,category])=>tapCard(key,0,category.title,category.subtitle,category.symbol)).join(''));
     $('pageBody').querySelectorAll('[data-entry]').forEach(b=>b.onclick=()=>renderNotes(b.dataset.entry));return;
   }
   const category=categories[section];if(!category){renderNotes();return;}
   const data=CONTENT[section]||[];
   const text=data.length?data.map(entry=>'<section class="note-reading-section">'+(entry.title?'<h3>'+escapeHTML(entry.title)+'</h3>':'')+paragraphs(entry.paragraphs)+'</section>').join(''):paragraphs([]);
-  featurePage('notes',category.title,'<article class="reading-sheet notes-single-page"><div class="tag">'+category.tag+'</div><h2>'+escapeHTML(category.title)+'</h2>'+text+'</article>','‹ 備忘錄');
+  featurePage('notes',category.title,'<article class="reading-sheet notes-single-page"><h2>'+escapeHTML(category.title)+'</h2>'+text+'</article>','‹ 備忘錄');
 }
 function workTags(){return [...new Set([...CONTENT.paros.map(p=>p.title),...CONTENT.works.flatMap(w=>w.tags||[])])];}
 function renderAlbum(){
