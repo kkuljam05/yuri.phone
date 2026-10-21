@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f4c6da"><title>夢的私人手機</title>
+<style>
+*{box-sizing:border-box}body{margin:0;color:#673d53;background:#fcf5f8;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif}button,input{font:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:3px solid #a04c7d;outline-offset:4px}button{border:0}body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(#cf9bb84a .8px,transparent .8px);background-size:19px 19px}.layout{min-height:100svh;max-width:1140px;margin:auto;display:grid;grid-template-columns:1fr 430px;align-items:center;gap:80px;padding:52px 60px}.intro{position:relative}.eyebrow{font-size:11px;letter-spacing:4px;color:#ae7892}.intro h1{font-family:Georgia,"Noto Serif TC",serif;font-size:clamp(40px,5vw,65px);font-weight:400;line-height:1.28;letter-spacing:3px;margin:24px 0}.intro h1 span{color:#b26a8c}.intro p{font-size:14px;line-height:2.1;color:#987385}.rule{width:48px;height:1px;background:#bd8ca3;margin:27px 0}.intro small{font-size:11px;letter-spacing:2px;color:#b394a5}.stage{position:relative;display:flex;justify-content:center;padding:20px 15px}.case{position:relative;width:354px;height:734px;border-radius:62px;padding:15px;background:linear-gradient(135deg,#fff9fd,#e9a9c9 22%,#fff5ff 39%,#d88db6 70%,#f8e6f3);box-shadow:0 0 0 1px #d2a6bf,0 0 0 5px #f3dfeb,0 0 0 7px #fdf8fc,0 25px 65px #98647c30,inset 0 0 0 6px #fff7fcaa}.case:before{content:"";position:absolute;inset:6px;border:4px dotted #fff;border-radius:56px;pointer-events:none;filter:drop-shadow(0 1px 1px #aa769c)}.screen{position:relative;width:100%;height:100%;overflow:hidden;background:#f5c9dc;border:5px solid #30242f;border-radius:47px;isolation:isolate}.wallpaper{position:absolute;inset:0;background:radial-gradient(ellipse at 15% 20%,#fff6f9 0,transparent 47%),radial-gradient(ellipse at 90% 55%,#ee9fc6 0,transparent 50%),linear-gradient(140deg,#f7dbe7,#f1b7d2 60%,#e6bedf);background-position:center;background-size:cover;z-index:-1}.wallpaper:after{content:"";position:absolute;inset:0;background:linear-gradient(#fff0,#8a527822);pointer-events:none}.island{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:97px;height:27px;background:#231e26;border-radius:30px;z-index:20}.island:after{content:"";position:absolute;right:10px;top:9px;width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 65% 30%,#465479,#111521 70%)}.status{height:53px;padding:18px 22px 0;display:flex;justify-content:space-between;font-size:11px;font-weight:600;position:relative;z-index:15;color:#634154}.status .right{font-size:10px;letter-spacing:1px}.homebar{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);width:110px;height:5px;border-radius:8px;background:#634154;z-index:30;padding:0}.charm{position:absolute;z-index:35;pointer-events:none;filter:drop-shadow(0 3px 2px #b882a459)}.bow{right:-6px;top:44px;font-size:56px;transform:rotate(22deg)}.heart{left:-10px;bottom:64px;font-size:42px;color:#b96f99;text-shadow:0 0 1px white,2px 2px white,-2px -2px white}.star{left:-5px;top:190px;color:#fff;font-size:30px;text-shadow:0 0 3px #ad799d}.strap{position:absolute;right:-16px;bottom:63px;width:45px;height:173px;border:9px dotted #fff;border-radius:50%;transform:rotate(-15deg);filter:drop-shadow(1px 2px 2px #bf91a9);pointer-events:none}.strap:after{content:"♡";position:absolute;bottom:-47px;left:-10px;font-family:Georgia,serif;font-size:66px;color:#c37da1;text-shadow:2px 2px #fff}.view{position:absolute;inset:53px 0 23px}.hidden{display:none!important}.lock{text-align:center;padding:37px 17px 0}.lock .date{font-size:14px;letter-spacing:1px}.bigtime{font-size:77px;font-weight:300;letter-spacing:-3px;line-height:1.2;margin:4px 0 8px}.lock-caption{font-family:Georgia,serif;font-style:italic;font-size:16px;color:#a06e88}.lock-art{height:179px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:100px;color:#fff9fc;text-shadow:0 3px 13px #c183a5}.notice{padding:15px;background:#fff8fc9c;text-align:left;backdrop-filter:blur(14px);border-radius:20px;box-shadow:inset 0 0 0 1px #ffffffa1}.notice-label{font-size:10px;color:#a47690;letter-spacing:2px;margin-bottom:8px}.notice strong{font-size:13px;font-weight:600}.notice p{font-size:12px;margin:6px 0 0;color:#986e84}.unlock{margin-top:25px;background:transparent;color:#755268;font-size:12px;letter-spacing:2px;padding:14px}.unlock span{display:block;font-size:25px;margin-bottom:8px}.pin{text-align:center;padding:30px 26px 0;backdrop-filter:blur(18px);background:#f7d4e582}.pin h2{font-size:17px;font-weight:500;margin:9px 0}.pin p{font-size:11px;color:#987085;min-height:18px}.dots{display:flex;justify-content:center;gap:18px;margin:25px 0 30px}.dot{height:10px;width:10px;border:1px solid #80536d;border-radius:50%}.dot.filled{background:#80536d}.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:15px 18px}.key{width:62px;height:62px;border-radius:50%;background:#fff7fc91;color:#754761;font-size:25px;justify-self:center;box-shadow:inset 0 0 0 1px #fff8}.key small{display:block;font-size:7px;letter-spacing:2px}.key:active{background:#fff}.pin-actions{display:flex;justify-content:space-between;margin-top:25px}.textbtn{color:#825b72;background:transparent;padding:10px;font-size:12px}.desktop{padding:14px 18px}.widget{height:130px;border-radius:24px;background:#fff5fb9c;box-shadow:inset 0 0 0 1px #fff9;padding:20px;margin:6px 0 24px;position:relative;backdrop-filter:blur(12px)}.widget small{font-size:9px;letter-spacing:2px;color:#a3768f}.widget h2{font-family:Georgia,serif;font-weight:400;font-size:27px;margin:12px 0 5px}.widget p{font-size:10px;color:#aa7e95;margin:0}.widget .flower{position:absolute;right:17px;bottom:26px;font-size:45px;opacity:.7}.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 13px}.app{background:transparent;padding:0;color:#6d4560;display:flex;flex-direction:column;align-items:center;gap:7px;font-size:10px;letter-spacing:1px}.icon{display:flex;align-items:center;justify-content:center;width:59px;height:59px;border-radius:17px;box-shadow:0 5px 10px #a469891c,inset 0 0 0 1px #fff9;background:linear-gradient(145deg,#fff7fd,#ead8ed);font-size:27px}.app:nth-child(2) .icon{background:linear-gradient(145deg,#fff9f7,#f3d1df)}.app:nth-child(3) .icon{background:linear-gradient(145deg,#faf3e8,#efdfcb)}.app:nth-child(4) .icon{background:linear-gradient(145deg,#fff3f5,#eab9cc)}.app:nth-child(5) .icon{background:linear-gradient(145deg,#f5efff,#d8c5e7)}.app:nth-child(6) .icon{background:linear-gradient(145deg,#fff,#e3dce5)}.dock{position:absolute;left:15px;right:15px;bottom:17px;background:#fff6fc80;backdrop-filter:blur(15px);border-radius:25px;padding:13px;display:flex;justify-content:space-around;box-shadow:inset 0 0 0 1px #fff7}.dock button{background:#fff6fc;border-radius:17px;width:53px;height:53px;font-size:23px;color:#a86a90}.page{background:#fcf7fa;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}.pagehead{position:sticky;top:0;background:#fcf7faee;backdrop-filter:blur(12px);padding:13px 12px;display:flex;align-items:center;border-bottom:1px solid #efdfe7;z-index:1}.back{background:transparent;color:#a46588;font-size:13px;padding:5px}.pagehead h2{font-size:14px;text-align:center;flex:1;margin:0 38px 0 0}.pagebody{padding:20px 19px 36px}.pagebody h3{font-size:16px;font-weight:500}.pagebody p{font-size:12px;line-height:1.9;color:#967185}.empty{text-align:center;padding:46px 8px}.empty .symbol{font-size:46px;color:#c592af;font-family:Georgia,serif}.tag{font-size:9px;letter-spacing:2px;color:#ac8299}.card{background:white;border:1px solid #efdee7;border-radius:18px;padding:15px;margin:13px 0}.card strong{font-size:13px;font-weight:500}.card p{margin-bottom:0}.avatar{display:block;border-radius:50%;width:64px;height:64px;line-height:64px;background:#f4e5ee;font-size:28px;text-align:center;margin:5px auto 15px}.primary{display:block;text-align:center;width:100%;background:#b77b9d;color:#fff;padding:13px;border-radius:13px;font-size:12px;margin:14px 0 10px}.secondary{background:#f0e4ed;color:#91647e}.hint{font-size:10px!important}.preview{height:150px;border-radius:18px;background:radial-gradient(ellipse at 15% 20%,#fff6f9,transparent 47%),linear-gradient(140deg,#f7dbe7,#f1b7d2,#e6bedf);background-size:cover;background-position:center;border:4px solid white;box-shadow:0 0 0 1px #ecdce6}.toast{position:absolute;left:16px;right:16px;bottom:36px;background:#75465fee;color:white;font-size:11px;padding:12px;border-radius:14px;text-align:center;z-index:50;line-height:1.7}.error{animation:shake .25s 2}@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}@media(max-width:820px){.layout{display:flex;flex-direction:column;gap:20px;padding:32px 15px 40px}.intro{text-align:center}.intro h1{font-size:31px;margin:10px 0}.intro p,.rule,.intro small{display:none}.eyebrow{font-size:9px}.stage{padding:15px}.case{width:354px;flex-shrink:0}.strap{right:-6px}}@media(max-width:390px){.case{width:324px;height:697px}.stage{padding:12px 6px}.layout{padding-left:5px;padding-right:5px}.strap{right:-3px}.lock-art{height:140px}.key{width:58px;height:58px}.keys{gap:12px}.widget{margin-bottom:20px}.apps{gap:20px 10px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+
+/* 手機置中；外部不放文字或介紹區塊。 */
+.layout{display:flex;align-items:center;justify-content:center;gap:0;max-width:none;padding:28px 16px;min-height:100svh}
+.stage{flex-shrink:0}.wall-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.wall-choice{padding:7px;background:#fff;border:2px solid #ead6e2;border-radius:15px;color:#81546e;text-align:left}
+.wall-choice[aria-pressed="true"]{border-color:#ae6c92;box-shadow:0 0 0 2px #efd5e4}
+.wall-thumb{display:block;height:115px;border-radius:9px;background:linear-gradient(140deg,#f7dbe7,#f1b7d2,#e6bedf);background-size:cover;background-position:center}
+.wall-name{display:block;font-size:11px;padding:8px 2px 3px}.icon img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+@media(max-width:390px){.layout{padding:20px 5px}}
+</style></head>
+<body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true">🎀</span><span class="charm star" aria-hidden="true">✧</span><span class="charm heart" aria-hidden="true">♡</span><div class="strap" aria-hidden="true"></div><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right" aria-label="訊號良好，電量100%">▮▮▮ ϟ ▰</span></div>
+<section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">a pocket full of love</div><div class="lock-art" aria-hidden="true">♡</div><div class="notice"><div class="notice-label">♡ 私人收藏</div><strong>有一個故事，想讓你知道。</strong><p>解鎖手機，慢慢認識我們。</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
+<section id="pin" class="view pin hidden" aria-label="輸入解鎖密碼"><div aria-hidden="true">♡</div><h2>輸入密碼</h2><p id="pinMessage" role="status">解開屬於我們的小小世界</p><div id="dots" class="dots" aria-label="已輸入0位數"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="keys" id="keys"></div><div class="pin-actions"><button id="cancelPin" class="textbtn">取消</button><button id="deletePin" class="textbtn">刪除</button></div></section>
+<section id="desktop" class="view desktop hidden" aria-label="手機主畫面"><div class="widget"><small>OUR LITTLE UNIVERSE</small><h2>Dear, you.</h2><p>把每一點喜歡，好好收藏。</p><span class="flower" aria-hidden="true">❀</span></div><div class="apps"><button class="app" data-app="contacts"><span class="icon">♙</span>通訊錄</button><button class="app" data-app="photos"><span class="icon">❀</span>相簿</button><button class="app" data-app="notes"><span class="icon">☷</span>備忘錄</button><button class="app" data-app="messages"><span class="icon">♡</span>訊息</button><button class="app" data-app="calendar"><span class="icon">▦</span>紀念日</button><button class="app" data-app="settings"><span class="icon">⚙</span>設定</button></div><div class="dock"><button data-app="messages" aria-label="開啟訊息">♡</button><button data-app="photos" aria-label="開啟相簿">❀</button><button id="relock" aria-label="鎖定手機">⏻</button></div></section>
+<section id="page" class="view page hidden" aria-label="App 內容"><header class="pagehead"><button class="back" id="back">‹ 返回</button><h2 id="pageTitle"></h2></header><div id="pageBody" class="pagebody"></div></section><button id="home" class="homebar hidden" aria-label="回到主畫面"></button><div id="toast" class="toast hidden" role="status"></div></div></div></section></main>
+<script>
+// ── 網站主人設定區 ──
+// 照片先上傳到 GitHub 同一個資料夾，再在 wallpapers 新增一列。
+// 範例：{ id: 'photo1', name: '我們的合照', image: 'wallpaper-01.jpg' },
+// id 請使用不同的英文或數字。第一項是新訪客的預設桌布。
+const SITE_CONFIG = {
+  title: '夢的私人手機',
+  passcode: '0615',
+  lockCaption: 'a pocket full of love',
+  notificationTitle: '有一個故事，想讓你知道。',
+  notificationText: '解鎖手機，慢慢認識我們。',
+  homeTitle: 'Dear, you.',
+  homeText: '把每一點喜歡，好好收藏。',
+  wallpapers: [
+    { id: 'pink', name: '粉色夢境', image: '' },
+  ],
+  // iconImage 留空時使用 symbol；填入圖片檔名即可換成自製 Icon。
+  apps: {
+    contacts: { name: '通訊錄', symbol: '♙', iconImage: '' },
+    photos: { name: '相簿', symbol: '❀', iconImage: '' },
+    notes: { name: '備忘錄', symbol: '☷', iconImage: '' },
+    messages: { name: '訊息', symbol: '♡', iconImage: '' },
+    calendar: { name: '紀念日', symbol: '▦', iconImage: '' },
+    settings: { name: '設定', symbol: '⚙', iconImage: '' },
+  },
+};
+// 各 App 的內文在下方 const pages 區塊修改。
+// 手機外框、顏色與裝飾在上方 <style> 的 .case、.screen、.charm 修改。
+const PASSCODE = SITE_CONFIG.passcode;
+const $ = id => document.getElementById(id);
+let entered = '', unlocked = false, current = 'lock', toastTimer;
+let wallpaperId = SITE_CONFIG.wallpapers[0].id;
+try {
+  const saved = localStorage.getItem('dream-phone-wallpaper-choice-v2');
+  if (SITE_CONFIG.wallpapers.some(w => w.id === saved)) wallpaperId = saved;
+} catch {}
+function setBackground(element, value) { element.style.backgroundImage = value ? 'url(' + JSON.stringify(value) + ')' : ''; }
+function applyWallpaper() {
+  const selected = SITE_CONFIG.wallpapers.find(w => w.id === wallpaperId) || SITE_CONFIG.wallpapers[0];
+  setBackground($('wallpaper'), selected.image);
+  if ($('wallPreview')) setBackground($('wallPreview'), selected.image);
+  document.querySelectorAll('[data-wallpaper]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.wallpaper===selected.id)));
+}
+function chooseWallpaper(id) {
+  if (!SITE_CONFIG.wallpapers.some(w=>w.id===id)) return;
+  wallpaperId=id; applyWallpaper();
+  let message='已套用桌布，下次開啟時會記住你的選擇。';
+  try { localStorage.setItem('dream-phone-wallpaper-choice-v2', id); }
+  catch { message='已套用桌布；此瀏覽器無法儲存，下次開啟將恢復預設。'; }
+  $('settingStatus').textContent=message;
+}
+function renderWallpaperChoices() {
+  const list=$('wallOptions');
+  SITE_CONFIG.wallpapers.forEach(w=>{
+    const button=document.createElement('button');button.className='wall-choice';button.dataset.wallpaper=w.id;
+    button.setAttribute('aria-pressed',String(w.id===wallpaperId));
+    const thumb=document.createElement('span');thumb.className='wall-thumb';setBackground(thumb,w.image);
+    const label=document.createElement('span');label.className='wall-name';label.textContent=w.name;
+    button.append(thumb,label);button.onclick=()=>chooseWallpaper(w.id);list.append(button);
+  });
+  applyWallpaper();
+}
+function show(view) { for (const id of ['lock','pin','desktop','page']) $(id).classList.toggle('hidden',id!==view); current=view; $('home').classList.toggle('hidden',!unlocked); }
+function toast(message) { $('toast').textContent=message; $('toast').classList.remove('hidden'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>$('toast').classList.add('hidden'),3800); }
+function updateDots() { [...$('dots').children].forEach((dot,i)=>dot.classList.toggle('filled',i<entered.length)); $('dots').setAttribute('aria-label','已輸入'+entered.length+'位數'); }
+function digit(value) { if(current!=='pin'||entered.length>=4)return; entered+=value; updateDots(); if(entered.length===4){ if(entered===PASSCODE){ unlocked=true; entered=''; updateDots(); show('desktop'); }else{ $('pinMessage').textContent='密碼不對，再試一次'; $('dots').classList.add('error'); setTimeout(()=>{entered='';updateDots();$('dots').classList.remove('error');},520); } } }
+const letters=['','','ABC','DEF','GHI','JKL','MNO','PQRS','TUV','WXYZ'];
+for(const num of [1,2,3,4,5,6,7,8,9,0]){ const b=document.createElement('button');b.className='key';b.textContent=num;b.setAttribute('aria-label',String(num));if(num===0)b.style.gridColumn='2';const s=document.createElement('small');s.textContent=letters[num]||'\u00a0';b.append(s);b.onclick=()=>digit(String(num));$('keys').append(b); }
+$('unlock').onclick=()=>{entered='';updateDots();$('pinMessage').textContent='解開屬於我們的小小世界';show('pin');};
+$('cancelPin').onclick=()=>{entered='';updateDots();show('lock');};$('deletePin').onclick=()=>{entered=entered.slice(0,-1);updateDots();};
+function goHome(){if(unlocked){show('desktop');} } $('back').onclick=goHome;$('home').onclick=goHome;
+$('relock').onclick=()=>{unlocked=false;entered='';updateDots();show('lock');};
+document.addEventListener('keydown',e=>{if(current!=='pin')return;if(/^\d$/.test(e.key)){e.preventDefault();digit(e.key);}if(e.key==='Backspace'){e.preventDefault();entered=entered.slice(0,-1);updateDots();}if(e.key==='Escape')$('cancelPin').click();});
+const pages={
+contacts:{title:'通訊錄',html:'<div class="tag">THE TWO OF US</div><div class="card"><span class="avatar">♙</span><strong>夢角介紹</strong><p>這裡將放入角色的名字、個性與基本資料。</p></div><div class="card"><span class="avatar">♡</span><strong>夢設介紹</strong><p>這裡將放入夢設的名字、外貌與故事。</p></div><p class="hint">第一版預留區・介紹文字之後再一起補上。</p>'},
+photos:{title:'相簿',html:'<div class="tag">MOMENTS TO KEEP</div><div class="empty"><div class="symbol">❀</div><h3>等一張屬於我們的照片</h3><p>這裡將收藏委託圖、合照與回憶。<br>目前還沒有加入圖片。</p></div><div class="card"><strong>我們的收藏</strong><p>之後可以加入圖片與繪師署名，點開照片看大圖。</p></div>'},
+notes:{title:'備忘錄',html:'<div class="tag">A FEW WORDS ABOUT US</div><div class="card"><strong>01 ／ 關於這裡</strong><p>這是一個尚在準備中的夢向介紹網站，所有角色介紹與設定都會慢慢補上。</p></div><div class="card"><strong>02 ／ 我們的故事</strong><p>預留給相遇經過、關係設定與世界觀。</p></div><div class="card"><strong>03 ／ 閱讀前的小提醒</strong><p>預留給交流方式、夢向注意事項與圖片使用說明。</p></div>'},
+messages:{title:'訊息',html:'<div class="tag">WORDS, SAVED FOR LATER</div><div class="empty"><div class="symbol">♡</div><h3>有些話，只想告訴你</h3><p>這裡將放入兩人的聊天與小劇場。<br>目前還沒有加入對話。</p></div>'},
+calendar:{title:'紀念日',html:'<div class="tag">DAYS WORTH REMEMBERING</div><div class="empty"><div class="symbol">▦</div><h3>值得記住的每一天</h3><p>生日、相遇，還有心動的那天。<br>日期與紀念日名稱之後再填入。</p></div>'},
+settings:{title:'設定',html:'<div class="tag">WALLPAPER COLLECTION</div><h3>挑一張喜歡的桌布</h3><div id="wallPreview" class="preview" role="img" aria-label="目前桌布"></div><div id="wallOptions" class="wall-options" aria-label="桌布選項"></div><p class="hint">從本站提供的桌布中挑選。你的選擇只影響這個瀏覽器，不影響其他訪客。</p><p id="settingStatus" role="status" class="hint"></p>'}
+
+};
+function openApp(id){ if(!unlocked||!pages[id])return;const p=pages[id];$('pageTitle').textContent=SITE_CONFIG.apps[id]?.name||p.title;$('pageBody').innerHTML=p.html;show('page');$('page').scrollTop=0;if(id==='settings')renderWallpaperChoices(); }
+document.querySelectorAll('[data-app]').forEach(b=>{
+  const config=SITE_CONFIG.apps[b.dataset.app];
+  if(config){
+    const icon=b.querySelector('.icon');
+    if(icon){
+      if(config.iconImage){const image=document.createElement('img');image.src=config.iconImage;image.alt='';icon.replaceChildren(image);}else icon.textContent=config.symbol;
+      b.lastChild.textContent=config.name;
+    }else{if(config.iconImage){const image=document.createElement('img');image.src=config.iconImage;image.alt='';image.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:inherit';b.replaceChildren(image);}else b.textContent=config.symbol;b.setAttribute('aria-label','開啟'+config.name);}
+  }
+  b.onclick=()=>openApp(b.dataset.app);
+});
+document.title=SITE_CONFIG.title;
+document.querySelector('.lock-caption').textContent=SITE_CONFIG.lockCaption;
+document.querySelector('.notice strong').textContent=SITE_CONFIG.notificationTitle;
+document.querySelector('.notice p').textContent=SITE_CONFIG.notificationText;
+document.querySelector('.widget h2').textContent=SITE_CONFIG.homeTitle;
+document.querySelector('.widget p').textContent=SITE_CONFIG.homeText;
+function updateTime(){const now=new Date();const time=now.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});$('clock').textContent=time;$('statusTime').textContent=time;$('date').textContent=now.toLocaleDateString('zh-TW',{month:'long',day:'numeric',weekday:'long'});}updateTime();setInterval(updateTime,30000);applyWallpaper();
+</script></body></html>
