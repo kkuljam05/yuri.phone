@@ -159,8 +159,17 @@
 .outfit-viewer .close-image svg{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
 .outfit-viewer{padding-bottom:24px}
 .outfit-viewer>img{max-height:calc(100dvh - 76px)}
+.icon svg{display:block;width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.app-line-icon{display:block;width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.desktop .dock button{display:flex;align-items:center;justify-content:center;padding:0}
+.desktop .dock .app-line-icon{width:25px;height:25px}
+.status .status-icons{display:flex;align-items:center;justify-content:flex-end;gap:4px;letter-spacing:0;height:14px;margin-top:1px;flex-shrink:0}
+.status-icons svg{display:block;fill:currentColor;flex-shrink:0}
+.status-signal{width:16px;height:12px}
+.status-wifi{width:16px;height:13px}
+.status-battery{width:25px;height:12px}
 </style></head>
-<body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm heart" aria-hidden="true">♡</span><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right" aria-label="訊號良好，電量100%">▮▮▮ ϟ ▰</span></div>
+<body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm heart" aria-hidden="true">♡</span><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right status-icons" role="img" aria-label="行動訊號良好、Wi-Fi 已連線、電量100%"><svg class="status-signal" viewBox="0 0 20 14" aria-hidden="true"><rect x="1" y="9" width="3" height="4" rx=".7"/><rect x="6" y="6" width="3" height="7" rx=".7"/><rect x="11" y="3" width="3" height="10" rx=".7"/><rect x="16" y="0" width="3" height="13" rx=".7"/></svg><svg class="status-wifi" viewBox="0 0 20 17" aria-hidden="true"><path d="M2 4a12 12 0 0 1 16 0M5 7.5a7.5 7.5 0 0 1 10 0M8 10.9a3 3 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="10" cy="14.6" r="1"/></svg><svg class="status-battery" viewBox="0 0 29 14" aria-hidden="true"><rect x=".6" y="1" width="24" height="12" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="2.5" y="3" width="20" height="8" rx="1.4"/><path d="M26 4.5c2 0 2 5 0 5Z" opacity=".65"/></svg></span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">The Ruriverse</div><div class="lock-art" aria-hidden="true">♡</div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>您好！此為《極權教師》賢丹尼爾的夢向設定網站！</strong><p>解鎖手機即可閱覽詳細內容♡</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
 <section id="pin" class="view pin hidden" aria-label="輸入解鎖密碼"><div aria-hidden="true">♡</div><h2>輸入密碼</h2><p id="pinMessage" role="status">解開屬於賢＆瑠璃的小世界</p><div id="dots" class="dots" aria-label="已輸入0位數"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="keys" id="keys"></div><div class="pin-actions"><button id="cancelPin" class="textbtn">取消</button><button id="deletePin" class="textbtn">刪除</button></div></section>
 <section id="desktop" class="view desktop hidden" aria-label="手機主畫面"><div class="widget timer-widget"><small>EVERY SECOND WITH YOU</small><h2>喜歡賢先生已經</h2><div id="anniversaryTimer" class="anniversary-timer" role="timer"></div></div><div class="apps"><button class="app" data-app="settings"><span class="icon">⚙</span>設定</button><button class="app" data-app="contacts"><span class="icon">♙</span>通訊錄</button><button class="app" data-app="notes"><span class="icon">☷</span>備忘錄</button>
@@ -181,7 +190,7 @@ const SITE_CONFIG = {
     photos: { name: '相簿', symbol: '❀', iconImage: '' },
     messages: { name: '訊息', symbol: '♡', iconImage: '' },
     calendar: { name: '日曆', symbol: '▦', iconImage: '' },
-    settings: { name: '閱前須知', symbol: '♡', iconImage: '' },
+    settings: { name: '閱前須知', symbol: '▤', iconImage: '' },
   },
 };
 // 通訊錄內文在 const pages；故事、PARO、相簿、訊息及節日請搜尋 const CONTENT。
@@ -283,17 +292,33 @@ calendar:{title:'日曆',html:''},
 
 };
 function openApp(id){ if(!unlocked||!pages[id])return;currentApp=id;const p=pages[id];$('back').textContent=(id==='characterMale'||id==='characterFemale')?'‹ 通訊錄':'‹ 返回';$('pageTitle').textContent=SITE_CONFIG.apps[id]?.name||p.title;$('pageBody').innerHTML=p.html;show('page');$('page').scrollTop=0;if(id==='contacts')$('pageBody').querySelectorAll('[data-character]').forEach(b=>b.onclick=()=>openApp(b.dataset.character)); }
+// APP 與底座共用同一套線條圖示。
+const ICON_PATHS={
+  settings:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/>',
+  contacts:'<rect x="5" y="3" width="15" height="18" rx="2"/><path d="M3 7h4M3 12h4M3 17h4"/><circle cx="12.5" cy="9" r="2.3"/><path d="M9 16c0-4 7-4 7 0"/>',
+  notes:'<path d="M15 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 3v6h6M8 13h8M8 17h6"/>',
+  photos:'<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/>',
+  messages:'<path d="M20.5 5.5a5 5 0 0 0-8.5 1 5 5 0 0 0-8.5-1C-.5 11 7 17 12 21c5-4 12.5-10 8.5-15.5Z"/>',
+  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M7 14h2M12 14h2M17 14h.1M7 18h2M12 18h2"/>',
+  power:'<path d="M12 3v9M6.3 5.8a8 8 0 1 0 11.4 0"/>'
+};
+function iconSVG(id){return '<svg class="app-line-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+ICON_PATHS[id]+'</svg>';}
 document.querySelectorAll('[data-app]').forEach(b=>{
   const config=SITE_CONFIG.apps[b.dataset.app];
   if(config){
     const icon=b.querySelector('.icon');
-    if(icon){
-      if(config.iconImage){const image=document.createElement('img');image.src=config.iconImage;image.alt='';icon.replaceChildren(image);}else icon.textContent=config.symbol;
-      b.lastChild.textContent=config.name;
-    }else{if(config.iconImage){const image=document.createElement('img');image.src=config.iconImage;image.alt='';image.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:inherit';b.replaceChildren(image);}else b.textContent=config.symbol;b.setAttribute('aria-label','開啟'+config.name);}
+    const target=icon||b;
+    if(config.iconImage){
+      const image=document.createElement('img');image.src=config.iconImage;image.alt='';
+      if(!icon)image.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:inherit';
+      target.replaceChildren(image);
+    }else target.innerHTML=iconSVG(b.dataset.app);
+    if(icon)b.lastChild.textContent=config.name;
+    else b.setAttribute('aria-label','開啟'+config.name);
   }
   b.onclick=()=>openApp(b.dataset.app);
 });
+$('relock').innerHTML=iconSVG('power');
 document.title=SITE_CONFIG.title;
 document.querySelector('.lock-caption').textContent=SITE_CONFIG.lockCaption;
 document.querySelector('.notice strong').innerHTML = SITE_CONFIG.notificationTitle;
@@ -589,4 +614,10 @@ document.addEventListener('click',event=>{
  dialog.showModal();close.focus();
 });
 </script></body></html>
+
+
+
+
+
+
 
