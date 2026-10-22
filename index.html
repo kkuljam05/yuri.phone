@@ -126,15 +126,51 @@
 .calendar-content .calendar-toolbar{margin-top:0;margin-bottom:8px}
 .calendar-content .weekdays{margin-bottom:5px}
 .calendar-content .calendar-grid{gap:2px 1px}
-.calendar-content .calendar-day{height:32px;font-size:13px;padding:0 0 8px;line-height:1}
+.calendar-content .calendar-day{height:34px;font-size:13px;padding:0 0 8px;line-height:1}
 .calendar-content .calendar-legend{margin-top:6px;margin-bottom:8px}
 .calendar-content .calendar-day i{bottom:2px}
+/* 預設桌布：白底、交錯排列的粉紅波點。 */
+.wallpaper.default-wallpaper,.preview.default-wallpaper,.wall-thumb.default-wallpaper{background-color:#fff; background-image:radial-gradient(circle,#f7dfeb 2px,transparent 2.5px),radial-gradient(circle,#f7dfeb 2px,transparent 2.5px);background-size:28px 28px;background-position:0 0,14px 14px}
+.wallpaper.default-wallpaper:after{background:none}
+/* 桌面及密碼畫面覆蓋完整螢幕，內容避開狀態列。 */
+.screen{background:#fff}
+.pin{inset:0;padding-top:83px;background:#fff9fc99}
+.desktop{inset:0;padding-top:67px}
+.desktop .dock{bottom:40px}
+/* 只替 APP 狀態列補底色，不改變內頁高度或間距。 */
+.screen:has(.page:not(.hidden)) .status{background:#fcf7fa}
+/* 縮小 APP 標題列的上下留白。 */
+.pagehead{padding:7px 12px}
+/* 鎖定及密碼畫面使用原本漸層；解鎖後恢復所選桌布。 */
+.screen:has(.lock:not(.hidden),.pin:not(.hidden)) .wallpaper{background:radial-gradient(ellipse at 15% 20%,#fff6f9 0,transparent 47%),radial-gradient(ellipse at 90% 55%,#ee9fc6 0,transparent 50%),linear-gradient(140deg,#f7dbe7,#f1b7d2 60%,#e6bedf);background-size:cover;background-position:center}
+.screen:has(.lock:not(.hidden),.pin:not(.hidden)) .wallpaper:after{background:linear-gradient(#fff0,#8a527822)}
+.pin{background:#f7d4e582}
+.calendar-content .calendar-grid{margin-bottom:12px}
+/* 毛玻璃底座：用固定的按鈕對比適應不同桌布。 */
+.desktop .dock{background:rgba(250,230,241,.72);-webkit-backdrop-filter:blur(18px) saturate(120%);backdrop-filter:blur(18px) saturate(120%);border:1px solid rgba(255,255,255,.85);box-shadow:0 5px 16px rgba(100,55,80,.16),0 0 0 1px rgba(153,104,132,.22),inset 0 1px 0 rgba(255,255,255,.8)}
+.desktop .dock button{background:rgba(255,244,250,.94);color:#995777;box-shadow:0 2px 5px rgba(114,65,91,.09),inset 0 0 0 1px rgba(196,150,176,.23)}
+.desktop .dock button:hover{background:#fff;color:#814461}
+.desktop .dock button:active{background:#f2d9e7}
+.timer-widget{text-align:center;padding:18px 12px;background:rgba(255,245,251,.86);border:1px solid #efdae6}
+.timer-widget h2{font-family:inherit;font-size:14px;font-weight:500;margin:8px 0 10px;color:#90627c}
+.timer-widget>small{font-size:8px;letter-spacing:1.6px}
+.timer-widget .anniversary-timer{color:#8c5977}
+.upcoming-dates{margin-top:12px;padding-top:8px;border-top:1px solid #eddce6}
+.upcoming-dates h3{font-size:13px;font-weight:600;color:#895a74;margin:4px 0 8px}
+.upcoming-date{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;padding:8px 10px;margin:6px 0;background:#fff9fc;border:1px solid #efdee7;border-radius:12px;text-align:left;color:#80566f}
+.upcoming-date>span{min-width:0}
+.upcoming-date time{display:block;font-size:9px;color:#ac8299}
+.upcoming-date strong{display:block;font-size:11px;font-weight:500;line-height:1.6}
+.upcoming-date small{font-size:10px;white-space:nowrap;color:#a16d8b}
+.upcoming-date:hover{background:#f7e9f1}
+.date-events[hidden]{display:none}
+.upcoming-date{background:#fff}.upcoming-date:hover{background:#fff}
 </style></head>
 <body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm star" aria-hidden="true">✧</span><span class="charm heart" aria-hidden="true">♡</span><div class="strap" aria-hidden="true"></div><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right" aria-label="訊號良好，電量100%">▮▮▮ ϟ ▰</span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">The Ruriverse</div><div class="lock-art" aria-hidden="true">♡</div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>您好！此為《極權教師》賢丹尼爾的夢向設定網站！</strong><p>解鎖手機即可閱覽詳細內容♡</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
 <section id="pin" class="view pin hidden" aria-label="輸入解鎖密碼"><div aria-hidden="true">♡</div><h2>輸入密碼</h2><p id="pinMessage" role="status">解開屬於賢＆瑠璃的小世界</p><div id="dots" class="dots" aria-label="已輸入0位數"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="keys" id="keys"></div><div class="pin-actions"><button id="cancelPin" class="textbtn">取消</button><button id="deletePin" class="textbtn">刪除</button></div></section>
-<section id="desktop" class="view desktop hidden" aria-label="手機主畫面"><button type="button" class="widget notice-widget" data-app="notice" aria-label="開啟閱前須知"><small>BEFORE YOU READ</small><h2>閱前須知</h2><p>閱覽前，請先點擊此處確認本頁內容</p><span class="flower" aria-hidden="true">❀</span></button><div class="apps"><button class="app" data-app="contacts"><span class="icon">♙</span>通訊錄</button><button class="app" data-app="notes"><span class="icon">☷</span>備忘錄</button>
-<button class="app" data-app="photos"><span class="icon">❀</span>相簿</button><button class="app" data-app="messages"><span class="icon">♡</span>訊息</button><button class="app" data-app="calendar"><span class="icon">▦</span>日曆</button><button class="app" data-app="settings"><span class="icon">⚙</span>設定</button></div><div class="dock"><button data-app="messages" aria-label="開啟訊息">♡</button><button data-app="photos" aria-label="開啟相簿">❀</button><button id="relock" aria-label="鎖定手機">⏻</button></div></section>
+<section id="desktop" class="view desktop hidden" aria-label="手機主畫面"><div class="widget timer-widget"><small>EVERY SECOND WITH YOU</small><h2>喜歡賢先生已經</h2><div id="anniversaryTimer" class="anniversary-timer" role="timer"></div></div><div class="apps"><button class="app" data-app="settings"><span class="icon">⚙</span>設定</button><button class="app" data-app="contacts"><span class="icon">♙</span>通訊錄</button><button class="app" data-app="notes"><span class="icon">☷</span>備忘錄</button>
+<button class="app" data-app="photos"><span class="icon">❀</span>相簿</button><button class="app" data-app="messages"><span class="icon">♡</span>訊息</button><button class="app" data-app="calendar"><span class="icon">▦</span>日曆</button></div><div class="dock"><button data-app="messages" aria-label="開啟訊息">♡</button><button data-app="photos" aria-label="開啟相簿">❀</button><button id="relock" aria-label="鎖定手機">⏻</button></div></section>
 <section id="page" class="view page hidden" aria-label="App 內容"><header class="pagehead"><button class="back" id="back">‹ 返回</button><h2 id="pageTitle"></h2></header><div id="pageBody" class="pagebody"></div></section><button id="home" class="homebar hidden" aria-label="回到主畫面"></button><div id="toast" class="toast hidden" role="status"></div></div></div></section></main>
 <script>
 // ── 網站主人設定區 ──
@@ -150,7 +186,7 @@ const SITE_CONFIG = {
   homeTitle: '閱前須知',
   homeText: '閱覽前，請先點擊此處確認本頁內容',
   wallpapers: [
-    { id: 'pink', name: '粉色夢境', image: '' },
+    { id: 'pink-dots', name: '粉紅波點', image: '' },
   ],
   // iconImage 留空時使用 symbol；填入圖片檔名即可換成自製 Icon。
   apps: {
@@ -159,7 +195,7 @@ const SITE_CONFIG = {
     photos: { name: '相簿', symbol: '❀', iconImage: '' },
     messages: { name: '訊息', symbol: '♡', iconImage: '' },
     calendar: { name: '日曆', symbol: '▦', iconImage: '' },
-    settings: { name: '設定', symbol: '⚙', iconImage: '' },
+    settings: { name: '閱前須知', symbol: '♡', iconImage: '' },
   },
 };
 // 通訊錄內文在 const pages；故事、PARO、相簿、訊息及節日請搜尋 const CONTENT。
@@ -172,7 +208,7 @@ try {
   const saved = localStorage.getItem('dream-phone-wallpaper-choice-v2');
   if (SITE_CONFIG.wallpapers.some(w => w.id === saved)) wallpaperId = saved;
 } catch {}
-function setBackground(element, value) { element.style.backgroundImage = value ? 'url(' + JSON.stringify(value) + ')' : ''; }
+function setBackground(element, value) { element.classList.toggle('default-wallpaper', !value); element.style.backgroundImage = value ? 'url(' + JSON.stringify(value) + ')' : ''; }
 function applyWallpaper() {
   const selected = SITE_CONFIG.wallpapers.find(w => w.id === wallpaperId) || SITE_CONFIG.wallpapers[0];
   setBackground($('wallpaper'), selected.image);
@@ -214,7 +250,7 @@ $('relock').onclick=()=>{unlocked=false;entered='';updateDots();show('lock');};
 document.addEventListener('keydown',e=>{if(current!=='pin')return;if(/^\d$/.test(e.key)){e.preventDefault();digit(e.key);}if(e.key==='Backspace'){e.preventDefault();entered=entered.slice(0,-1);updateDots();}if(e.key==='Escape')$('cancelPin').click();});
 const pages={
 // 閱前須知：將下方提示段落換成你的須知內容即可。
-notice:{title:'閱前須知',html:'<article class="reading-sheet"><div class="tag">BEFORE YOU READ</div><h2>閱前須知</h2><p class="entry-paragraph">您好！感謝您的點閱♡ 此為<strong>《極權教師》賢丹尼爾</strong>的夢向設定網站！</p><p class="entry-paragraph">以下包含少量人物背景劇透及大量私設，若有任何苦手元素請直接關閉此網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本網站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">網站內的文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
+settings:{title:'閱前須知',html:'<article class="reading-sheet"><div class="tag">BEFORE YOU READ</div><h2>閱前須知</h2><p class="entry-paragraph">您好！感謝您的點閱♡ 此為<strong>《極權教師》賢丹尼爾</strong>的夢向設定網站！</p><p class="entry-paragraph">以下包含少量人物背景劇透及大量私設，若有任何苦手元素請直接關閉此網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本網站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">網站內的文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
 characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><h2 class="character-name">賢丹尼爾</h2><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
@@ -287,10 +323,9 @@ photos:{title:'相簿',html:''},
 notes:{title:'備忘錄',html:''},
 messages:{title:'訊息',html:''},
 calendar:{title:'日曆',html:''},
-settings:{title:'設定',html:'<div class="tag">WALLPAPER COLLECTION</div><h3>挑一張喜歡的桌布</h3><div id="wallPreview" class="preview" role="img" aria-label="目前桌布"></div><div id="wallOptions" class="wall-options" aria-label="桌布選項"></div><p class="hint">從網站提供的桌布中挑選。你的選擇只影響這個瀏覽器，不影響其他訪客。</p><p id="settingStatus" role="status" class="hint"></p>'}
 
 };
-function openApp(id){ if(!unlocked||!pages[id])return;currentApp=id;const p=pages[id];$('back').textContent=(id==='characterMale'||id==='characterFemale')?'‹ 通訊錄':'‹ 返回';$('pageTitle').textContent=SITE_CONFIG.apps[id]?.name||p.title;$('pageBody').innerHTML=p.html;show('page');$('page').scrollTop=0;if(id==='settings')renderWallpaperChoices();if(id==='contacts')$('pageBody').querySelectorAll('[data-character]').forEach(b=>b.onclick=()=>openApp(b.dataset.character)); }
+function openApp(id){ if(!unlocked||!pages[id])return;currentApp=id;const p=pages[id];$('back').textContent=(id==='characterMale'||id==='characterFemale')?'‹ 通訊錄':'‹ 返回';$('pageTitle').textContent=SITE_CONFIG.apps[id]?.name||p.title;$('pageBody').innerHTML=p.html;show('page');$('page').scrollTop=0;if(id==='contacts')$('pageBody').querySelectorAll('[data-character]').forEach(b=>b.onclick=()=>openApp(b.dataset.character)); }
 document.querySelectorAll('[data-app]').forEach(b=>{
   const config=SITE_CONFIG.apps[b.dataset.app];
   if(config){
@@ -306,8 +341,6 @@ document.title=SITE_CONFIG.title;
 document.querySelector('.lock-caption').textContent=SITE_CONFIG.lockCaption;
 document.querySelector('.notice strong').innerHTML = SITE_CONFIG.notificationTitle;
 document.querySelector('.notice p').innerHTML = SITE_CONFIG.notificationText;
-document.querySelector('.widget h2').textContent=SITE_CONFIG.homeTitle;
-document.querySelector('.widget p').textContent=SITE_CONFIG.homeText;
 function updateTime(){const now=new Date();const time=now.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});$('clock').textContent=time;$('statusTime').textContent=time;$('date').textContent=now.toLocaleDateString('zh-TW',{month:'long',day:'numeric',weekday:'long'});}updateTime();setInterval(updateTime,30000);applyWallpaper();
 // ═══════════════ 網站內容編輯區 ═══════════════
 // 一段文字寫在一組引號裡；換行可以使用 \n。
@@ -410,10 +443,10 @@ const CONTENT = {
   events: [
     // anniversary 會自動依年份更換標籤：2027 兩周年、2028 三周年……
     { id: 'first-day', date: '2026-06-15', annual: true, anniversary: true, title: '夢的第一天', description: '故事開始的日子。', url: '' },
-    { id: 'valentine', date: '2000-02-14', annual: true, title: '情人節', description: '', url: '' },
-    { id: 'white-day', date: '2000-03-14', annual: true, title: '白色情人節', description: '', url: '' },
-    { id: 'halloween', date: '2000-10-31', annual: true, title: '萬聖節', description: '', url: '' },
-    { id: 'christmas', date: '2000-12-25', annual: true, title: '聖誕節', description: '', url: '' },
+    { id: 'valentine', date: '2000-02-14', annual: true, title: '情人節🍫', description: '', url: '' },
+    { id: 'white-day', date: '2000-03-14', annual: true, title: '白色情人節💌', description: '', url: '' },
+    { id: 'halloween', date: '2000-10-31', annual: true, title: '萬聖節🎃', description: '', url: '' },
+    { id: 'christmas', date: '2000-12-25', annual: true, title: '聖誕節🎄', description: '', url: '' },
   ],
   // 日曆自動標記每 100 天；想改間隔時可調整下方數字。
   milestoneEvery: 100,
@@ -512,17 +545,17 @@ function taipeiToday(){const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'As
 const initialDate=taipeiToday();let calendarYear=Number(initialDate.slice(0,4)),calendarMonth=Number(initialDate.slice(5,7))-1,selectedDate=initialDate;
 function dateKey(year,month,day){return year+'-'+String(month+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');}
 function anniversaryTitle(year){
-  const number=year-2025, labels=['','一','兩','三','四','五','六','七','八','九'];
-  return (labels[number]||String(number))+'周年';
+  const number=year-Number(CONTENT.events.find(e=>e.anniversary).date.slice(0,4)), labels=['','一','兩','三','四','五','六','七','八','九'];
+  return (labels[number]||String(number))+'周年💖';
 }
 function eventsForDate(key){
   const events=CONTENT.events.filter(e=>e.annual?key.slice(5)===e.date.slice(5)&&key>=e.date:e.date===key).map(e=>{
-    if(!e.anniversary||key.slice(0,4)==='2026')return e;
-    return {...e,title:anniversaryTitle(Number(key.slice(0,4))),description:''};
+    if(!e.anniversary||key.slice(0,4)===e.date.slice(0,4))return e;
+    return {...e,title:anniversaryTitle(Number(key.slice(0,4))),description:'和賢先生一起走過 '+(Number(key.slice(0,4))-Number(e.date.slice(0,4)))+' 年了♡'};
   });
   const day=dayNumberForDate(key),interval=CONTENT.milestoneEvery;
   if(Number.isInteger(interval)&&interval>0&&day>0&&day%interval===0){
-    events.push({id:'milestone-'+day,date:key,annual:false,title:'第 '+day+' 天紀念日',description:'和賢先生一起度過的第 '+day+' 天♡',url:''});
+    events.push({id:'milestone-'+day,date:key,annual:false,title:'第 '+day+' 天紀念日💗',description:'和賢先生一起度過的第 '+day+' 天♡',url:''});
   }
   return events;
 }
@@ -539,7 +572,27 @@ function elapsedParts(now=Date.now()){
 function updateAnniversary(){const el=$('anniversaryTimer');if(!el)return;const p=elapsedParts();el.innerHTML='<strong>'+p.days+'</strong><small>days</small><strong>'+String(p.hours).padStart(2,'0')+'</strong><small>hrs</small><strong>'+String(p.minutes).padStart(2,'0')+'</strong><small>min</small><strong>'+String(p.seconds).padStart(2,'0')+'</strong><small>sec</small>';el.setAttribute('aria-label',p.days+'天'+p.hours+'小時'+p.minutes+'分鐘'+p.seconds+'秒');}
 function renderEventList(){
   const events=eventsForDate(selectedDate);
+  $('dateEvents').hidden=events.length===0;
   $('dateEvents').innerHTML='<h3>'+escapeHTML(selectedDate.replaceAll('-',' / '))+'</h3>'+(events.length?events.map(e=>'<article class="date-event"><strong>'+escapeHTML(e.title)+'</strong>'+(e.description?'<p>'+escapeHTML(e.description)+'</p>':'')+outgoing(e.url,'看這天的慶祝圖文')+'</article>').join(''):'<p class="content-empty">這一天沒有特別註記。</p>');
+}
+function upcomingDates(){
+  const today=taipeiToday(),base=Date.parse(today+'T00:00:00Z'),items=[];
+  for(let offset=0;offset<=3660 && items.length<1;offset++){
+    const key=new Date(base+offset*86400000).toISOString().slice(0,10);
+    for(const event of eventsForDate(key)){
+      items.push({date:key,title:event.title,days:offset});
+      if(items.length===1)break;
+    }
+  }
+  return items;
+}
+function renderUpcomingDates(){
+  const target=$('upcomingDates');if(!target)return;
+  const items=upcomingDates();
+  target.innerHTML='<h3>即將到來的日子</h3>'+items.map(item=>'<button type="button" class="upcoming-date" data-upcoming="'+item.date+'"><span><time>'+item.date.replaceAll('-',' / ')+'</time><strong>'+escapeHTML(item.title)+'</strong></span><small>'+(item.days===0?'就是今天':'還有 '+item.days+' 天')+' <span aria-hidden="true">›</span></small></button>').join('');
+  target.querySelectorAll('[data-upcoming]').forEach(button=>button.onclick=()=>{
+    selectedDate=button.dataset.upcoming;calendarYear=Number(selectedDate.slice(0,4));calendarMonth=Number(selectedDate.slice(5,7))-1;renderCalendar();
+  });
 }
 function renderCalendar(){
   featureState={app:'calendar',view:'month',index:null};
@@ -549,11 +602,11 @@ function renderCalendar(){
     const key=dateKey(calendarYear,calendarMonth,day),events=eventsForDate(key);
     cells+='<button type="button" class="calendar-day'+(today===key?' is-today':'')+'" data-date="'+key+'" aria-pressed="'+(key===selectedDate)+'" aria-label="'+key+(events.length?'，'+escapeHTML(events.map(e=>e.title).join('、')):'')+'">'+day+(events.length?'<i aria-hidden="true"></i>':'')+'</button>';
   }
-  featurePage('calendar',SITE_CONFIG.apps.calendar.name,'<div class="calendar-content"><div class="calendar-toolbar"><button id="previousMonth" aria-label="上個月"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14 6-6 6 6 6"/></svg></button><h2>'+calendarYear+' 年 '+(calendarMonth+1)+' 月</h2><button id="nextMonth" aria-label="下個月"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m10 6 6 6-6 6"/></svg></button></div><div class="weekdays" aria-hidden="true">'+['日','一','二','三','四','五','六'].map(d=>'<span>'+d+'</span>').join('')+'</div><div class="calendar-grid" aria-label="日期">'+cells+'</div><p class="calendar-legend">● 特別的日子</p><section id="dateEvents" class="date-events" aria-live="polite"></section><section class="anniversary-box"><div class="tag">EVERY SECOND WITH YOU</div><h3>喜歡賢先生已經</h3><div id="anniversaryTimer" class="anniversary-timer" role="timer"></div></section></div>');
+  featurePage('calendar',SITE_CONFIG.apps.calendar.name,'<div class="calendar-content"><div class="calendar-toolbar"><button id="previousMonth" aria-label="上個月"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14 6-6 6 6 6"/></svg></button><h2>'+calendarYear+' 年 '+(calendarMonth+1)+' 月</h2><button id="nextMonth" aria-label="下個月"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m10 6 6 6-6 6"/></svg></button></div><div class="weekdays" aria-hidden="true">'+['日','一','二','三','四','五','六'].map(d=>'<span>'+d+'</span>').join('')+'</div><div class="calendar-grid" aria-label="日期">'+cells+'</div><section id="dateEvents" class="date-events" aria-live="polite"></section><section id="upcomingDates" class="upcoming-dates" aria-label="即將到來的日子"></section></div>');
   const move=delta=>{const d=new Date(Date.UTC(calendarYear,calendarMonth+delta,1));calendarYear=d.getUTCFullYear();calendarMonth=d.getUTCMonth();selectedDate=dateKey(calendarYear,calendarMonth,1);renderCalendar();};
   $('previousMonth').onclick=()=>move(-1);$('nextMonth').onclick=()=>move(1);
   $('pageBody').querySelectorAll('[data-date]').forEach(b=>b.onclick=()=>{selectedDate=b.dataset.date;$('pageBody').querySelectorAll('[data-date]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.date===selectedDate)));renderEventList();});
-  renderEventList();updateAnniversary();
+  renderEventList();renderUpcomingDates();updateAnniversary();
 }
 const originalOpenApp=openApp;
 openApp=function(id){if(!unlocked)return;if(id==='notes'){renderNotes();return;}if(id==='photos'){renderAlbum();return;}if(id==='messages'){renderChat();return;}if(id==='calendar'){renderCalendar();return;}featureState={app:id,view:'list',index:null};originalOpenApp(id);};
@@ -563,9 +616,30 @@ $('back').onclick=()=>{
   if(currentApp==='photos'&&featureState.view==='work'){renderAlbum();return;}
   goHome();
 };
-setInterval(()=>{if(currentApp==='calendar'&&current==='page')updateAnniversary();},1000);
+updateAnniversary();setInterval(updateAnniversary,1000);
 
 </script></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
