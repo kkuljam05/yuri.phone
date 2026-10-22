@@ -165,6 +165,28 @@
 .upcoming-date:hover{background:#f7e9f1}
 .date-events[hidden]{display:none}
 .upcoming-date{background:#fff}.upcoming-date:hover{background:#fff}
+.character-profile-avatar{display:block;width:124px;height:124px;object-fit:cover;border-radius:50%;margin:8px auto 0;border:3px solid #fff;box-shadow:0 0 0 1px #ead0df}
+.character-detail > .character-profile-avatar + .note-content h3:first-child{margin-top:18px}
+.artist-credit{font-size:9px;font-weight:700;line-height:1.5;color:#a17a91;white-space:nowrap}
+.contact-art{display:flex;flex:0 0 90px;width:90px;flex-direction:column;align-items:center;gap:2px}
+.contact-art .artist-credit{display:block;text-align:center}
+.profile-art{position:relative;width:124px;margin:8px auto 0}
+.profile-art .character-profile-avatar{margin:0}
+.profile-art .artist-credit{position:absolute;left:calc(100% + 4px);bottom:3px;font-size:8px}
+.character-detail > .profile-art + .note-content h3:first-child{margin-top:18px}
+.outfit-drawings{margin:8px 0 0}
+.note-content .outfit-placeholder{font-size:12px;color:#a17a91;margin:6px 0 10px;line-height:1.6}
+.outfit-fold img{display:block;max-width:100%;height:auto;margin:6px auto 10px}
+.outfit-art{margin:8px 0 12px}.outfit-art figcaption{text-align:right}
+.outfit-enlarge{display:block;width:100%;padding:0;background:transparent;cursor:zoom-in}
+.outfit-viewer{border:0;padding:48px 12px 42px;width:100vw;height:100dvh;max-width:100vw;max-height:100dvh;margin:0;background:#2b1d2cf0;overflow:auto}
+.outfit-viewer::backdrop{background:#2b1d2ce8}
+.outfit-viewer>img{display:block;width:auto;height:auto;max-width:100%;max-height:calc(100dvh - 100px);object-fit:contain;margin:auto}
+.outfit-original{display:block;text-align:center;color:#fff0f8;font-size:12px;margin-top:12px;text-underline-offset:3px}
+.outfit-viewer .close-image{display:flex;align-items:center;justify-content:center;padding:0;line-height:1}
+.outfit-viewer .close-image svg{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+.outfit-viewer{padding-bottom:24px}
+.outfit-viewer>img{max-height:calc(100dvh - 76px)}
 </style></head>
 <body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm star" aria-hidden="true">✧</span><span class="charm heart" aria-hidden="true">♡</span><div class="strap" aria-hidden="true"></div><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right" aria-label="訊號良好，電量100%">▮▮▮ ϟ ▰</span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">The Ruriverse</div><div class="lock-art" aria-hidden="true">♡</div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>您好！此為《極權教師》賢丹尼爾的夢向設定網站！</strong><p>解鎖手機即可閱覽詳細內容♡</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
@@ -240,7 +262,7 @@ function updateDots() { [...$('dots').children].forEach((dot,i)=>dot.classList.t
 function digit(value) { if(current!=='pin'||entered.length>=4)return; entered+=value; updateDots(); if(entered.length===4){ if(entered===PASSCODE){ unlocked=true; entered=''; updateDots(); show('desktop'); }else{ $('pinMessage').textContent='密碼錯誤>< 再試一次吧！'; $('dots').classList.add('error'); setTimeout(()=>{entered='';updateDots();$('dots').classList.remove('error');},520); } } }
 const letters=['','','ABC','DEF','GHI','JKL','MNO','PQRS','TUV','WXYZ'];
 for(const num of [1,2,3,4,5,6,7,8,9,0]){ const b=document.createElement('button');b.className='key';b.textContent=num;b.setAttribute('aria-label',String(num));if(num===0)b.style.gridColumn='2';const s=document.createElement('small');s.textContent=letters[num]||'\u00a0';b.append(s);b.onclick=()=>digit(String(num));$('keys').append(b); }
-$('unlock').onclick=()=>{entered='';updateDots();$('pinMessage').textContent='解開屬於賢＆瑠璃的世界';show('pin');};
+$('unlock').onclick=()=>{entered='';updateDots();$('pinMessage').textContent='解鎖屬於賢＆瑠璃的世界';show('pin');};
 $('cancelPin').onclick=()=>{entered='';updateDots();show('lock');};$('deletePin').onclick=()=>{entered=entered.slice(0,-1);updateDots();};
 let currentApp='';
 function goHome(){if(unlocked){currentApp='';show('desktop');} }
@@ -251,7 +273,7 @@ document.addEventListener('keydown',e=>{if(current!=='pin')return;if(/^\d$/.test
 const pages={
 // 閱前須知：將下方提示段落換成你的須知內容即可。
 settings:{title:'閱前須知',html:'<article class="reading-sheet"><div class="tag">BEFORE YOU READ</div><h2>閱前須知</h2><p class="entry-paragraph">您好！感謝您的點閱♡ 此為<strong>《極權教師》賢丹尼爾</strong>的夢向設定網站！</p><p class="entry-paragraph">以下包含少量人物背景劇透及大量私設，若有任何苦手元素請直接關閉此網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本網站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">網站內的文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
-characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><h2 class="character-name">賢丹尼爾</h2><div class="note-content">
+characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><div class="profile-art"><img class="character-profile-avatar" src="avatar-male.png" alt="賢丹尼爾的頭貼" width="112" height="112"><span class="artist-credit">ⓒ 햄양 님</span></div><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
 <li>・姓名：賢丹尼爾</li>
@@ -280,7 +302,7 @@ characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><h
 <p>在某次幾乎要鬧出人命的施暴中，忍無可忍的賢對父親開了槍，雖然並未造成死亡，然而，母親卻因為年幼的兒子竟然能做出這樣的事，認定他與父親沒有兩樣，最終選擇拋棄他。此後，賢被黑幫組織帶走，被培養成黑手黨的殺手，直到組織倒台，他才回到韓國，應徵了教權局的工作。</p>
 <p>賢的童年與青少年時期幾乎都在暴力與惡意之中度過，他始終在想，如果當時沒有開出那一槍，事情是否會有不同的結果？也因此他反對以單純的肢體暴力解決問題，試圖尋找其他解決問題的方法，加入教權局，也是希望能透過這份工作探求心中的答案。</p>
 </div></article>`},
-characterFemale: {title:"都瑠璃", html:`<article class="character-detail"><h2 class="character-name">都瑠璃</h2><div class="note-content">
+characterFemale: {title:"都瑠璃", html:`<article class="character-detail"><div class="profile-art"><img class="character-profile-avatar" src="avatar-female.png" alt="都瑠璃的頭貼" width="112" height="112"><span class="artist-credit">ⓒ 햄양 님</span></div><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
 <li>・姓名：都瑠璃</li>
@@ -297,6 +319,10 @@ characterFemale: {title:"都瑠璃", html:`<article class="character-detail"><h2
 <p>湖水藍的眼睛大而圓潤，僅在眼尾處微微上揚。左臉頰中央有一顆痣。</p>
 <p>身材纖細，但胸部和肚子是稍微有肉一點的類型，雖然想下定決心減肥，卻總是抵不過甜點的誘惑。</p>
 
+<div class="outfit-drawings">
+<details class="meeting-fold timeline-item outfit-fold"><summary><span class="meeting-arrow" aria-hidden="true">▸</span><span class="timeline-title">常服</span></summary><figure class="outfit-art"><button type="button" class="outfit-enlarge" aria-label="放大都瑠璃的常服立繪"><img src="ruri-casual.png" alt="都瑠璃的常服立繪" loading="lazy"></button><figcaption class="artist-credit">ⓒ 어푸 님</figcaption></figure></details>
+<details class="meeting-fold timeline-item outfit-fold"><summary><span class="meeting-arrow" aria-hidden="true">▸</span><span class="timeline-title">制服</span></summary><figure class="outfit-art"><button type="button" class="outfit-enlarge" aria-label="放大都瑠璃的制服立繪"><img src="ruri-uniform.png" alt="都瑠璃的制服立繪" loading="lazy"></button><figcaption class="artist-credit">ⓒ 路燈</figcaption></figure></details>
+</div>
 <h3>性格</h3>
 <p>活潑外向又吵鬧，情感表現豐富，說話的語氣充滿了驚嘆號，甚至到了有點聒噪的地步……不過因為很可愛<span class="light-text">（應該吧？）</span>，所以並不惹人討厭。</p>
 <p>直來直往，一根筋的笨蛋，喜怒哀樂都十分明顯。從小到大都無憂無慮地生活著，缺乏識別危險的能力，習慣以善意對待一切。做事不拘小節又缺乏規劃，也因此看上去冒冒失失的（天然呆……）。腦迴路異於常人。有點電波系，經常做出令人意想不到的舉動，事後又會自己感到難以為情。</p>
@@ -311,11 +337,11 @@ contacts:{title:'通訊錄',html:`
 <div class="tag">THE TWO OF US</div>
 <p class="section-intro">賢＆瑠璃的個人檔案大揭密！</p>
 <button type="button" class="card contact-card contact-row" data-character="characterMale">
-<img class="avatar contact-portrait" src="male.png" alt="賢丹尼爾頭像">
+<span class="contact-art"><img class="avatar contact-portrait" src="male.png" alt="賢丹尼爾頭像"><span class="artist-credit">ⓒ 솜이 님</span></span>
 <span class="contact-copy"><strong class="contact-name">賢丹尼爾</strong><span class="contact-caption">點擊以查看更多♡</span></span>
 </button>
 <button type="button" class="card contact-card contact-row contact-reverse" data-character="characterFemale">
-<img class="avatar contact-portrait" src="female.png" alt="都瑠璃頭像">
+<span class="contact-art"><img class="avatar contact-portrait" src="female.png" alt="都瑠璃頭像"><span class="artist-credit">ⓒ 솜이 님</span></span>
 <span class="contact-copy"><strong class="contact-name">都瑠璃</strong><span class="contact-caption">點擊以查看更多♡</span></span>
 </button>
 `},
@@ -618,7 +644,28 @@ $('back').onclick=()=>{
 };
 updateAnniversary();setInterval(updateAnniversary,1000);
 
+// 立繪使用原始圖片檔放大，並可另開原圖查看細節。
+document.addEventListener('click',event=>{
+ const trigger=event.target.closest('.outfit-enlarge');if(!trigger)return;
+ const source=trigger.querySelector('img'),dialog=document.createElement('dialog');
+ dialog.className='outfit-viewer';dialog.setAttribute('aria-label',source.alt+'大圖');
+ const close=document.createElement('button');close.type='button';close.className='close-image';close.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>';close.setAttribute('aria-label','關閉大圖');
+ const picture=document.createElement('img');picture.src=source.src;picture.alt=source.alt;
+ dialog.append(close,picture);document.body.append(dialog);
+ close.onclick=()=>dialog.close();
+ dialog.onclick=e=>{if(e.target===dialog)dialog.close();};
+ dialog.addEventListener('close',()=>{dialog.remove();trigger.focus();},{once:true});
+ dialog.showModal();close.focus();
+});
 </script></body></html>
+
+
+
+
+
+
+
+
 
 
 
