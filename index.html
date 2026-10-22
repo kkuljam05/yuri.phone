@@ -551,7 +551,7 @@ function anniversaryTitle(year){
 function eventsForDate(key){
   const events=CONTENT.events.filter(e=>e.annual?key.slice(5)===e.date.slice(5)&&key>=e.date:e.date===key).map(e=>{
     if(!e.anniversary||key.slice(0,4)===e.date.slice(0,4))return e;
-    return {...e,title:anniversaryTitle(Number(key.slice(0,4))),description:'和賢先生一起走過 '+(Number(key.slice(0,4))-Number(e.date.slice(0,4)))+' 年了♡'};
+    return {...e,title:anniversaryTitle(Number(key.slice(0,4))),description:'和賢先生一起度過 '+(Number(key.slice(0,4))-Number(e.date.slice(0,4)))+' 年了♡'};
   });
   const day=dayNumberForDate(key),interval=CONTENT.milestoneEvery;
   if(Number.isInteger(interval)&&interval>0&&day>0&&day%interval===0){
