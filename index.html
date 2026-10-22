@@ -214,7 +214,7 @@ $('relock').onclick=()=>{unlocked=false;entered='';updateDots();show('lock');};
 document.addEventListener('keydown',e=>{if(current!=='pin')return;if(/^\d$/.test(e.key)){e.preventDefault();digit(e.key);}if(e.key==='Backspace'){e.preventDefault();entered=entered.slice(0,-1);updateDots();}if(e.key==='Escape')$('cancelPin').click();});
 const pages={
 // 閱前須知：將下方提示段落換成你的須知內容即可。
-notice:{title:'閱前須知',html:'<article class="reading-sheet"><div class="tag">BEFORE YOU READ</div><h2>閱前須知</h2><p class="entry-paragraph">此為 <strong><em>《極權教師》賢丹尼爾</em></strong> 的夢向設定網站！</p><p class="entry-paragraph">以下包含少量人物背景劇透及大量私設，若有任何苦手元素請直接關閉此網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">本站夢向設定、故事與官方設定不同，請勿視為原作內容。站內原創文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
+notice:{title:'閱前須知',html:'<article class="reading-sheet"><div class="tag">BEFORE YOU READ</div><h2>閱前須知</h2><p class="entry-paragraph">此為 <strong>《極權教師》賢丹尼爾</strong> 的夢向設定網站！</p><p class="entry-paragraph">以下包含少量人物背景劇透及大量私設，若有任何苦手元素請直接關閉此網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">本站夢向設定、故事與官方設定不同，請勿視為原作內容。站內原創文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
 characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><h2 class="character-name">賢丹尼爾</h2><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
@@ -262,7 +262,7 @@ characterFemale: {title:"都瑠璃", html:`<article class="character-detail"><h2
 <p>身材纖細，但胸部和肚子是稍微有肉一點的類型，雖然想下定決心減肥，卻總是抵不過甜點的誘惑。</p>
 
 <h3>性格</h3>
-<p>活潑外向又吵鬧，情感表現豐富，說話的語氣充滿了驚嘆號，甚至到了有點聒噪的地步……不過因為很可愛<span class="light-text"><em>（應該吧？）</em></span>，所以並不惹人討厭。</p>
+<p>活潑外向又吵鬧，情感表現豐富，說話的語氣充滿了驚嘆號，甚至到了有點聒噪的地步……不過因為很可愛<span class="light-text">（應該吧？）</span>，所以並不惹人討厭。</p>
 <p>直來直往，一根筋的笨蛋，喜怒哀樂都十分明顯。從小到大都無憂無慮地生活著，缺乏識別危險的能力，習慣以善意對待一切。做事不拘小節又缺乏規劃，也因此看上去冒冒失失的（天然呆……）。腦迴路異於常人。有點電波系，經常做出令人意想不到的舉動，事後又會自己感到難以為情。</p>
 <p>成績不好，不喜歡也不擅長讀書，每天到學校就是開開心心跟朋友玩，上課睡覺或是在課本上畫畫、偷滑手機……喜歡打扮自己，所以會染頭髮和改制服，不能算是標準的好學生，但也沒有做過出格的事情。</p>
 <p>充滿少女心，對於浪漫的戀愛一事抱有憧憬，面對喜歡的對象會主動出擊，也只有在這種時候會多出一些笨拙的小心機，例如故意裝哭、裝可憐等，想吸引對方注意。（當然，還是一眼就看出來是在演戲了……反倒令人啼笑皆非。）但說到底，她也只是個情竇初開的十七歲少女，面對心上人時仍容易感到慌張害羞。</p>
@@ -357,7 +357,7 @@ const CONTENT = {
     title: '互動關係',
     paragraphs: [
       '友達以上……雖然很想這麼說，但更悲觀一點或許連朋友都算不上，就是瑠璃單方面努力追求賢的關係。',
-      '為了讓兩人的關係能有進一步的發展，瑠璃總是會搬出各種藉口和理由待在賢的身邊，想方設法引起賢的注意，平時有事沒事就會在他身邊嘰哩呱啦說個不停，或是請求他陪自己做什麼事（賢先生，週末跟我一起去逛街嘛！）。',
+      '為了讓兩人的關係能有進一步的發展，瑠璃總是會搬出各種藉口和理由待在賢的身邊，想方設法引起賢的注意，平時有事沒事就會在他身邊嘰哩呱啦說個不停，或是請求他陪自己做什麼事（<em>賢先生，週末跟我一起去逛街嘛！</em>）。',
       '面對瑠璃的熱情，賢則以一貫冷靜平淡的方式回應，話很少，也沒有什麼情緒波動；不過並不會給人難以接近的感覺，甚至某方面而言，他對瑠璃的態度是相當縱容的，幾乎不會拒絕來自瑠璃的請求。（而瑠璃也因為賢在冷淡外表下的溫柔，更加深了對賢的愛慕……）',
       '儘管瑠璃平時擔任較為主動的一方，實際上卻很容易自亂陣腳。只要賢稍微給予一點回應，哪怕只是無心之舉，都足以令她瞬間怦然不已——當然，賢本人通常對這點毫無自覺。',
     ],
@@ -378,7 +378,7 @@ const CONTENT = {
       {
         title: '瑠璃→賢：',
         paragraphs: [
-          '喜歡的人，依賴的人，想要一直待在一起的人。一開始的愛慕或許是出自於對救命恩人的崇拜（還有，當然，因為賢長得很帥氣），但在後續的相處之中，這份戀慕之心已轉為對賢這個人本身的喜歡。',
+          '喜歡的人，依賴的人，想要一直待在一起的人。一開始的愛慕或許是出自於對救命恩人的崇拜<span class="light-text">（還有，當然，因為賢長得很帥氣）</span>，但在後續的相處之中，這份戀慕之心已轉為對賢這個人本身的喜歡。',
           '喜歡賢先生遇到什麼事都冷靜又可靠；喜歡賢先生會答應陪自己做很多事，喜歡賢先生表面不顯，行為卻始終很溫柔……回過神來時，腦中已經全部都是跟賢先生有關的事情了。',
           '瑠璃的思考一向很簡單，一切行動背後都沒有太多彎彎繞繞的思緒，就只是因為喜歡，所以想靠近，為了這件事而持續努力著！',
         ],
@@ -447,7 +447,7 @@ function featurePage(app,title,html,backLabel='‹ 返回'){
 function renderNotes(section='home'){
   featureState={app:'notes',view:section,index:null};
   const categories={
-    worldviews:{title:'世界觀',tag:'',symbol:'◇',subtitle:'故事發生的世界'},
+    worldviews:{title:'世界觀',tag:'',symbol:'◇',subtitle:'故事發生的舞臺'},
     stories:{title:'兩人的故事',tag:'',symbol:'♡',subtitle:'相遇・互動・對彼此的想法'},
     paros:{title:'PARO',tag:'',symbol:'✧',subtitle:'What if...?'},
   };
