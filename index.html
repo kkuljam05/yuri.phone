@@ -178,8 +178,46 @@
 .page{display:flex;flex-direction:column;bottom:23px;overflow:hidden;overscroll-behavior:none}
 .pagehead{position:relative;top:auto;flex:0 0 auto;touch-action:none;background:#fcf7fa;backdrop-filter:none;-webkit-backdrop-filter:none}
 .pagebody{flex:1 1 auto;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#c391ad #f7eaf2}
+/* Compact app header; solid background extends behind the home indicator. */
+.page{top:45px;bottom:0;background:#fcf7fa}
+.pagehead{padding:3px 12px;min-height:34px}
+.pagebody{padding-bottom:36px}
+.pagebody:has(.calendar-content){padding-bottom:28px}
+.screen:has(.page:not(.hidden)) .wallpaper{background:#fcf7fa}
+.screen:has(.page:not(.hidden)) .wallpaper:after{background:none}
+.pagehead{cursor:pointer}.pagehead h2:focus-visible{outline:2px solid #a04c7d;outline-offset:2px;border-radius:4px}
+.meeting-art{margin:16px 0 20px}.meeting-art img{display:block;width:100%;height:auto;border-radius:10px}.meeting-art figcaption{text-align:right;margin-top:5px}
+/* Keep the scrollbar above the screen's rounded bottom corners. */
+.page{padding-bottom:0;background:#fcf7fa}
+.pagebody{padding-bottom:20px}
+.pagebody:has(.calendar-content){padding-bottom:20px}
+/* Transparent scrollbar track; only the draggable thumb is visible. */
+.pagebody{scrollbar-color:#c391ad transparent}
+.pagebody::-webkit-scrollbar-track{background:transparent;border:0;box-shadow:none}
+.pagebody::-webkit-scrollbar-thumb{background:#c391ad;border:1px solid transparent;background-clip:padding-box;border-radius:999px}
+.pagebody::-webkit-scrollbar-corner{background:transparent}
+/* Hide native scrollbar arrow buttons in every state. */
+.pagebody::-webkit-scrollbar-button,
+.pagebody::-webkit-scrollbar-button:single-button,
+.pagebody::-webkit-scrollbar-button:double-button,
+.pagebody::-webkit-scrollbar-button:vertical:decrement,
+.pagebody::-webkit-scrollbar-button:vertical:increment{display:none!important;width:0!important;height:0!important;background:transparent!important;border:0!important}
+@supports selector(::-webkit-scrollbar){.pagebody{scrollbar-width:auto;scrollbar-color:auto}}
+/* Inset only the scrollbar, without reducing the reading viewport. */
+.pagebody::-webkit-scrollbar-track{margin-top:2px;margin-bottom:40px}
+.pagebody{padding-bottom:40px}
+.pagebody:has(.calendar-content){padding-bottom:40px}
+/* Trim transparent image margins so card spacing follows the visible artwork. */
+.contact-card.contact-row{padding-top:23px;padding-bottom:18px}
+.contact-portrait-window{position:relative;display:block;width:90px;height:93px;overflow:hidden;flex:none}
+.contact-card .contact-portrait-window .contact-portrait{position:absolute;top:-20.8px;left:0;width:90px;height:auto;max-width:none;margin:0;flex:none}
+.contact-reverse .contact-portrait-window{height:90px}
+.contact-card.contact-reverse .contact-portrait-window .contact-portrait{top:-23.15px}
+.contact-art{gap:5px}
+.contact-art .artist-credit{line-height:1.2}
+.heart{display:block;left:-24px;bottom:56px;width:57px;height:64px;font-size:0;text-shadow:none;transform:rotate(-9deg);filter:drop-shadow(0 2px 2px #9d65816b)}.heart svg{display:block;width:100%;height:100%}
 </style></head>
-<body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm heart" aria-hidden="true">♡</span><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right status-icons" role="img" aria-label="行動訊號良好、Wi-Fi 已連線、電量100%"><svg class="status-signal" viewBox="0 0 20 14" aria-hidden="true"><rect x="1" y="9" width="3" height="4" rx=".7"/><rect x="6" y="6" width="3" height="7" rx=".7"/><rect x="11" y="3" width="3" height="10" rx=".7"/><rect x="16" y="0" width="3" height="13" rx=".7"/></svg><svg class="status-wifi" viewBox="0 0 20 16" aria-hidden="true"><path d="M.5 4.1a14 14 0 0 1 19 0l-2.2 2.3a10.8 10.8 0 0 0-14.6 0ZM4.2 8a8.6 8.6 0 0 1 11.6 0l-2.2 2.3a5.4 5.4 0 0 0-7.2 0ZM7.9 11.9a3.2 3.2 0 0 1 4.2 0L10 14.2Z" fill="currentColor"/></svg><svg class="status-battery" viewBox="0 0 29 14" aria-hidden="true"><rect x=".6" y="1" width="24" height="12" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="2.5" y="3" width="20" height="8" rx="1.4"/><path d="M26 4.5c2 0 2 5 0 5Z" opacity=".65"/></svg></span></div>
+<body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm heart" aria-hidden="true"><svg viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="heartMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdfd"/><stop offset=".23" stop-color="#bd719e"/><stop offset=".48" stop-color="#fff"/><stop offset=".73" stop-color="#8e466f"/><stop offset="1" stop-color="#fff0fa"/></linearGradient><linearGradient id="heartGem" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff5fc"/><stop offset=".4" stop-color="#de8cbd"/><stop offset="1" stop-color="#a74786"/></linearGradient><clipPath id="heartCut"><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z"/></clipPath></defs><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="url(#heartGem)" stroke="#a25b85" stroke-width="7" stroke-linejoin="round"/><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="none" stroke="url(#heartMetal)" stroke-width="4" stroke-linejoin="round"/><g clip-path="url(#heartCut)"><path d="m9 20 14-5 9 10-13 9Z" fill="#fff8fe" opacity=".8"/><path d="m23 15 9 10 9-10-9 42Z" fill="#fff" opacity=".35"/><path d="m41 15 14 7-10 12-13-9Z" fill="#e094c3" opacity=".6"/><path d="m19 34 13-9 13 9-13 23Z" fill="#fbe1f3" opacity=".65"/><path d="m10 31 9 3 13 23Z" fill="#ae5b91" opacity=".5"/><path d="m45 34 10-3-23 26Z" fill="#c077a6" opacity=".65"/><path d="m23 15-4 19 13 23 13-23-4-19M19 34l13-9 13 9" fill="none" stroke="#fff4fc" stroke-width=".7" opacity=".7"/></g><path d="M15 25c-1-7 6-10 11-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".95"/><circle cx="12" cy="18" r="1.3" fill="#fff"/></svg></span><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right status-icons" role="img" aria-label="行動訊號良好、Wi-Fi 已連線、電量100%"><svg class="status-signal" viewBox="0 0 20 14" aria-hidden="true"><rect x="1" y="9" width="3" height="4" rx=".7"/><rect x="6" y="6" width="3" height="7" rx=".7"/><rect x="11" y="3" width="3" height="10" rx=".7"/><rect x="16" y="0" width="3" height="13" rx=".7"/></svg><svg class="status-wifi" viewBox="0 0 20 16" aria-hidden="true"><path d="M.5 4.1a14 14 0 0 1 19 0l-2.2 2.3a10.8 10.8 0 0 0-14.6 0ZM4.2 8a8.6 8.6 0 0 1 11.6 0l-2.2 2.3a5.4 5.4 0 0 0-7.2 0ZM7.9 11.9a3.2 3.2 0 0 1 4.2 0L10 14.2Z" fill="currentColor"/></svg><svg class="status-battery" viewBox="0 0 29 14" aria-hidden="true"><rect x=".6" y="1" width="24" height="12" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="2.5" y="3" width="20" height="8" rx="1.4"/><path d="M26 4.5c2 0 2 5 0 5Z" opacity=".65"/></svg></span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">The Ruriverse</div><div class="lock-art" aria-hidden="true">♡</div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>您好！此為《極權教師》賢丹尼爾的夢向設定網站！</strong><p>解鎖手機即可閱覽詳細內容♡</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
 <section id="pin" class="view pin hidden" aria-label="輸入解鎖密碼"><div aria-hidden="true">♡</div><h2>輸入密碼</h2><p id="pinMessage" role="status">解開屬於賢＆瑠璃的小世界</p><div id="dots" class="dots" aria-label="已輸入0位數"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="keys" id="keys"></div><div class="pin-actions"><button id="cancelPin" class="textbtn">取消</button><button id="deletePin" class="textbtn">刪除</button></div></section>
 <section id="desktop" class="view desktop hidden" aria-label="手機主畫面"><div class="widget timer-widget"><small>EVERY SECOND WITH YOU</small><h2>喜歡賢先生已經</h2><div id="anniversaryTimer" class="anniversary-timer" role="timer"></div></div><div class="apps"><button class="app" data-app="settings"><span class="icon">⚙</span>設定</button><button class="app" data-app="contacts"><span class="icon">♙</span>通訊錄</button><button class="app" data-app="notes"><span class="icon">☷</span>備忘錄</button>
@@ -222,7 +260,7 @@ $('relock').onclick=()=>{unlocked=false;entered='';updateDots();show('lock');};
 document.addEventListener('keydown',e=>{if(current!=='pin')return;if(/^\d$/.test(e.key)){e.preventDefault();digit(e.key);}if(e.key==='Backspace'){e.preventDefault();entered=entered.slice(0,-1);updateDots();}if(e.key==='Escape')$('cancelPin').click();});
 const pages={
 // 閱前須知：將下方提示段落換成你的須知內容即可。
-settings:{title:'閱前須知',html:'<article class="reading-sheet"><div class="tag">BEFORE YOU READ</div><h2>閱前須知</h2><p class="entry-paragraph">您好！感謝您的點閱♡ 此為<strong>《極權教師》賢丹尼爾</strong>的夢向設定網站！</p><p class="entry-paragraph">以下包含少量人物背景劇透及大量私設，若有任何苦手元素請直接關閉此網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本網站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">網站內的文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
+settings:{title:'閱前須知',html:'<article class="reading-sheet"><div class="tag">BEFORE YOU READ</div><h2>閱前須知</h2><p class="entry-paragraph">您好！感謝您的點閱♡<br>此為<strong>《極權教師》賢丹尼爾</strong>的夢向網站。</p><p class="entry-paragraph">本網站內包含少量的人物背景劇透及大量私設，若在閱讀過程中有任何苦手元素請直接關閉網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本網站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">網站內的文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
 characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><div class="profile-art"><img class="character-profile-avatar" src="avatar-male.png" alt="賢丹尼爾的頭貼" width="112" height="112"><span class="artist-credit">ⓒ 햄양 님</span></div><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
@@ -287,11 +325,11 @@ contacts:{title:'通訊錄',html:`
 <div class="tag">THE TWO OF US</div>
 <p class="section-intro">賢＆瑠璃的個人檔案大揭密！</p>
 <button type="button" class="card contact-card contact-row" data-character="characterMale">
-<span class="contact-art"><img class="avatar contact-portrait" src="male.png" alt="賢丹尼爾"><span class="artist-credit">ⓒ 솜이 님</span></span>
+<span class="contact-art"><span class="contact-portrait-window"><img class="avatar contact-portrait" src="male.png" alt="賢丹尼爾"></span><span class="artist-credit">ⓒ 솜이 님</span></span>
 <span class="contact-copy"><strong class="contact-name">賢丹尼爾</strong><span class="contact-caption">點擊以查看更多♡</span></span>
 </button>
 <button type="button" class="card contact-card contact-row contact-reverse" data-character="characterFemale">
-<span class="contact-art"><img class="avatar contact-portrait" src="female.png" alt="都瑠璃"><span class="artist-credit">ⓒ 솜이 님</span></span>
+<span class="contact-art"><span class="contact-portrait-window"><img class="avatar contact-portrait" src="female.png" alt="都瑠璃"></span><span class="artist-credit">ⓒ 솜이 님</span></span>
 <span class="contact-copy"><strong class="contact-name">都瑠璃</strong><span class="contact-caption">點擊以查看更多♡</span></span>
 </button>
 `},
@@ -309,7 +347,7 @@ const ICON_PATHS={
   notes:'<path d="M15 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 3v6h6M8 13h8M8 17h6"/>',
   photos:'<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/>',
   messages:'<path d="M20.5 5.5a5 5 0 0 0-8.5 1 5 5 0 0 0-8.5-1C-.5 11 7 17 12 21c5-4 12.5-10 8.5-15.5Z"/>',
-  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M7 14h2M12 14h2M17 14h.1M7 18h2M12 18h2"/>',
+  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M6.5 13.5h2M11 13.5h2M15.5 13.5h2M6.5 17.5h2M11 17.5h2M15.5 17.5h2"/>',
   power:'<path d="M12 3v9M6.3 5.8a8 8 0 1 0 11.4 0"/>'
 };
 function iconSVG(id){return '<svg class="app-line-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+ICON_PATHS[id]+'</svg>';}
@@ -490,15 +528,16 @@ function renderNotes(section='home'){
         '賢確實想過不該一直放任瑠璃纏著自己，但真要拒絕她卻又於心不忍，於是不知不覺間，瑠璃佔據了他越來越多的時間，而賢也在無意識之中漸漸習慣了瑠璃的存在。',
         '現階段仍是瑠璃一廂情願的單戀，但她顯然不打算就此止步！至於這份鍥而不捨的愛慕之心，未來是否有機會得到回應，或許就只能交給時間證明了……！'
       ];
-      const timelineItem=(title,body)=>'<details class="meeting-fold timeline-item"><summary><span class="meeting-arrow" aria-hidden="true">▸</span><span class="timeline-title">'+escapeHTML(title)+'</span></summary>'+paragraphs(body)+'</details>';
+      const meetingArtwork='<figure class="meeting-art"><button type="button" class="outfit-enlarge" aria-label="放大賢救下瑠璃的相遇插圖"><img src="meeting-rescue.png" alt="夜晚的巷弄裡，賢再次擋在瑠璃身前，替她解圍。" loading="lazy" width="2508" height="3399"></button><figcaption class="artist-credit">ⓒ 뫙 님</figcaption></figure>';
+      const timelineItem=(title,body)=>'<details class="meeting-fold timeline-item"><summary><span class="meeting-arrow" aria-hidden="true">▸</span><span class="timeline-title">'+escapeHTML(title)+'</span></summary>'+(title==='相遇的開始'?paragraphs(body.slice(0,5))+meetingArtwork+paragraphs(body.slice(5)):paragraphs(body))+'</details>';
       return '<section class="note-reading-section"><h3>時間線</h3><p class="entry-paragraph meeting-hint">不小心寫太長了所以收起來……！請點擊下方箭頭以展開內容🙏🏻</p>'+timelineItem('相遇的開始',entry.paragraphs)+timelineItem('告白之後……',afterConfession)+'</section>';
     }
     if(section==='stories' && entry.id==='thoughts'){
       return '<section class="note-reading-section"><h3>'+escapeHTML(entry.title)+'</h3>'+entry.perspectives.map(view=>'<section class="thought-perspective"><h4>'+escapeHTML(view.title)+'</h4>'+paragraphs(view.paragraphs)+'</section>').join('')+'</section>';
     }
-    return '<section class="note-reading-section'+(entry.id==='names'?' names-section':'')+'">'+(entry.title?'<h3>'+escapeHTML(entry.title)+'</h3>':'')+paragraphs(entry.paragraphs)+'</section>';
+    return '<section class="note-reading-section'+(entry.id==='names'?' names-section':'')+'">'+(entry.title?'<h3>'+escapeHTML(entry.title)+'</h3>':'')+(section==='stories'&&entry.id==='daily'?'<figure class="meeting-art"><button type="button" class="outfit-enlarge" aria-label="放大賢與瑠璃的互動插圖"><img src="relationship.png" alt="瑠璃在賢身旁熱情表達心意的互動插圖" loading="lazy"></button><figcaption class="artist-credit">ⓒ NK 님</figcaption></figure>':'')+paragraphs(entry.paragraphs)+'</section>';
   }).join(''):paragraphs([]);
-  featurePage('notes',category.title,'<article class="reading-sheet notes-single-page"><h2>'+escapeHTML(category.title)+'</h2>'+text+'</article>','‹ 備忘錄');
+  featurePage('notes',category.title,'<article class="reading-sheet notes-single-page"><h2>'+escapeHTML(category.title)+'</h2>'+(section==='stories'?'<figure class="meeting-art"><button type="button" class="outfit-enlarge" aria-label="放大兩人的故事首頁插圖"><img src="story-cover.png" alt="賢與瑠璃靠在一起的雙人插圖" loading="lazy"></button><figcaption class="artist-credit">ⓒ 엔비 님</figcaption></figure>':'')+text+'</article>','‹ 備忘錄');
 }
 function workTags(){return [...new Set([...CONTENT.paros.map(p=>p.title),...CONTENT.works.flatMap(w=>w.tags||[])])];}
 function renderAlbum(){
@@ -622,6 +661,22 @@ document.addEventListener('click',event=>{
  dialog.onclick=e=>{if(e.target===dialog)dialog.close();};
  dialog.addEventListener('close',()=>{dialog.remove();trigger.focus();},{once:true});
  dialog.showModal();close.focus();
+});
+// 點擊標題列回到目前內頁頂端；返回按鈕不觸發捲動。
+const appHeader=document.querySelector('.pagehead');
+const appTitle=$('pageTitle');
+function scrollAppToTop(){
+  $('pageBody').scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+}
+appTitle.tabIndex=0;
+appTitle.setAttribute('role','button');
+appTitle.setAttribute('title','回到頂端');
+appHeader.addEventListener('click',event=>{
+  if(event.target.closest('button,a'))return;
+  scrollAppToTop();
+});
+appTitle.addEventListener('keydown',event=>{
+  if(event.key==='Enter'||event.key===' '){event.preventDefault();scrollAppToTop();}
 });
 </script></body></html>
 
