@@ -214,7 +214,7 @@ $('relock').onclick=()=>{unlocked=false;entered='';updateDots();show('lock');};
 document.addEventListener('keydown',e=>{if(current!=='pin')return;if(/^\d$/.test(e.key)){e.preventDefault();digit(e.key);}if(e.key==='Backspace'){e.preventDefault();entered=entered.slice(0,-1);updateDots();}if(e.key==='Escape')$('cancelPin').click();});
 const pages={
 // 閱前須知：將下方提示段落換成你的須知內容即可。
-notice:{title:'閱前須知',html:'<article class="reading-sheet"><div class="tag">BEFORE YOU READ</div><h2>閱前須知</h2><p class="entry-paragraph">此為 <strong>《極權教師》賢丹尼爾</strong> 的夢向設定網站！</p><p class="entry-paragraph">以下包含少量人物背景劇透及大量私設，若有任何苦手元素請直接關閉此網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本網站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">網站內的文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
+notice:{title:'閱前須知',html:'<article class="reading-sheet"><div class="tag">BEFORE YOU READ</div><h2>閱前須知</h2><p class="entry-paragraph">您好！感謝您的點閱♡ 此為<strong>《極權教師》賢丹尼爾</strong>的夢向設定網站！</p><p class="entry-paragraph">以下包含少量人物背景劇透及大量私設，若有任何苦手元素請直接關閉此網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本網站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">網站內的文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
 characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><h2 class="character-name">賢丹尼爾</h2><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
