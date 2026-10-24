@@ -113,7 +113,7 @@
 .desktop{inset:0;padding-top:67px}
 .desktop .dock{bottom:40px}
 /* 只替 APP 狀態列補底色，不改變內頁高度或間距。 */
-.screen:has(.page:not(.hidden)) .status{background:#fcf7fa}
+.screen:not(.app-closing):not(.app-opening):has(.page:not(.hidden)) .status{background:#fcf7fa}
 /* 縮小 APP 標題列的上下留白。 */
 .pagehead{padding:7px 12px}
 /* 鎖定與密碼畫面使用漸層，桌面使用波點。 */
@@ -174,7 +174,7 @@
 .key small{display:block;font-size:7px;line-height:9px;letter-spacing:2px;text-indent:2px;height:9px}
 /* A separate content scroller keeps the header outside Safari rubber-banding. */
 .screen{clip-path:inset(0 round 47px);-webkit-mask-image:linear-gradient(#fff,#fff)}
-.screen:has(.page:not(.hidden)){background:#fcf7fa}
+.screen:not(.app-closing):not(.app-opening):has(.page:not(.hidden)){background:#fcf7fa}
 .page{display:flex;flex-direction:column;bottom:23px;overflow:hidden;overscroll-behavior:none}
 .pagehead{position:relative;top:auto;flex:0 0 auto;touch-action:none;background:#fcf7fa;backdrop-filter:none;-webkit-backdrop-filter:none}
 .pagebody{flex:1 1 auto;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#c391ad #f7eaf2}
@@ -183,8 +183,8 @@
 .pagehead{padding:3px 12px;min-height:34px}
 .pagebody{padding-bottom:36px}
 .pagebody:has(.calendar-content){padding-bottom:28px}
-.screen:has(.page:not(.hidden)) .wallpaper{background:#fcf7fa}
-.screen:has(.page:not(.hidden)) .wallpaper:after{background:none}
+.screen:not(.app-closing):not(.app-opening):has(.page:not(.hidden)) .wallpaper{background:#fcf7fa}
+.screen:not(.app-closing):not(.app-opening):has(.page:not(.hidden)) .wallpaper:after{background:none}
 .pagehead{cursor:pointer}.pagehead h2:focus-visible{outline:2px solid #a04c7d;outline-offset:2px;border-radius:4px}
 .meeting-art{margin:10px 0}.meeting-art img{display:block;width:100%;height:auto;border-radius:10px}.meeting-art figcaption{text-align:right;margin-top:5px}
 /* Keep the scrollbar above the screen's rounded bottom corners. */
@@ -294,8 +294,129 @@
 body{font-family:"JF Huninn",-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif}
 .entry-symbol{display:flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px}.entry-symbol svg{display:block;width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 .lock-art{font-size:0;text-shadow:none}.lock-art svg{display:block;width:76px;height:76px;fill:none;stroke:#fff9fc;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 3px 6px #c183a5)}
+.screen>.page{z-index:8}
+/* Collapsible labels match the linked calendar event titles. */
+.meeting-fold>summary .timeline-title,.outfit-toggle .timeline-title{color:#765a6a;font-weight:600}
+.meeting-fold>summary .meeting-arrow,.outfit-toggle .meeting-arrow{color:#b78ba4}
+.pin .keys{transform:translate3d(0,0,0) scale(1);transform-origin:50% 50%;will-change:transform,opacity;backface-visibility:hidden}
+.story-tmi-list{list-style:none;padding-left:12px;margin:0;color:#765a6a;font-size:13px;line-height:1.6}
+.story-tmi-list>li{position:relative;margin:0 0 10px;padding:0}
+.story-tmi-list>li:last-child{margin-bottom:0}
+.story-tmi-list>li::before{content:"";position:absolute;left:-10px;top:.65em;width:4px;height:4px;border-radius:50%;background:#ac7294}
+.story-tmi-list>li:nth-child(3){margin-top:30.8px}
+.album-post-navigation{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 14px;color:#a17a91}
+.album-post-navigation button{display:flex;align-items:center;justify-content:center;gap:3px;min-height:34px;padding:5px 7px;border-radius:10px;background:#f2e4ed;color:#895a74;font-size:11px}
+.album-post-navigation button:disabled{opacity:.35;cursor:default}
+.album-post-navigation svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.album-post-count{font-size:10px;font-variant-numeric:tabular-nums}
+.work-detail{touch-action:pan-y pinch-zoom}
+
+.album-art img{-webkit-user-drag:none;user-select:none}.album-art .album-zoom{touch-action:pan-y pinch-zoom}
+/* Home icon hover feedback without changing layout or launch positions. */
+.app .icon,.desktop .dock button{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+@media(hover:hover) and (pointer:fine){
+ .app:hover .icon,.app:focus-visible .icon{transform:scale(1.07);filter:brightness(1.045);box-shadow:0 7px 15px #a4698938,inset 0 0 0 1px #c892b5}
+ .app:hover{color:#934e78}
+ .desktop .dock button:hover,.desktop .dock button:focus-visible{transform:scale(1.07);box-shadow:0 5px 12px #a4698933,inset 0 0 0 1px #c892b5}
+}
+.app:active .icon,.desktop .dock button:active{transform:scale(.96);filter:brightness(.98)}
+@media(prefers-reduced-motion:reduce){.app .icon,.desktop .dock button{transition:none}}
+/* Color-only feedback for back buttons and album filters. */
+.back{border-radius:8px}
+@media(hover:hover) and (pointer:fine){
+ .back:hover{background:#efdfE9;color:#834567}
+ .tag-chip:hover:not([aria-pressed=true]){background:#f2e3ed;border-color:#bd87a7;color:#834567}
+ .tag-chip[aria-pressed=true]:hover{background:#996181;border-color:#996181;color:#fff}
+}
+.back:active{background:#e6ccdc;color:#753958}
+.tag-chip:active:not([aria-pressed=true]){background:#e6ccdc;border-color:#b27a9b;color:#753958}
+.back:focus-visible,.tag-chip:focus-visible{background:#f2e3ed;color:#834567}
+.tag-chip[aria-pressed=true]:focus-visible{background:#996181;color:#fff}
+.back{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;padding:5px 10px;min-height:30px;border-radius:999px;line-height:1.4;text-align:center}
+/* Keep the header below the 53px status area so button corners remain visible. */
+.page{top:53px}
+/* A soft highlight behind collapsible arrows, without affecting layout. */
+.meeting-fold>summary .meeting-arrow,.outfit-toggle .meeting-arrow{position:relative;isolation:isolate}
+.meeting-fold>summary .meeting-arrow::before,.outfit-toggle .meeting-arrow::before{content:"";position:absolute;inset:-2px -4px;border-radius:5px;background:transparent;z-index:-1}
+@media(hover:hover) and (pointer:fine){
+ .meeting-fold>summary .meeting-arrow:hover::before,.outfit-toggle .meeting-arrow:hover::before{background:#efdfE9}
+}
+/* Fixed-size arrow targets keep their highlight centered when rotated. */
+.meeting-fold>summary{cursor:default}
+.meeting-arrow{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:0 0 16px;line-height:1;cursor:pointer}
+.meeting-fold>summary .meeting-arrow::before,.outfit-toggle .meeting-arrow::before{inset:0;border-radius:4px}
+.outfit-choice{display:inline-flex;align-items:center;gap:5px}
+.outfit-choice>.timeline-title{color:#765a6a;font-size:13px;font-weight:600;cursor:default}
+.outfit-toggle{width:16px;height:16px;justify-content:center;line-height:1}
+/* Use a fixed triangle instead of the font glyph, with an optical offset. */
+.meeting-arrow{font-size:0}
+.meeting-arrow::after{content:"";display:block;width:0;height:0;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent;border-left:5px solid currentColor;transform:translate(-2px,2px)}
+/* Keep the target and background stationary; rotate only the triangle. */
+.meeting-fold[open]>summary .meeting-arrow,.outfit-toggle[aria-expanded=true] .meeting-arrow{transform:none}
+.meeting-arrow{transition:none}
+.meeting-arrow::after{transform:translate(-2px,2px) rotate(0deg);transform-origin:40% 50%;transition:transform .2s}
+.meeting-fold[open]>summary .meeting-arrow::after,.outfit-toggle[aria-expanded=true] .meeting-arrow::after{transform:translate(-2px,2px) rotate(90deg)}
+@media(prefers-reduced-motion:reduce){.meeting-arrow::after{transition:none}}
+/* Restore the arrow position; offset only its stationary hover background. */
+.meeting-arrow::after{transform:rotate(0deg);transform-origin:50% 50%}
+.meeting-fold[open]>summary .meeting-arrow::after,.outfit-toggle[aria-expanded=true] .meeting-arrow::after{transform:rotate(90deg)}
+.meeting-fold>summary .meeting-arrow::before,.outfit-toggle .meeting-arrow::before{inset:0;transform:translate(-1.65px,-.15px)}
+/* Rotate an SVG triangle around a fixed square centered on the hover background. */
+.meeting-arrow::after{position:absolute;left:-1.5px;top:0;width:16px;height:16px;border:0;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.3 4.5 11.4 8 6.3 11.5Z'/%3E%3C/svg%3E") center/16px 16px no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.3 4.5 11.4 8 6.3 11.5Z'/%3E%3C/svg%3E") center/16px 16px no-repeat;transform:rotate(0deg);transform-origin:50% 50%}
+.meeting-fold[open]>summary .meeting-arrow::after,.outfit-toggle[aria-expanded=true] .meeting-arrow::after{transform:rotate(90deg)}
+.meeting-fold>summary .meeting-arrow,.outfit-toggle .meeting-arrow{color:#765a6a}
+.thought-perspective h4{color:#765a6a}
+.thought-perspective + .thought-perspective{margin-top:32.8px}
+.meeting-fold>summary .timeline-title,.outfit-choice>.timeline-title{font-weight:400}
+.thought-perspective h4{font-weight:400}
+.thought-list{list-style:none;margin:0;padding-left:12px}
+.thought-list>.thought-perspective{position:relative}
+.thought-list>.thought-perspective::before{content:"";position:absolute;left:-10px;top:8px;width:4px;height:4px;border-radius:50%;background:#ac7294}
+/* Align expanded prose with its summary label: 16px arrow + 5px gap. */
+.meeting-fold>.entry-paragraph{margin-left:21px}
+/* Keep expanded illustrations aligned with the inset reading text. */
+.meeting-fold>.meeting-art{margin-left:21px}
+.outfit-item+.outfit-item{margin-top:6px}
+.outfit-panel{margin-left:21px;margin-right:0}
+/* Avoid the extra text-baseline space from inline-flex outfit headings. */
+.outfit-choice{display:flex;width:fit-content;font-size:13px;line-height:1.6}
+/* Match character-profile section headings to story-section headings. */
+.note-content h3{margin:20px 0 12px;letter-spacing:normal;line-height:1.6}
+.character-detail > .profile-art + .note-content h3:first-child{margin-top:20px}
+/* Color-only hover feedback for calendar dates and passcode controls. */
+.pin-actions .textbtn{border-radius:999px}
+@media(hover:hover) and (pointer:fine){
+ .calendar-day:hover:not([aria-pressed=true]){background:#f0dfE9;color:#80516c}
+ .calendar-day[aria-pressed=true]:hover{background:#996181;color:#fff}
+ .pin .key:hover{background:#fff6fccc;box-shadow:inset 0 0 0 1px #fff,0 2px 8px #a4698926}
+ .pin-actions .textbtn:hover{background:#fff5fa80;color:#754761}
+}
+.pin-actions .textbtn:active{background:#fff5fac0;color:#673d53}
+/* Color feedback for post and month navigation, with disabled states preserved. */
+@media(hover:hover) and (pointer:fine){
+ .album-post-navigation button:hover:not(:disabled){background:#e6ccdc;color:#753958}
+ .calendar-toolbar button:hover:not(:disabled){background:#f0dfE9;color:#834567}
+}
+.album-post-navigation button:active:not(:disabled){background:#dcbacf;color:#673d53}
+.calendar-toolbar button:active:not(:disabled){background:#e6ccdc;color:#753958}
+/* Shift only the post-navigation background inward, keeping labels stationary. */
+.album-post-navigation button{background:transparent!important;position:relative;isolation:isolate}
+.album-post-navigation button::before{content:"";position:absolute;inset:0;border-radius:inherit;background:#f2e4ed;z-index:-1;pointer-events:none}
+.album-post-navigation button[data-post-step="-1"]::before{transform:translateX(2px)}
+.album-post-navigation button[data-post-step="1"]::before{transform:translateX(-2px)}
+@media(hover:hover) and (pointer:fine){.album-post-navigation button:hover:not(:disabled)::before{background:#e6ccdc}}
+.album-post-navigation button:active:not(:disabled)::before{background:#dcbacf}
+.thought-perspective h4{font-weight:700}
+.story-tmi-list>.tmi-examples::before{display:none}.story-tmi-list>.tmi-examples{margin-left:-12px}
+.relationship-examples{margin-top:10px}
+/* 手機殼側邊裝飾按鍵 */
+.case-side-key{position:absolute;z-index:1;width:7px;border:1px solid #ca91b0;border-radius:3px;pointer-events:none;background:linear-gradient(90deg,#d79abb,#fff0f8 48%,#dfabc8);box-shadow:0 1px 2px #96607d30,inset 0 0 0 1px #ffffff55}
+.case-side-key.silent{left:-11px;top:112px;height:24px}
+.case-side-key.volume-up{left:-11px;top:158px;height:48px}
+.case-side-key.volume-down{left:-11px;top:220px;height:48px}
+.case-side-key.power{right:-11px;top:181px;height:72px;background:linear-gradient(90deg,#dfabc8,#fff0f8 52%,#d79abb)}
 </style></head>
-<body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm heart" aria-hidden="true"><svg viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="heartMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdfd"/><stop offset=".23" stop-color="#bd719e"/><stop offset=".48" stop-color="#fff"/><stop offset=".73" stop-color="#8e466f"/><stop offset="1" stop-color="#fff0fa"/></linearGradient><linearGradient id="heartGem" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff5fc"/><stop offset=".4" stop-color="#de8cbd"/><stop offset="1" stop-color="#a74786"/></linearGradient><clipPath id="heartCut"><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z"/></clipPath></defs><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="url(#heartGem)" stroke="#a25b85" stroke-width="7" stroke-linejoin="round"/><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="none" stroke="url(#heartMetal)" stroke-width="4" stroke-linejoin="round"/><g clip-path="url(#heartCut)"><path d="m9 20 14-5 9 10-13 9Z" fill="#fff8fe" opacity=".8"/><path d="m23 15 9 10 9-10-9 42Z" fill="#fff" opacity=".35"/><path d="m41 15 14 7-10 12-13-9Z" fill="#e094c3" opacity=".6"/><path d="m19 34 13-9 13 9-13 23Z" fill="#fbe1f3" opacity=".65"/><path d="m10 31 9 3 13 23Z" fill="#ae5b91" opacity=".5"/><path d="m45 34 10-3-23 26Z" fill="#c077a6" opacity=".65"/><path d="m23 15-4 19 13 23 13-23-4-19M19 34l13-9 13 9" fill="none" stroke="#fff4fc" stroke-width=".7" opacity=".7"/></g><path d="M15 25c-1-7 6-10 11-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".95"/><circle cx="12" cy="18" r="1.3" fill="#fff"/></svg></span><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right status-icons" role="img" aria-label="行動訊號良好、Wi-Fi 已連線、電量100%"><svg class="status-signal" viewBox="0 0 20 14" aria-hidden="true"><rect x="1" y="9" width="3" height="4" rx=".7"/><rect x="6" y="6" width="3" height="7" rx=".7"/><rect x="11" y="3" width="3" height="10" rx=".7"/><rect x="16" y="0" width="3" height="13" rx=".7"/></svg><svg class="status-wifi" viewBox="0 0 20 16" aria-hidden="true"><path d="M.5 4.1a14 14 0 0 1 19 0l-2.2 2.3a10.8 10.8 0 0 0-14.6 0ZM4.2 8a8.6 8.6 0 0 1 11.6 0l-2.2 2.3a5.4 5.4 0 0 0-7.2 0ZM7.9 11.9a3.2 3.2 0 0 1 4.2 0L10 14.2Z" fill="currentColor"/></svg><svg class="status-battery" viewBox="0 0 29 14" aria-hidden="true"><rect x=".6" y="1" width="24" height="12" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="2.5" y="3" width="20" height="8" rx="1.4"/><path d="M26 4.5c2 0 2 5 0 5Z" opacity=".65"/></svg></span></div>
+<body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="case-side-key silent" aria-hidden="true"></span><span class="case-side-key volume-up" aria-hidden="true"></span><span class="case-side-key volume-down" aria-hidden="true"></span><span class="case-side-key power" aria-hidden="true"></span><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm heart" aria-hidden="true"><svg viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="heartMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdfd"/><stop offset=".23" stop-color="#bd719e"/><stop offset=".48" stop-color="#fff"/><stop offset=".73" stop-color="#8e466f"/><stop offset="1" stop-color="#fff0fa"/></linearGradient><linearGradient id="heartGem" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff5fc"/><stop offset=".4" stop-color="#de8cbd"/><stop offset="1" stop-color="#a74786"/></linearGradient><clipPath id="heartCut"><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z"/></clipPath></defs><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="url(#heartGem)" stroke="#a25b85" stroke-width="7" stroke-linejoin="round"/><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="none" stroke="url(#heartMetal)" stroke-width="4" stroke-linejoin="round"/><g clip-path="url(#heartCut)"><path d="m9 20 14-5 9 10-13 9Z" fill="#fff8fe" opacity=".8"/><path d="m23 15 9 10 9-10-9 42Z" fill="#fff" opacity=".35"/><path d="m41 15 14 7-10 12-13-9Z" fill="#e094c3" opacity=".6"/><path d="m19 34 13-9 13 9-13 23Z" fill="#fbe1f3" opacity=".65"/><path d="m10 31 9 3 13 23Z" fill="#ae5b91" opacity=".5"/><path d="m45 34 10-3-23 26Z" fill="#c077a6" opacity=".65"/><path d="m23 15-4 19 13 23 13-23-4-19M19 34l13-9 13 9" fill="none" stroke="#fff4fc" stroke-width=".7" opacity=".7"/></g><path d="M15 25c-1-7 6-10 11-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".95"/><circle cx="12" cy="18" r="1.3" fill="#fff"/></svg></span><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right status-icons" role="img" aria-label="行動訊號良好、Wi-Fi 已連線、電量100%"><svg class="status-signal" viewBox="0 0 20 14" aria-hidden="true"><rect x="1" y="9" width="3" height="4" rx=".7"/><rect x="6" y="6" width="3" height="7" rx=".7"/><rect x="11" y="3" width="3" height="10" rx=".7"/><rect x="16" y="0" width="3" height="13" rx=".7"/></svg><svg class="status-wifi" viewBox="0 0 20 16" aria-hidden="true"><path d="M.5 4.1a14 14 0 0 1 19 0l-2.2 2.3a10.8 10.8 0 0 0-14.6 0ZM4.2 8a8.6 8.6 0 0 1 11.6 0l-2.2 2.3a5.4 5.4 0 0 0-7.2 0ZM7.9 11.9a3.2 3.2 0 0 1 4.2 0L10 14.2Z" fill="currentColor"/></svg><svg class="status-battery" viewBox="0 0 29 14" aria-hidden="true"><rect x=".6" y="1" width="24" height="12" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="2.5" y="3" width="20" height="8" rx="1.4"/><path d="M26 4.5c2 0 2 5 0 5Z" opacity=".65"/></svg></span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">The Ruriverse</div><div class="lock-art" aria-hidden="true"><svg viewBox="0 0 80 80" focusable="false"><path d="M40 67C33 60 12 45 12 29C12 12 31 10 40 25C49 10 68 12 68 29C68 45 47 60 40 67Z"/></svg></div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>您好！此為《極權教師》賢丹尼爾的夢向設定網站！</strong><p>解鎖手機即可閱覽詳細內容♡</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
 <section id="pin" class="view pin hidden" aria-label="輸入解鎖密碼"><h2>輸入密碼</h2><p id="pinMessage" role="status"></p><div id="dots" class="dots" aria-label="已輸入0位數"><i class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 20S3 14.4 3 8.5C3 3.7 9 2 12 6.5 15 2 21 3.7 21 8.5 21 14.4 12 20 12 20Z"/></svg></i><i class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 20S3 14.4 3 8.5C3 3.7 9 2 12 6.5 15 2 21 3.7 21 8.5 21 14.4 12 20 12 20Z"/></svg></i><i class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 20S3 14.4 3 8.5C3 3.7 9 2 12 6.5 15 2 21 3.7 21 8.5 21 14.4 12 20 12 20Z"/></svg></i><i class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 20S3 14.4 3 8.5C3 3.7 9 2 12 6.5 15 2 21 3.7 21 8.5 21 14.4 12 20 12 20Z"/></svg></i></div><div class="keys" id="keys"></div><div class="pin-actions"><button id="cancelPin" class="textbtn">取消</button><button id="deletePin" class="textbtn">刪除</button></div></section>
 <section id="desktop" class="view desktop hidden" aria-label="手機主畫面"><div class="widget timer-widget"><small>EVERY SECOND WITH YOU</small><h2>喜歡賢先生已經</h2><div id="anniversaryTimer" class="anniversary-timer" role="timer"></div></div><div class="apps"><button class="app" data-app="settings"><span class="icon">⚙</span>設定</button><button class="app" data-app="contacts"><span class="icon">♙</span>通訊錄</button><button class="app" data-app="notes"><span class="icon">☷</span>備忘錄</button>
@@ -329,12 +450,12 @@ function updateDots() { [...$('dots').children].forEach((dot,i)=>dot.classList.t
 function digit(value) { if(current!=='pin'||entered.length>=4)return; entered+=value; updateDots(); if(entered.length===4){ if(entered===PASSCODE){ animateUnlock(); }else{ $('pinMessage').textContent='密碼錯誤，再試一次'; $('dots').classList.add('error'); setTimeout(()=>{entered='';updateDots();$('dots').classList.remove('error');},520); } } }
 const letters=['','','ABC','DEF','GHI','JKL','MNO','PQRS','TUV','WXYZ'];
 for(const num of [1,2,3,4,5,6,7,8,9,0]){ const b=document.createElement('button');b.className='key';const number=document.createElement('span');number.className='key-number';number.textContent=num;b.append(number);b.setAttribute('aria-label',String(num));if(num===0)b.style.gridColumn='2';const s=document.createElement('small');s.textContent=letters[num]||'\u00a0';if(num!==0)b.append(s);b.onclick=()=>digit(String(num));$('keys').append(b); }
-$('unlock').onclick=()=>{entered='';updateDots();$('pinMessage').textContent='';show('pin');};
+$('unlock').onclick=animatePinEntry;
 $('cancelPin').onclick=()=>{entered='';updateDots();show('lock');};$('deletePin').onclick=()=>{entered=entered.slice(0,-1);updateDots();};
 let currentApp='';
-function goHome(){if(unlocked){currentApp='';show('desktop');} }
+function goHome(){if(!unlocked||current==='closing')return;if(current==='page'){closeAppAnimated();return;}currentApp='';show('desktop');}
 $('home').onclick=goHome;
-$('relock').onclick=()=>{unlocked=false;entered='';updateDots();show('lock');};
+$('relock').onclick=animateRelock;
 document.addEventListener('keydown',e=>{if(current!=='pin')return;if(/^\d$/.test(e.key)){e.preventDefault();digit(e.key);}if(e.key==='Backspace'){e.preventDefault();entered=entered.slice(0,-1);updateDots();}if(e.key==='Escape')$('cancelPin').click();});
 const pages={
 // 閱前須知：將下方提示段落換成你的須知內容即可。
@@ -342,12 +463,13 @@ settings:{title:'閱前須知',html:'<article class="reading-sheet"><div class="
 characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><div class="profile-art"><img class="character-profile-avatar" src="avatar-male.png" alt="賢丹尼爾的頭貼" width="112" height="112"><span class="artist-credit">ⓒ 햄양 님</span></div><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
-<li>姓名：賢丹尼爾</li>
+<li>姓名：賢丹尼爾（현 다니엘）</li>
 <li>性別：男</li>
 <li>國籍：美國（韓美混血）</li>
 <li>年齡：22～25歲</li>
 <li>身高：185公分</li>
 <li>職業：教權保護局監察員</li>
+<li>動物塑：雪豹</li>
 </ul>
 
 <h3>外貌</h3>
@@ -372,24 +494,24 @@ characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><d
 characterFemale: {title:"都瑠璃", html:`<article class="character-detail"><div class="profile-art"><img class="character-profile-avatar" src="avatar-female.png" alt="都瑠璃的頭貼" width="112" height="112"><span class="artist-credit">ⓒ 햄양 님</span></div><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
-<li>姓名：都瑠璃</li>
+<li>姓名：都瑠璃（도유리）</li>
 <li>性別：女</li>
 <li>國籍：韓國</li>
 <li>年齡：17歲</li>
 <li>身高：168公分</li>
 <li>職業：學生（高中生）</li>
+<li>動物塑：馬爾濟斯</li>
 </ul>
 
 <h3>外貌</h3>
-<p>長相可愛之中帶了一點稚氣，會在意外表的女孩子</p>
+<p>長相可愛之中帶了一點稚氣，是個會在意外表的女孩子。</p>
 <p>有著一頭微捲的粉色長髮，髮尾處漸層紫色。左側的頭髮綁成了蝴蝶結形狀。</p>
 <p>湖水藍的眼睛大而圓潤，僅在眼尾處微微上揚。左臉頰中央有一顆痣。</p>
 <p>身材纖細，但胸部和肚子是稍微有肉一點的類型，雖然想下定決心減肥，卻總是抵不過甜點的誘惑。</p>
 
 <div class="outfit-drawings">
-<div class="outfit-options"><button type="button" class="outfit-toggle" data-outfit="casual" aria-expanded="false" aria-controls="outfit-casual"><span class="meeting-arrow" aria-hidden="true">▸</span><span class="timeline-title">常服</span></button><button type="button" class="outfit-toggle" data-outfit="uniform" aria-expanded="false" aria-controls="outfit-uniform"><span class="meeting-arrow" aria-hidden="true">▸</span><span class="timeline-title">制服</span></button></div>
-<figure id="outfit-casual" class="outfit-art outfit-panel" hidden><img src="ruri-casual.png" alt="都瑠璃的常服立繪" loading="lazy"><figcaption class="artist-credit">ⓒ 어푸 님</figcaption></figure>
-<figure id="outfit-uniform" class="outfit-art outfit-panel" hidden><img src="ruri-uniform.png" alt="都瑠璃的制服立繪" loading="lazy"><figcaption class="artist-credit">ⓒ 路燈</figcaption></figure>
+<div class="outfit-item"><span class="outfit-choice"><button type="button" class="outfit-toggle" data-outfit="casual" aria-expanded="false" aria-controls="outfit-casual" aria-label="展開或收合常服"><span class="meeting-arrow" aria-hidden="true">▸</span></button><span class="timeline-title">常服</span></span><figure id="outfit-casual" class="outfit-art outfit-panel" hidden><img src="ruri-casual.png" alt="都瑠璃的常服立繪" loading="lazy"><figcaption class="artist-credit">ⓒ 어푸 님</figcaption></figure></div>
+<div class="outfit-item"><span class="outfit-choice"><button type="button" class="outfit-toggle" data-outfit="uniform" aria-expanded="false" aria-controls="outfit-uniform" aria-label="展開或收合制服"><span class="meeting-arrow" aria-hidden="true">▸</span></button><span class="timeline-title">制服</span></span><figure id="outfit-uniform" class="outfit-art outfit-panel" hidden><img src="ruri-uniform.png" alt="都瑠璃的制服立繪" loading="lazy"><figcaption class="artist-credit">ⓒ 路燈</figcaption></figure></div>
 </div>
 <h3>性格</h3>
 <p>活潑外向又吵鬧，情感表現豐富，說話的語氣充滿了驚嘆號，甚至到了有點聒噪的地步……不過因為很可愛<span class="light-text">（應該吧？）</span>，所以並不惹人討厭。</p>
@@ -445,7 +567,7 @@ document.querySelectorAll('[data-app]').forEach(b=>{
     if(icon)b.lastChild.textContent=config.name;
     else b.setAttribute('aria-label','開啟'+config.name);
   }
-  b.onclick=()=>openApp(b.dataset.app);
+  b.onclick=()=>openAppAnimated(b.dataset.app,b);
 });
 $('relock').innerHTML=iconSVG('power');
 document.title=SITE_CONFIG.title;
@@ -507,6 +629,20 @@ const CONTENT = {
     ],
   },
   {
+    id: 'relationship-tmi',
+    title: 'TMI',
+    bullets: [
+      ['兩人是鄰居（住在同一個社區的不同棟），瑠璃三天兩頭就會跑到賢家拜訪，父母也知道賢的存在。瑠璃的父母很感謝賢對女兒的照顧，對賢很友善且大方。'],
+      ['只要賢沒有工作的事要忙，節假日通常會在瑠璃的主動邀約下兩人一起度過。'],
+      ['瑠璃偶爾會請賢當家教，美其名曰是考前惡補云云，實際上只是想多跟賢相處而已；不過賢倒是會全神貫注在教學上，反而讓瑠璃有點不甘心。'],
+      ['因為沒有交往，不會有過於親暱的肢體接觸<span class="light-text">（相簿中的貼貼圖片請當作夢女病發作時的ＯＯＣ妄想看待）</span>，但有鑑於瑠璃是個沒什麼距離感的笨蛋，可能也不好說……'],
+      ['一些情境舉例',
+       '<strong>看電影</strong>：瑠璃是很容易入戲、情緒起伏很大的人；賢則幾乎不會有特別的情緒變化，能理性客觀地分析劇情。',
+       '<strong>玩遊戲</strong>：偶爾會一起玩連線遊戲（例：煮◯頭），瑠璃是標準的又菜又愛玩，總是在幫倒忙；而賢每次都能在第一次接觸遊戲後便迅速上手。',
+       '<strong>遊樂園</strong>：賢是玩什麼都無所謂的類型，所以會任由瑠璃拉著他到處跑來跑去；瑠璃不敢去鬼屋，不過意外地喜歡雲霄飛車，是那種一直大叫好可怕但是玩得很開心的人！（在一旁的賢：面不改色搭完全程）']
+    ]
+  },
+  {
     id: 'thoughts',
     title: '對彼此的想法',
     perspectives: [
@@ -532,7 +668,10 @@ const CONTENT = {
 ],
   // PARO：每個 title 會成為同一頁裡的小標題。新增時複製下方範例，移除行首的 //。
   paros: [
-    // { id: 'paro-01', title: 'PARO 名稱', subtitle: '一句簡介', paragraphs: ['第一段設定', '第二段設定'] },
+    { id: 'witch-gathering', title: '魔女集會', subtitle: '', paragraphs: [] },
+    { id: 'hunter-succubus', title: '獵人×魅魔', subtitle: '', paragraphs: [] },
+    { id: 'modern-vampire', title: '現代吸血鬼', subtitle: '', paragraphs: [] },
+    { id: 'western-court', title: '西方宮廷', subtitle: '', paragraphs: [] },
   ],
   // 相簿作品；tags 填入 PARO 名稱，會自動產生篩選按鈕。
   // images 可放一張或多張圖片；文字作品也可以填 images: []。
@@ -560,7 +699,7 @@ const CONTENT = {
 
     {"id":"angel-dressup","title":"","date":"","images":["album-angel.png"],"paragraphs":["넌 나만의 𝕬𝖓𝖌𝖊𝖑 … 𓏲🪽˚. ˖ . ݁"],"tags":["主題換裝"],"credit":"ⓒ 오골계 님","url":""},
 
-    {"id":"hunter-succubus-first-night","title":"","date":"","images":["album-hunter-succubus.png"],"paragraphs":["♱⃓","𝕿𝖍𝖊 𝕱𝖎𝖗𝖘𝖙 𝕹𝖎𝖌𝖍𝖙 …","","⁺‧₊˚ ཐི⋆♱⋆ཋྀ ˚₊‧⁺","","　　當夜色逐漸降下，即是惡魔拉開狂歡序幕之時。","","　　初生的魅魔缺乏辨識危險的能力，所謂勾引的技巧（或魔法？）亦不成熟，縱是如此，瑠璃仍抱持著莫名的樂觀，甚至尚有餘裕挑剔──雖說只是作為吸食精氣的對象，但畢竟是值得紀念的第一次，那至少要仔細選個賞心悅目的獵物！","　　忽地，一陣濃郁的甜香竄入鼻腔。","　　她未曾聞過那樣的氣味，卻已然知曉這股陌生味道所代表的意義──那是刻在她本能裡的，屬於人類男性的氣息──，她的瞳孔倏地收縮，五臟六腑隱隱震顫，前所未有的渴求令她頭暈目眩，不由自主地提起步伐。","　　她迫切地想要找到這個人，然後……","","　　在昏暗的小巷內，唯有那對綠色的眼眸依舊明亮銳利，他低頭看著這個不知為何現身的，絲毫沒有掩飾或偽裝的……魅魔？善於冷靜分析的獵人不免也浮現了一瞬的疑惑──這是某種陷阱？或是對方強大到不須在人間躲躲藏藏？然而，在解答出這些問題之前，他手中的鐮刀已先抵住了惡魔的咽喉。","　　「啊。」冰冷的金屬貼上肌膚，她猛地一哆嗦，如夢方醒地瞪大雙眼。可還不待她徹底回過神來，男人便以鐮刀輕輕抬起了她的下顎──她順著鐮刀的握柄往上望去，視線最終停在那張端正的面龐上。那名男子正目不轉睛地盯著她。","　　這個人類……好帥氣！瑠璃看直了眼，馬上將當前的險況拋諸腦後。","　　「那、那個……」她渾然未察對方將自己視為威脅，試探地主動出聲，雙頰無法自抑地浮上一層羞赧的緋色，彷若少女情竇初開；紅潤的脣瓣抿了抿，又微微噘起，神態甜美可欺，「你是住在這裡的人類嗎？我……我迷路了，正在尋找能借助一晚的地方……」","　　賢不為所動地打量著瑠璃。大約是隻魔力低微的魅魔，以人類的角度來看，有著十分漂亮的臉蛋──要是忽略掉她的角、翅膀和尾巴，應該會討很多人的喜歡；然而她的演技實在太過拙劣，面對如此不像樣的謊話，賢無言半晌，給出的唯一反應僅有揚高了眉。","　　「是，我住在這裡，負責在這片區域獵殺惡魔。」他語氣平淡地敘述，「而妳正是我要消滅的對象。」","　　獵殺？消滅……？瑠璃愣了愣，顯然尚未理解對方話中的涵義。該不會，他要殺掉我吧？思及此處，首度離開魔界的魅魔終於開始感到慌亂。她倉皇地後退兩步，下一秒被鐮刀毫不留情地勾住衣領捉回來。","　　這位獵人先生似乎不打算輕易放過她。","　　眼見逃跑行不通，瑠璃當機立斷放下魅魔的尊嚴（……真的有這種東西嗎？），抓住他的袖口，哭喪著臉向人類求情：「獵人先生，等一下，你聽我說……！我是惡魔沒錯，可、可是，今天是我第一次離開魔界，而你是我遇到的第一個人類！我真的沒有傷害過人……」雖然是因為還來不及找人下手……她有些心虛地想。","　　「所以，獵人先生，你能看在我是個善良的惡魔的份上饒了我嗎……？」","　　賢沉默地望著她。如她所言，他早已注意到瑠璃身上並未沾染人類的氣息，她也不像是有本事將證據完美湮滅──綜上所述，最合理的解釋，便是她真的只是個倒楣透頂、好巧不巧挑到自己作為目標對象的低階魅魔罷了。","　　「那個……獵人先生？」","　　瞅著她討好又緊張的表情，明知對方是與人站在對立面的惡魔，賢卻莫名生出在欺負小動物的錯覺……真奇怪啊。","　　「就這麼放妳離開是不可能的，不過……我對隨意使用暴力沒有興趣。」瑠璃忐忑地眨了眨眼，賢不動聲色地繼續道：「既然妳不曾造成傷亡，我同樣不該濫殺無辜，條件是──妳的一舉一動要由我來看管。」他緩緩收回了鐮刀，「我會給妳住的地方，不許隨意離開或接觸人類，做任何事之前都要先問過我。簡而言之，就是用妳的自由換取一條生路……怎麼樣？妳願意接受嗎？」","　　瑠璃偏首思考了片刻，「那麼……獵人先生會跟我住在一起嗎？」","　　「為了就近監視妳，是的。」","　　……所以，如果我同意了，我不但不會被殺掉，還可以跟長相帥氣的獵人先生同居，順利的話，甚至能透過他飽餐一頓……！瑠璃越想越覺得這個提議真是百利而無一害，怎麼會有這樣的好事？這麼看來，在人間吸取精氣果然不是什麼困難的事情呀！","　　「我、我願意，獵人先生，我會好好表現的！」得意忘形的魅魔小姐迅速點頭同意，賢瞧她那副喜上眉梢的模樣，僅是無奈地歎了口氣。","　　撿了一個比人類更加單純的惡魔回家，究竟是不是正確的選擇呢？","　　瑠璃的尾巴不知何時纏上了賢的腰間，兩人的距離因此驀地拉近；她撒嬌般地仰起臉，水光瀲灩的眸子盛滿了愛慕與崇拜，強烈得近乎使他想別過眼去。瑠璃先發制人開口，不讓他有機會逃避：「獵人先生、獵人先生，你快點帶我回家嘛……」","　　……現在倒是有幾分魅魔的樣子了？","","　　天空破曉之際，則為惡魔隱沒歸巢的時分。","　　獵人先生攜著初訪人間的魅魔小姐，一同消失在了街道的盡頭。"],"tags":["獵人×魅魔"],"credit":"ⓒ 햄양 님","url":"","paragraphAlign":["left","center","left","center","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left"]},
+    {"id":"hunter-succubus-first-night","title":"","date":"","images":["album-hunter-succubus.png"],"paragraphs":["♱⃓","𝕿𝖍𝖊 𝕱𝖎𝖗𝖘𝖙 𝕹𝖎𝖌𝖍𝖙 …","","⁺‧₊˚ ཐི⋆♱⋆ཋྀ ˚₊‧⁺","","　　當夜色逐漸降下，即是惡魔拉開狂歡序幕之時。","","　　初生的魅魔缺乏辨識危險的能力，所謂勾引的技巧（或魔法？）亦不成熟，縱是如此，瑠璃仍抱持著莫名的樂觀，甚至尚有餘裕挑剔──雖說只是作為吸食精氣的對象，但畢竟是值得紀念的第一次，那至少要仔細選個賞心悅目的獵物！","　　忽地，一陣濃郁的甜香竄入鼻腔。","　　她未曾聞過那樣的氣味，卻已然知曉這股陌生味道所代表的意義──那是刻在她本能裡的，屬於人類男性的氣息──，她的瞳孔倏地收縮，五臟六腑隱隱震顫，前所未有的渴求令她頭暈目眩，不由自主地提起步伐。","　　她迫切地想要找到這個人，然後……","","　　在昏暗的小巷內，唯有那對綠色的眼眸依舊明亮銳利，他低頭看著這個不知為何現身的，絲毫沒有掩飾或偽裝的……魅魔？善於冷靜分析的獵人不免也浮現了一瞬的疑惑──這是某種陷阱？或是對方強大到不須在人間躲躲藏藏？然而，在解答出這些問題之前，他手中的鐮刀已先抵住了惡魔的咽喉。","　　「啊。」冰冷的金屬貼上肌膚，她猛地一哆嗦，如夢方醒地瞪大雙眼。可還不待她徹底回過神來，男人便以鐮刀輕輕抬起了她的下顎──她順著鐮刀的握柄往上望去，視線最終停在那張端正的面龐上。那名男子正目不轉睛地盯著她。","　　這個人類……好帥氣！瑠璃看直了眼，馬上將當前的險況拋諸腦後。","　　「那、那個……」她渾然未察對方將自己視為威脅，試探地主動出聲，雙頰無法自抑地浮上一層羞赧的緋色，彷若少女情竇初開；紅潤的脣瓣抿了抿，又微微噘起，神態甜美可欺，「你是住在這裡的人類嗎？我……我迷路了，正在尋找能借住一晚的地方……」","　　賢不為所動地打量著瑠璃。大約是隻魔力低微的魅魔，以人類的角度來看，有著十分漂亮的臉蛋──要是忽略掉她的角、翅膀和尾巴，應該會討很多人的喜歡；然而她的演技實在太過拙劣，面對如此不像樣的謊話，賢無言半晌，給出的唯一反應僅有揚高了眉。","　　「是，我住在這裡，負責在這片區域獵殺惡魔。」他語氣平淡地敘述，「而妳正是我要消滅的對象。」","　　獵殺？消滅……？瑠璃愣了愣，顯然尚未理解對方話中的涵義。該不會，他要殺掉我吧？思及此處，首度離開魔界的魅魔終於開始感到慌亂。她倉皇地後退兩步，下一秒被鐮刀毫不留情地勾住衣領捉回來。","　　這位獵人先生似乎不打算輕易放過她。","　　眼見逃跑行不通，瑠璃當機立斷放下魅魔的尊嚴（……真的有這種東西嗎？），抓住他的袖口，哭喪著臉向人類求情：「獵人先生，等一下，你聽我說……！我是惡魔沒錯，可、可是，今天是我第一次離開魔界，而你是我遇到的第一個人類！我真的沒有傷害過人……」雖然是因為還來不及找人下手……她有些心虛地想。","　　「所以，獵人先生，你能看在我是個善良的惡魔的份上饒了我嗎……？」","　　賢沉默地望著她。如她所言，他早已注意到瑠璃身上並未沾染人類的氣息，她也不像是有本事將證據完美湮滅──綜上所述，最合理的解釋，便是她真的只是個倒楣透頂、好巧不巧挑到自己作為目標對象的低階魅魔罷了。","　　「那個……獵人先生？」","　　瞅著她討好又緊張的表情，明知對方是與人站在對立面的惡魔，賢卻莫名生出在欺負小動物的錯覺……真奇怪啊。","　　「就這麼放妳離開是不可能的，不過……我對隨意使用暴力沒有興趣。」瑠璃忐忑地眨了眨眼，賢不動聲色地繼續道：「既然妳不曾造成傷亡，我同樣不該濫殺無辜，條件是──妳的一舉一動要由我來看管。」他緩緩收回了鐮刀，「我會給妳住的地方，不許隨意離開或接觸人類，做任何事之前都要先問過我。簡而言之，就是用妳的自由換取一條生路……怎麼樣？妳願意接受嗎？」","　　瑠璃偏首思考了片刻，「那麼……獵人先生會跟我住在一起嗎？」","　　「為了就近監視妳，是的。」","　　……所以，如果我同意了，我不但不會被殺掉，還可以跟長相帥氣的獵人先生同居，順利的話，甚至能透過他飽餐一頓……！瑠璃越想越覺得這個提議真是百利而無一害，怎麼會有這樣的好事？這麼看來，在人間吸取精氣果然不是什麼困難的事情呀！","　　「我、我願意，獵人先生，我會好好表現的！」得意忘形的魅魔小姐迅速點頭同意，賢瞧她那副喜上眉梢的模樣，僅是無奈地歎了口氣。","　　撿了一個比人類更加單純的惡魔回家，究竟是不是正確的選擇呢？","　　瑠璃的尾巴不知何時纏上了賢的腰間，兩人的距離因此驀地拉近；她撒嬌般地仰起臉，水光瀲灩的眸子盛滿了愛慕與崇拜，強烈得近乎使他想別過眼去。瑠璃先發制人開口，不讓他有機會逃避：「獵人先生、獵人先生，你快點帶我回家嘛……」","　　……現在倒是有幾分魅魔的樣子了？","","　　天空破曉之際，則為惡魔隱沒歸巢的時分。","　　獵人先生攜著初訪人間的魅魔小姐，一同消失在了街道的盡頭。"],"tags":["獵人×魅魔"],"credit":"ⓒ 햄양 님","url":"","paragraphAlign":["left","center","left","center","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left"]},
 
   ],
   // 訊息彩蛋：side 填 other 是左側（賢丹尼爾），me 是右側（都瑠璃）。
@@ -627,6 +766,11 @@ let featureState={app:'',view:'list',index:null}, albumTag='', selectedWorkImage
 function featurePage(app,title,html,backLabel='‹ 返回'){
   currentApp=app;featureState.app=app;show('page');$('pageTitle').textContent=title;$('back').textContent=backLabel;$('pageBody').innerHTML=html;$('pageBody').scrollTop=0;
 }
+function renderRelationshipExamples(){
+ const item=CONTENT.stories.find(entry=>entry.id==='relationship-tmi')?.bullets?.at(-1);
+ if(!item)return '';
+ return '<details class="meeting-fold relationship-examples"><summary><span class="meeting-arrow" aria-hidden="true">▸</span><span class="timeline-title">'+escapeHTML(item[0])+'</span></summary>'+paragraphs(item.slice(1))+'</details>';
+}
 function renderNotes(section='home'){
   featureState={app:'notes',view:section,index:null};
   const categories={
@@ -652,12 +796,20 @@ function renderNotes(section='home'){
       const timelineItem=(title,body)=>'<details class="meeting-fold timeline-item"><summary><span class="meeting-arrow" aria-hidden="true">▸</span><span class="timeline-title">'+escapeHTML(title)+'</span></summary>'+(title==='相遇的開始'?paragraphs(body.slice(0,5))+meetingArtwork+paragraphs(body.slice(5)):paragraphs(body))+'</details>';
       return '<section class="note-reading-section"><h3>時間線</h3><p class="entry-paragraph meeting-hint">請點擊下方箭頭以展開內容🙏🏻</p>'+timelineItem('相遇的開始',entry.paragraphs)+timelineItem('告白之後……',afterConfession)+'</section>';
     }
+    if(section==='stories' && entry.id==='relationship-tmi'){
+      return '<section class="note-reading-section"><h3>'+escapeHTML(entry.title)+'</h3><ul class="story-tmi-list">'+entry.bullets.slice(0,-1).map(item=>'<li>'+paragraphs(item)+'</li>').join('')+'</ul></section>';
+    }
     if(section==='stories' && entry.id==='thoughts'){
       return '<section class="note-reading-section"><h3>'+escapeHTML(entry.title)+'</h3>'+entry.perspectives.map(view=>'<section class="thought-perspective"><h4>'+escapeHTML(view.title)+'</h4>'+paragraphs(view.paragraphs)+'</section>').join('')+'</section>';
     }
-    return '<section class="note-reading-section'+(entry.id==='names'?' names-section':'')+'">'+(entry.title?'<h3>'+escapeHTML(entry.title)+'</h3>':'')+(section==='stories'&&entry.id==='daily'?'<figure class="meeting-art"><img src="relationship.png" alt="瑠璃在賢身旁熱情表達心意的互動插圖" loading="lazy"><figcaption class="artist-credit">ⓒ NK 님</figcaption></figure>':'')+(section==='stories'&&entry.id==='names'?'<ul class="names-list">'+entry.paragraphs.map(text=>'<li>'+escapeHTML(text)+'</li>').join('')+'</ul>':paragraphs(entry.paragraphs))+'</section>';
+    return '<section class="note-reading-section'+(entry.id==='names'?' names-section':'')+'">'+(entry.title?'<h3>'+escapeHTML(entry.title)+'</h3>':'')+(section==='stories'&&entry.id==='daily'?'<figure class="meeting-art"><img src="relationship.png" alt="瑠璃在賢身旁熱情表達心意的互動插圖" loading="lazy"><figcaption class="artist-credit">ⓒ NK 님</figcaption></figure>':'')+(section==='stories'&&entry.id==='names'?'<ul class="names-list">'+entry.paragraphs.map(text=>'<li>'+escapeHTML(text)+'</li>').join('')+'</ul>':paragraphs(entry.paragraphs))+(section==='stories'&&entry.id==='daily'?renderRelationshipExamples():'')+'</section>';
   }).join(''):paragraphs([]);
   featurePage('notes',category.title,'<article class="reading-sheet notes-single-page"><h2>'+escapeHTML(category.title)+'</h2>'+(section==='stories'?'<figure class="meeting-art"><img src="story-cover.png" alt="賢與瑠璃靠在一起的雙人插圖" loading="lazy"><figcaption class="artist-credit">ⓒ 엔비 님</figcaption></figure>':'')+text+'</article>','‹ 備忘錄');
+}
+function renderParo(index){
+  const entry=CONTENT.paros[index];if(!entry){renderNotes('paros');return;}
+  featureState={app:'notes',view:'paro-detail',index};
+  featurePage('notes',entry.title,'<article class="reading-sheet"><h2>'+escapeHTML(entry.title)+'</h2>'+paragraphs(entry.paragraphs)+'</article>','‹ PARO');
 }
 function workTags(){const tags=[...new Set([...CONTENT.paros.map(p=>p.title),...CONTENT.works.flatMap(w=>w.tags||[])])];return [...tags.filter(t=>t!=='主題換裝'),...tags.filter(t=>t==='主題換裝')];}
 function renderAlbum(){
@@ -667,7 +819,7 @@ function renderAlbum(){
   const cards=visible.map(({w,i})=>{const img=imageURL(w.images?.[0]);const label=w.title||w.paragraphs?.[0]||'查看作品';return '<button class="album-thumb" type="button" data-work="'+i+'" aria-label="'+escapeHTML(label)+'">'+(img?'<img src="'+escapeHTML(img)+'" alt="'+escapeHTML(w.title||'賢與瑠璃的雙人作品')+'" loading="lazy">':'<span aria-hidden="true">☷</span>')+'</button>';}).join('');
   featurePage('photos','相簿','<div class="tag">PICTURES & WORDS</div>'+filter+(cards?'<div class="album-grid">'+cards+'</div>':emptyMessage('❀',albumTag?'這個分類還沒有作品':'等待收藏第一份回憶','圖片與配文都會一起收藏在這裡。')));
   $('pageBody').querySelectorAll('[data-tag-index]').forEach(b=>b.onclick=()=>{albumTag=choices[Number(b.dataset.tagIndex)];renderAlbum();});
-  $('pageBody').querySelectorAll('[data-work]').forEach(b=>b.onclick=()=>renderWork(Number(b.dataset.work)));
+  $('pageBody').querySelectorAll('[data-work]').forEach(b=>b.onclick=()=>openAlbumPhoto(Number(b.dataset.work),b));
 }
 function renderWork(index,origin='album'){
   const calendarReturn=origin==='calendar'?{year:calendarYear,month:calendarMonth,date:selectedDate,scrollTop:$('pageBody').scrollTop}:null;
@@ -756,14 +908,15 @@ function renderCalendar(){
   renderEventList();renderUpcomingDates();updateAnniversary();
 }
 const originalOpenApp=openApp;
-openApp=function(id){if(!unlocked)return;if(id==='notes'){renderNotes();return;}if(id==='photos'){renderAlbum();return;}if(id==='messages'){renderChat();return;}if(id==='calendar'){renderCalendar();return;}featureState={app:id,view:'list',index:null};originalOpenApp(id);};
+openApp=function(id){if(!unlocked)return;if(id==='notes'){renderNotes();return;}if(id==='photos'){renderAlbum();return;}if(id==='messages'){renderChat();return;}if(id==='calendar'){selectedDate=taipeiToday();calendarYear=Number(selectedDate.slice(0,4));calendarMonth=Number(selectedDate.slice(5,7))-1;renderCalendar();return;}featureState={app:id,view:'list',index:null};originalOpenApp(id);};
 $('back').onclick=()=>{
   if(currentApp==='characterMale'||currentApp==='characterFemale'){openApp('contacts');return;}
+  if(currentApp==='notes'&&featureState.view==='paro-detail'){renderNotes('paros');return;}
   if(currentApp==='notes'&&featureState.view!=='home'){renderNotes();return;}
   if(currentApp==='photos'&&featureState.view==='work'){
     const previous=featureState.calendarReturn;
     if(previous){calendarYear=previous.year;calendarMonth=previous.month;selectedDate=previous.date;renderCalendar();$('pageBody').scrollTop=previous.scrollTop;}
-    else renderAlbum();
+    else closeAlbumPhoto();
     return;
   }
   goHome();
@@ -801,7 +954,7 @@ function animateUnlock(){
   const options={duration:560,easing:'cubic-bezier(.2,.75,.2,1)',fill:'both'};
   const animations=[
     cover.animate([{opacity:1,transform:'translateY(0)',filter:'blur(0px)'},{opacity:0,transform:'translateY(-36px)',filter:'blur(8px)'}],{...options,duration:340}),
-    $('desktop').animate([{opacity:0,transform:'scale(1.12)',filter:'blur(5px)'},{opacity:1,transform:'scale(1)',filter:'blur(0px)'}],options),
+    $('desktop').animate([{opacity:0},{opacity:1}],options),
     $('wallpaper').animate([{opacity:.5,transform:'scale(1.05)'},{opacity:1,transform:'scale(1)'}],options)
   ];
   $('desktop').inert=true;
@@ -814,8 +967,8 @@ document.addEventListener('click',event=>{
   const group=toggle.closest('.outfit-drawings');
   const panel=group.querySelector('#'+toggle.getAttribute('aria-controls'));
   const open=toggle.getAttribute('aria-expanded')!=='true';
-  group.querySelectorAll('.outfit-toggle').forEach(button=>button.setAttribute('aria-expanded','false'));
-  group.querySelectorAll('.outfit-panel').forEach(item=>item.hidden=true);
+
+
   toggle.setAttribute('aria-expanded',String(open));panel.hidden=!open;
 });
 // Only album detail images can open the large-image viewer.
@@ -836,6 +989,233 @@ document.addEventListener('click',event=>{
  const link=event.target.closest('[data-calendar-work]');if(!link)return;
  renderWork(Number(link.dataset.calendarWork),'calendar');
 });
+// Animate launches from home-screen icons, leaving internal navigation unchanged.
+function openAppAnimated(id,button){
+  if(!unlocked||current!=='desktop')return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){openApp(id);return;}
+  const page=$('page'),screen=document.querySelector('.screen');
+  const source=(button.querySelector('.icon')||button).getBoundingClientRect();
+  const background=$('desktop').cloneNode(true);
+  background.removeAttribute('id');background.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+  background.setAttribute('aria-hidden','true');background.inert=true;
+  background.style.zIndex='6';background.style.pointerEvents='none';
+  screen.classList.add('app-opening');
+  openApp(id);
+  if(current!=='page'){screen.classList.remove('app-opening');return;}
+  screen.append(background);
+  const surface=document.createElement('div');surface.setAttribute('aria-hidden','true');
+  surface.style.cssText='position:absolute;inset:0;z-index:7;background:#fcf7fa;pointer-events:none';screen.append(surface);
+  const screenBox=screen.getBoundingClientRect();
+  const surfaceOrigin=(source.left+source.width/2-screenBox.left-screen.clientLeft)+'px '+(source.top+source.height/2-screenBox.top-screen.clientTop)+'px';
+  const surfaceAnimation=surface.animate([
+    {opacity:0,transform:'scale(.16)',transformOrigin:surfaceOrigin,borderRadius:'24px'},
+    {opacity:1,transform:'scale(1)',transformOrigin:surfaceOrigin,borderRadius:'0px'}
+  ],{duration:400,easing:'cubic-bezier(.2,.8,.2,1)',fill:'both'});
+  const target=page.getBoundingClientRect();
+  const originX=source.left+source.width/2-target.left;
+  const originY=source.top+source.height/2-target.top;
+  const animation=page.animate([
+    {opacity:0,transform:'scale(.16)',borderRadius:'24px'},
+    {opacity:1,transform:'scale(1)',borderRadius:'0px'}
+  ],{duration:400,easing:'cubic-bezier(.2,.8,.2,1)',transformOrigin:originX+'px '+originY+'px'});
+  // Transform origin is a keyframe property so no persistent inline style is left behind.
+  animation.effect.setKeyframes([
+    {opacity:0,transform:'scale(.16)',transformOrigin:originX+'px '+originY+'px',borderRadius:'24px'},
+    {opacity:1,transform:'scale(1)',transformOrigin:originX+'px '+originY+'px',borderRadius:'0px'}
+  ]);
+  const fade=background.animate([{opacity:1,filter:'blur(0px)'},{opacity:0,filter:'blur(6px)'}],{duration:400,easing:'ease-out',fill:'forwards'});
+  Promise.allSettled([animation.finished,fade.finished,surfaceAnimation.finished]).then(()=>{screen.classList.remove('app-opening');background.remove();surface.remove();surfaceAnimation.cancel();animation.cancel();fade.cancel();});
+}
+// Close the app toward its matching home-screen icon.
+function closeAppAnimated(){
+  const page=$('page'),desktop=$('desktop');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){currentApp='';show('desktop');return;}
+  const app=featureState.app||currentApp;
+  const homeApp=app==='characterMale'||app==='characterFemale'?'contacts':app;
+  const trigger=desktop.querySelector('[data-app="'+homeApp+'"]');
+  const bounds=page.getBoundingClientRect();
+  document.querySelector('.screen').classList.add('app-closing');
+  desktop.classList.remove('hidden');
+  const icon=trigger&&(trigger.querySelector('.icon')||trigger).getBoundingClientRect();
+  const origin=icon?(icon.left+icon.width/2-bounds.left)+'px '+(icon.top+icon.height/2-bounds.top)+'px':'50% 50%';
+  current='closing';page.inert=true;desktop.inert=true;
+  const options={duration:340,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'};
+  const exit=page.animate([
+    {opacity:1,transform:'scale(1)',transformOrigin:origin},
+    {opacity:0,transform:'scale(.12)',transformOrigin:origin}
+  ],options);
+  const reveal=desktop.animate([{opacity:1,filter:'blur(6px)'},{opacity:1,filter:'blur(0px)'}],options);
+  Promise.allSettled([exit.finished,reveal.finished]).then(()=>{
+    page.inert=false;desktop.inert=false;currentApp='';show('desktop');document.querySelector('.screen').classList.remove('app-closing');exit.cancel();reveal.cancel();
+  });
+}
+// Fade through a dark screen before showing the lock screen.
+async function animateRelock(){
+  if(!unlocked||current!=='desktop')return;
+  const finish=()=>{unlocked=false;entered='';updateDots();show('lock');};
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){finish();return;}
+  const screen=document.querySelector('.screen');
+  const shade=document.createElement('div');shade.setAttribute('aria-hidden','true');
+  shade.style.cssText='position:absolute;inset:0;z-index:60;background:#231e26;pointer-events:auto';
+  screen.append(shade);screen.inert=true;current='locking';
+  let fade;
+  try{
+    fade=shade.animate([{opacity:0},{opacity:1}],{duration:230,easing:'ease-in',fill:'forwards'});
+    await fade.finished;finish();
+    const reveal=shade.animate([{opacity:1},{opacity:0}],{duration:320,easing:'ease-out',fill:'forwards'});
+    await reveal.finished;reveal.cancel();
+  }finally{
+    if(current==='locking')finish();
+    shade.remove();if(fade)fade.cancel();screen.inert=false;
+  }
+}
+// Bring up the passcode keypad with a soft upward spring.
+function animatePinEntry(){
+  if(current!=='lock')return;
+  entered='';updateDots();$('pinMessage').textContent='';
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){show('pin');return;}
+  const screen=document.querySelector('.screen');
+  const cover=$('lock').cloneNode(true);
+  cover.removeAttribute('id');cover.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+  cover.setAttribute('aria-hidden','true');cover.inert=true;
+  cover.style.zIndex='13';cover.style.pointerEvents='none';
+  show('pin');current='pin-opening';screen.append(cover);$('pin').inert=true;
+  const animations=[
+    cover.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(-18px)'}],{duration:240,easing:'ease-out',fill:'both'}),
+    $('pin').querySelector('h2').animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'none'}],{duration:300,easing:'ease-out',fill:'both'}),
+    $('dots').animate([{opacity:0},{opacity:1}],{duration:300,fill:'both'}),
+    $('keys').animate([{opacity:0,transform:'translate3d(0,0,0) scale(.72)'},{opacity:1,transform:'translate3d(0,0,0) scale(1)'}],{duration:400,easing:'cubic-bezier(.18,.8,.25,1)',fill:'both'}),
+    $('pin').querySelector('.pin-actions').animate([{opacity:0,transform:'translateY(20px)'},{opacity:1,transform:'none'}],{duration:360,easing:'ease-out',fill:'both'})
+  ];
+  // Retire each finished overlay before the keypad reaches its final size.
+  animations.slice(0,3).concat(animations.slice(4)).forEach(animation=>{
+    animation.finished.then(()=>{if(animation===animations[0])cover.remove();animation.cancel();},()=>{});
+  });
+  Promise.allSettled(animations.map(animation=>animation.finished)).then(()=>{
+    cover.remove();animations.forEach(animation=>animation.cancel());$('pin').inert=false;if(current==='pin-opening')current='pin';
+  });
+}
+let albumPhotoReturn=null;
+function photoBounds(element){
+ const r=element.getBoundingClientRect();return {left:r.left,top:r.top,width:r.width,height:r.height};
+}
+function animateAlbumPhoto(src,alt,from,to,hiddenImage){
+ if(!from.width||!to.width||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const screen=document.querySelector('.screen'),r=screen.getBoundingClientRect();
+ const layer=document.createElement('div');layer.setAttribute('aria-hidden','true');
+ layer.style.cssText='position:fixed;pointer-events:none;z-index:90;overflow:hidden;border-radius:42px;left:'+r.left+'px;top:'+r.top+'px;width:'+r.width+'px;height:'+r.height+'px';
+ const image=document.createElement('img');image.src=src;image.alt=alt;
+ image.style.cssText='position:absolute;display:block;object-fit:cover;max-width:none;left:'+(to.left-r.left)+'px;top:'+(to.top-r.top)+'px;width:'+to.width+'px;height:'+to.height+'px;transform-origin:0 0';
+ layer.append(image);document.body.append(layer);
+ hiddenImage.style.visibility='hidden';$('page').inert=true;
+ const animation=image.animate([
+  {transform:'translate('+(from.left-to.left)+'px,'+(from.top-to.top)+'px) scale('+(from.width/to.width)+','+(from.height/to.height)+')',borderRadius:'3px'},
+  {transform:'none',borderRadius:'10px'}
+ ],{duration:360,easing:'cubic-bezier(.2,.8,.2,1)',fill:'both'});
+ animation.finished.catch(()=>{}).finally(()=>{hiddenImage.style.visibility='';layer.remove();animation.cancel();$('page').inert=false;});
+}
+function openAlbumPhoto(index,button){
+ const image=button.querySelector('img');
+ albumPhotoReturn={index,tag:albumTag,scrollTop:$('pageBody').scrollTop};
+ const from=image?photoBounds(image):null;
+ renderWork(index);
+ const target=$('workImage');
+ if(from&&target)animateAlbumPhoto(target.src,target.alt,from,photoBounds(target),target);
+}
+function closeAlbumPhoto(){
+ const source=$('workImage'),from=source?photoBounds(source):null;
+ const src=source?.src,alt=source?.alt||'';
+ const previous=albumPhotoReturn;
+ if(previous)albumTag=previous.tag;
+ renderAlbum();
+ if(previous)$('pageBody').scrollTop=previous.scrollTop;
+ const target=previous?$('pageBody').querySelector('[data-work="'+previous.index+'"] img'):null;
+ if(from&&target)animateAlbumPhoto(src,alt,from,photoBounds(target),target);
+ albumPhotoReturn=null;
+}
+// Post-to-post navigation keeps the current album filter and return destination.
+const renderWorkWithoutPostNavigation=renderWork;
+renderWork=function(index,origin='album',navigation=null){
+  const returnToCalendar=navigation?navigation.calendarReturn:null;
+  const indices=navigation?navigation.indices:CONTENT.works.map((work,i)=>({work,i})).filter(({work})=>origin==='calendar'||!albumTag||(work.tags||[]).includes(albumTag)).map(({i})=>i);
+  renderWorkWithoutPostNavigation(index,origin);
+  if(featureState.app!=='photos'||featureState.view!=='work')return;
+  if(navigation){featureState.calendarReturn=returnToCalendar;$('back').textContent=returnToCalendar?'‹ 日曆':'‹ 相簿';}
+  featureState.postIndices=indices;
+  const position=indices.indexOf(index);
+  const nav=document.createElement('nav');nav.className='album-post-navigation';nav.setAttribute('aria-label','切換相簿貼文');
+  nav.innerHTML='<button type="button" data-post-step="-1" aria-label="上一篇"'+(position<=0?' disabled':'')+'><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg><span>上一篇</span></button><span class="album-post-count">'+(position+1)+' / '+indices.length+'</span><button type="button" data-post-step="1" aria-label="下一篇"'+(position<0||position>=indices.length-1?' disabled':'')+'><span>下一篇</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>';
+  $('pageBody').prepend(nav);
+};
+function adjacentAlbumPost(indices,index,step){
+  const position=indices.indexOf(index),next=position+step;
+  return position<0||next<0||next>=indices.length?null:indices[next];
+}
+function navigateAlbumPost(step){
+  if(current!=='page'||currentApp!=='photos'||featureState.view!=='work'||$('page').inert)return;
+  const indices=featureState.postIndices||[];
+  const next=adjacentAlbumPost(indices,featureState.index,step);
+  if(next===null)return;
+  const context={indices,calendarReturn:featureState.calendarReturn};
+  if(!context.calendarReturn&&albumPhotoReturn)albumPhotoReturn.index=next;
+  const body=$('pageBody'),page=$('page');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){renderWork(next,'album',context);return;}
+  const previousScroll=body.scrollTop;
+  const oldView=body.cloneNode(true);oldView.removeAttribute('id');
+  oldView.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+  oldView.setAttribute('aria-hidden','true');oldView.inert=true;
+  oldView.style.cssText='position:absolute;left:'+body.offsetLeft+'px;top:'+body.offsetTop+'px;width:'+body.clientWidth+'px;height:'+body.clientHeight+'px;margin:0;z-index:2;pointer-events:none;background:#fcf7fa;overflow:hidden;box-sizing:border-box';
+  renderWork(next,'album',context);
+  page.append(oldView);oldView.scrollTop=previousScroll;page.inert=true;
+  const width=body.clientWidth;
+  const options={duration:310,easing:'cubic-bezier(.22,.7,.25,1)',fill:'both'};
+  const outgoing=oldView.animate([{transform:'translateX(0)'},{transform:'translateX('+(-step*width)+'px)'}],options);
+  const incoming=body.animate([{transform:'translateX('+(step*width)+'px)'},{transform:'translateX(0)'}],options);
+  Promise.allSettled([outgoing.finished,incoming.finished]).then(()=>{
+    oldView.remove();outgoing.cancel();incoming.cancel();page.inert=false;
+  });
+}
+$('pageBody').addEventListener('click',event=>{
+ const button=event.target.closest('[data-post-step]');if(button&&!button.disabled)navigateAlbumPost(Number(button.dataset.postStep));
+});
+let albumSwipe=null;
+$('pageBody').addEventListener('touchstart',event=>{
+ albumSwipe=null;
+ if(event.touches.length!==1||featureState.app!=='photos'||featureState.view!=='work'||$('page').inert||!event.target.closest('.work-detail')||event.target.closest('a,.image-nav button'))return;
+ const touch=event.touches[0];albumSwipe={x:touch.clientX,y:touch.clientY,index:featureState.index};
+},{passive:true});
+$('pageBody').addEventListener('touchend',event=>{
+ const start=albumSwipe;albumSwipe=null;
+ if(!start||event.touches.length||event.changedTouches.length!==1||featureState.index!==start.index)return;
+ const touch=event.changedTouches[0],dx=touch.clientX-start.x,dy=touch.clientY-start.y;
+ if(Math.abs(dx)>=55&&Math.abs(dx)>Math.abs(dy)*1.5)navigateAlbumPost(dx<0?1:-1);
+},{passive:true});
+$('pageBody').addEventListener('touchcancel',()=>{albumSwipe=null;},{passive:true});
+// Mouse drags complement touch swipes on every viewport size.
+let albumMouseSwipe=null,albumBlockClickUntil=0;
+$('pageBody').addEventListener('pointerdown',event=>{
+ if(event.pointerType!=='mouse'||event.button!==0)return;
+ albumMouseSwipe=null;
+ if(featureState.app!=='photos'||featureState.view!=='work'||$('page').inert||!event.target.closest('.work-detail')||event.target.closest('a,.image-nav button'))return;
+ albumMouseSwipe={x:event.clientX,y:event.clientY,index:featureState.index};
+});
+document.addEventListener('pointerup',event=>{
+ if(event.pointerType!=='mouse')return;
+ const start=albumMouseSwipe;albumMouseSwipe=null;
+ if(!start||featureState.index!==start.index)return;
+ const dx=event.clientX-start.x,dy=event.clientY-start.y;
+ if(Math.abs(dx)>=55&&Math.abs(dx)>Math.abs(dy)*1.5){albumBlockClickUntil=Date.now()+450;navigateAlbumPost(dx<0?1:-1);}
+});
+document.addEventListener('pointercancel',()=>{albumMouseSwipe=null;});
+$('pageBody').addEventListener('dragstart',event=>{if(event.target.closest('.album-art'))event.preventDefault();});
+$('pageBody').addEventListener('click',event=>{
+ if(Date.now()<albumBlockClickUntil){event.preventDefault();event.stopImmediatePropagation();}
+},true);
+// Summary text is a label; only its arrow accepts pointer toggles.
+document.addEventListener('click',event=>{
+ const summary=event.target.closest('.meeting-fold>summary');
+ if(summary&&!event.target.closest('.meeting-arrow'))event.preventDefault();
+},true);
 </script></body></html>
 
 
