@@ -483,6 +483,8 @@ body{font-family:"JF Huninn",-apple-system,BlinkMacSystemFont,"Noto Sans TC","Mi
 .stage{padding:15px;width:384px;flex:0 0 auto;zoom:var(--phone-scale,1)}
 .case{width:354px;min-width:354px;max-width:354px;height:734px;flex-shrink:0}
 
+/* 一般插圖署名微調；不影響頭貼、相簿與通訊錄選單。 */
+.meeting-art>.artist-credit,.outfit-art>.artist-credit{position:relative;left:-.5px}
 </style></head>
 <body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="case-side-key silent" aria-hidden="true"></span><span class="case-side-key volume-up" aria-hidden="true"></span><span class="case-side-key volume-down" aria-hidden="true"></span><span class="case-side-key power" aria-hidden="true"></span><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm heart" aria-hidden="true"><svg viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="heartMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdfd"/><stop offset=".23" stop-color="#bd719e"/><stop offset=".48" stop-color="#fff"/><stop offset=".73" stop-color="#8e466f"/><stop offset="1" stop-color="#fff0fa"/></linearGradient><linearGradient id="heartGem" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff5fc"/><stop offset=".4" stop-color="#de8cbd"/><stop offset="1" stop-color="#a74786"/></linearGradient><clipPath id="heartCut"><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z"/></clipPath></defs><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="url(#heartGem)" stroke="#a25b85" stroke-width="7" stroke-linejoin="round"/><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="none" stroke="url(#heartMetal)" stroke-width="4" stroke-linejoin="round"/><g clip-path="url(#heartCut)"><path d="m9 20 14-5 9 10-13 9Z" fill="#fff8fe" opacity=".8"/><path d="m23 15 9 10 9-10-9 42Z" fill="#fff" opacity=".35"/><path d="m41 15 14 7-10 12-13-9Z" fill="#e094c3" opacity=".6"/><path d="m19 34 13-9 13 9-13 23Z" fill="#fbe1f3" opacity=".65"/><path d="m10 31 9 3 13 23Z" fill="#ae5b91" opacity=".5"/><path d="m45 34 10-3-23 26Z" fill="#c077a6" opacity=".65"/><path d="m23 15-4 19 13 23 13-23-4-19M19 34l13-9 13 9" fill="none" stroke="#fff4fc" stroke-width=".7" opacity=".7"/></g><path d="M15 25c-1-7 6-10 11-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".95"/><circle cx="12" cy="18" r="1.3" fill="#fff"/></svg></span><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right status-icons" role="img" aria-label="行動訊號良好、Wi-Fi 已連線、電量100%"><svg class="status-signal" viewBox="0 0 20 14" aria-hidden="true"><rect x="1" y="9" width="3" height="4" rx=".7"/><rect x="6" y="6" width="3" height="7" rx=".7"/><rect x="11" y="3" width="3" height="10" rx=".7"/><rect x="16" y="0" width="3" height="13" rx=".7"/></svg><svg class="status-wifi" viewBox="0 0 20 16" aria-hidden="true"><path d="M.5 4.1a14 14 0 0 1 19 0l-2.2 2.3a10.8 10.8 0 0 0-14.6 0ZM4.2 8a8.6 8.6 0 0 1 11.6 0l-2.2 2.3a5.4 5.4 0 0 0-7.2 0ZM7.9 11.9a3.2 3.2 0 0 1 4.2 0L10 14.2Z" fill="currentColor"/></svg><svg class="status-battery" viewBox="0 0 29 14" aria-hidden="true"><rect x=".6" y="1" width="24" height="12" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="2.5" y="3" width="20" height="8" rx="1.4"/><path d="M26 4.5c2 0 2 5 0 5Z" opacity=".65"/></svg></span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">The Ruriverse</div><div class="lock-art" aria-hidden="true"><svg viewBox="0 0 80 80" focusable="false"><path d="M40 67C33 60 12 45 12 29C12 12 31 10 40 25C49 10 68 12 68 29C68 45 47 60 40 67Z"/></svg></div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>您好！此為《極權教師》賢丹尼爾的夢向設定網站！</strong><p>解鎖手機即可閱覽詳細內容♡</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
@@ -690,23 +692,23 @@ const CONTENT = {
     title: '互動關係',
     paragraphs: [
       '友達以上……雖然很想這麼說，但更悲觀一點或許連朋友都算不上，就是瑠璃單方面努力追求賢的關係。',
-      '為了讓兩人的關係能有進一步的發展，瑠璃總是會搬出各種藉口和理由待在賢的身邊，想方設法引起賢的注意，平時有事沒事就會在他身邊嘰哩呱啦說個不停，或是請求他陪自己做什麼事（<em>賢先生，週末跟我一起去逛街嘛！</em>）。',
-      '面對瑠璃的熱情，賢則以一貫冷靜平淡的方式回應，話很少，也沒有什麼情緒波動；不過並不會給人難以接近的感覺，甚至某方面而言，他對瑠璃的態度是相當縱容的，幾乎不會拒絕來自瑠璃的請求。（而瑠璃也因為賢在冷淡外表下的溫柔，更加深了對賢的愛慕……）',
-      '儘管瑠璃平時擔任較為主動的一方，實際上卻很容易自亂陣腳。只要賢稍微給予一點回應，哪怕只是無心之舉，都足以令她瞬間怦然不已——當然，賢本人通常對這點毫無自覺。',
+      '為了讓兩人能有更進一步的發展，瑠璃總是會搬出各種藉口和理由待在賢的身邊，想方設法引起賢的注意，平時有事沒事就會在他身邊嘰哩呱啦說個不停，或是請求他陪自己做什麼事（<em>賢先生，週末陪我一起去逛街嘛！</em>）。',
+      '面對瑠璃的熱情，賢則以一貫冷靜平淡的方式回應，話很少，也沒什麼情緒波動；不過並不會令人覺得難以接近，甚至某方面而言，他對瑠璃的態度是相當縱容的，幾乎不會拒絕來自瑠璃的請求。（而瑠璃也因為賢在冷淡外表下的溫柔，更加深了對賢的愛慕……）',
+      '儘管瑠璃平時通常是較主動的一方，實際上卻很容易自亂陣腳。只要賢稍微給予一點回應，哪怕只是無心之舉，都足以令她瞬間怦然不已——當然，賢本人通常對這點毫無自覺。',
     ],
   },
   {
     id: 'relationship-tmi',
     title: 'TMI',
     bullets: [
-      ['兩人是鄰居（住在同一個社區的不同棟），瑠璃三天兩頭就會跑到賢家拜訪，父母也知道賢的存在。瑠璃的父母很感謝賢對女兒的照顧，對賢很友善且大方。'],
+      ['兩人是鄰居（住在同社區的不同棟），瑠璃三天兩頭就會跑到賢家，父母也知道賢的存在。瑠璃的父母很感謝賢對女兒的照顧，對賢很友善且大方。'],
       ['只要賢沒有工作的事要忙，節假日通常會在瑠璃的主動邀約下兩人一起度過。'],
-      ['瑠璃偶爾會請賢當家教，美其名曰是考前惡補云云，實際上只是想多跟賢相處而已；不過賢倒是會全神貫注在教學上，反而讓瑠璃有點不甘心。'],
+      ['瑠璃偶爾會請賢當家教，美其名曰是考前惡補，實際上只是想跟賢相處而已；不過賢倒是會全神貫注在教學上，反而讓瑠璃有點不甘心。'],
       ['因為沒有交往，不會有過於親暱的肢體接觸<span class="light-text">（相簿中的貼貼圖片請當作夢女病發作時的ＯＯＣ妄想看待）</span>，但有鑑於瑠璃是個沒什麼距離感的笨蛋，可能也不好說……'],
       ['一些情境舉例',
        '<strong>看電影：</strong>瑠璃是很容易入戲、情緒起伏很大的人；賢則幾乎不會有特別的情緒變化，能理性客觀地分析劇情。',
-       '<strong>玩遊戲：</strong>偶爾會一起玩連線遊戲（例：煮◯頭），瑠璃是標準的又菜又愛玩，總是在幫倒忙；而賢每次都能在第一次接觸遊戲後便迅速上手。',
-       '<strong>遊樂園：</strong>賢是玩什麼都無所謂的類型，所以會任由瑠璃拉著他到處跑來跑去；瑠璃不敢去鬼屋，不過意外地喜歡雲霄飛車，是那種一直大叫好可怕但是玩得很開心的人！（在一旁的賢：面不改色搭完全程）']
+       '<strong>玩遊戲：</strong>偶爾會一起玩休閒連線遊戲（例：煮◯頭），瑠璃是標準的又菜又愛玩，總是在幫倒忙；而賢每次都能在第一次接觸遊戲後便迅速上手。',
+       '<strong>遊樂園：</strong>賢是無論玩什麼都無所謂的類型，所以會任由瑠璃拉著他到處跑來跑去；瑠璃不敢去鬼屋，不過意外地喜歡雲霄飛車，是那種一直大叫好可怕但是玩得很開心的人！（在一旁的賢：面不改色搭完全程）']
     ]
   },
   {
@@ -718,16 +720,16 @@ const CONTENT = {
         paragraphs: [
           '有點莫名其妙的人，但是並不討厭。',
           '可以說是被她徹底打亂了生活節奏，但同時也是她為自己除了工作別無他物的生活加入了新的色彩。',
-          '一方面覺得她很好懂，情緒和想法全都寫在臉上，另一方面卻無法理解瑠璃這般喜歡自己的原因。賢從小便與人的惡意為伍，瑠璃這般毫無保留的善意對他來說反而是陌生的，甚至是讓他有點無所適從的。',
-          '遠遠談不及救贖的程度，不過瑠璃的出現，確實是他第一次接觸到這麼純粹（也可以說是天真或傻氣）的好感，在無意識之中也影響了他的情感。',
+          '一方面覺得她很好懂，情緒和想法全都寫在臉上，另一方面卻無法理解瑠璃喜歡自己的原因。賢從小便與人類的惡意為伍，瑠璃這般毫無保留的善意對他來說反而是陌生的，甚至是讓他有點無所適從的。',
+          '遠遠談不及救贖的程度，不過瑠璃的出現確實是他第一次接觸到這麼純粹（也可以說是天真或傻氣）的好感，在無意識之中也影響了他的情感。',
         ],
       },
       {
         title: '瑠璃→賢：',
         paragraphs: [
           '喜歡的人，依賴的人，想要一直待在一起的人。一開始的愛慕或許是出自於對救命恩人的崇拜<span class="light-text">（還有，當然，因為賢長得很帥氣）</span>，但在後續的相處之中，這份戀慕之心已轉為對賢這個人本身的喜歡。',
-          '喜歡賢先生遇到什麼事都冷靜又可靠；喜歡賢先生會答應陪自己做很多事，喜歡賢先生表面不顯，行為卻始終很溫柔……回過神來時，腦中已經全部都是跟賢先生有關的事情了。',
-          '瑠璃的思考一向很簡單，一切行動背後都沒有太多彎彎繞繞的思緒，就只是因為喜歡，所以想靠近，為了這件事而持續努力著！',
+          '喜歡賢先生遇到什麼事都能冷靜又可靠；喜歡賢先生會答應陪自己做很多事，喜歡賢先生表面不顯，行為卻始終很溫柔……回過神來時，腦中已經全部都是跟賢先生有關的事情了。',
+          '瑠璃的思考一向很簡單，行動背後沒有太多彎彎繞繞的思緒，只是因為喜歡，所以想靠近，為了這件事而持續努力著！',
         ],
       },
     ],
@@ -743,10 +745,10 @@ const CONTENT = {
     "credit": "ⓒ 칠칠 님",
     "paragraphs": [],
     "witch": {
-      "ruri": "獨自生活在森林裡的魔女。雖然活了很久，各方面卻都有些笨拙……性格開朗直率，是一個讓人覺得不大可靠、放心不下的魔女。",
-      "ken": "流落街頭後被魔女撿回家的人類小孩。有著超越年齡的成熟，寡言且防備心重。長大後性格同樣冷靜沉著，稍微有些毒舌的傾向，但非常擅長照顧別人（因為從小就得幫瑠璃收拾她闖下的禍……）。",
+      "ruri": "生活在森林裡的魔女。雖然已活了很久，各方面卻都有些笨拙……性格開朗直率，是一個讓人覺得不大可靠、放心不下的魔女。",
+      "ken": "流落街頭後被魔女撿回家的人類小孩。有著超越年齡的成熟，寡言且防備心重。長大之後同樣冷靜沉著，稍微有些毒舌的傾向，但非常擅長照顧別人（因為從小就得幫瑠璃收拾她闖下的禍……）。",
       "names": [
-        "賢→瑠璃：魔女小姐、瑠璃小姐，長大後偶爾會直接喚她瑠璃",
+        "賢→瑠璃：瑠璃小姐。長大後偶爾會直接喚她瑠璃，不高興的時候會故意冷淡地叫魔女小姐。",
         "瑠璃→賢：小賢！"
       ],
       "stages": [
@@ -754,13 +756,13 @@ const CONTENT = {
           "title": "初見之時",
           "paragraphs": [
             "雖然是不老不死的魔女與人類小孩，卻是後者負責照顧前者的關係。",
-            "對瑠璃來說賢是乖巧又可靠的好孩子，賢則覺得瑠璃是一個很吵但又拿她沒辦法的奇怪魔女，越相處越覺得她似乎真的不是壞人……正在漸漸卸下心防中。"
+            "對瑠璃來說，賢是個乖巧又可靠的好孩子，賢則覺得瑠璃是一個很吵但又拿她沒辦法的奇怪魔女，越相處越覺得她似乎真的不是壞人……正在漸漸卸下心防中。"
           ]
         },
         {
           "title": "多年以後",
           "paragraphs": [
-            "兩人一直生活在一起。瑠璃沒有什麼變化，但賢已經成長為非常帥氣的大人了。",
+            "兩人始終一起生活，瑠璃沒有什麼變化，但賢已經成長為非常帥氣挺拔的大人了。",
             "賢現已完全放下對魔女的戒心，瑠璃反而成為了對他而言最親近、也最重要的人。不過，瑠璃似乎依然把他當成小孩子看待，讓賢有些微妙的不悅（並不會表現出來）。"
           ]
         }
@@ -779,7 +781,7 @@ const CONTENT = {
       "characters": [
         [
           "瑠璃",
-          "初次來到人類世界的魅魔，以人類的精氣為食。身為魅魔，誘惑人的手段卻不怎麼樣，還經常自己先害羞起來。唯有撒嬌的時候能無意識地流露出魅魔一族渾然天成的媚態。"
+          "以人類精氣為食的魅魔，初來乍到人類世界。身為魅魔，誘惑人的手段卻不怎麼樣，還經常自己先害羞起來。唯有撒嬌時能無意識地流露出魅魔一族渾然天成的媚態。"
         ],
         [
           "賢",
@@ -793,7 +795,7 @@ const CONTENT = {
       "relationships": [
         "瑠璃來到人間的第一晚，恰巧選中了賢作為吸食精氣的對象；想當然爾最後是沒有成功，但瑠璃卻在被抓住後因賢帥氣的外貌與舉止對他一見鍾情。",
         "由於瑠璃之前未曾傷害過人類，且目前看來不會造成太大的危險，賢決定將她帶回自己的住處進行監視；瑠璃一聽能跟獵人先生同居，馬上高高興興地接受了。",
-        "瑠璃毫不掩飾自己對賢的單戀，因為魅魔的本能，總是緊緊黏著對方，試圖與賢進行肢體接觸；賢雖然放任瑠璃纏著自己，卻完全不為所動，始終以平淡的態度應對。"
+        "瑠璃毫不掩飾自己對賢的單戀，因為魅魔的本能，總是緊緊黏著對方，試圖與賢進行肢體接觸；賢雖然放任瑠璃纏著自己，卻完全不為所動，始終以冷淡而平靜的態度應對。"
       ]
     }
   },
@@ -809,11 +811,11 @@ const CONTENT = {
       "characters": [
         [
           "瑠璃",
-          "活了很久的吸血鬼。以前都躲在山上或鄉間，但隨著時代進步，想要取得血液變得越來越困難，為此涉險跑到城市裡去尋找獵物。缺乏對現代社會的常識。"
+          "活了很久的吸血鬼。以前都躲在山上鄉間，但隨著時代進步，想要取得血液變得越來越困難，為此涉險跑到城市裡去尋找獵物。缺乏對現代社會的常識。"
         ],
         [
           "賢",
-          "普通的人類，上班族。在這個世界觀下沒有原生家庭的問題，因此整個人也顯得較為放鬆（但是性格還是一樣顯得有些冷淡，沒什麼情緒波動）。"
+          "普通的人類，上班族。在這個世界觀下沒有原生家庭的問題，因此整個人也顯得較為放鬆（但是性格還是一樣有些冷淡，沒什麼情緒波動）。"
         ]
       ],
       "names": [
@@ -821,9 +823,9 @@ const CONTENT = {
         "瑠璃→賢：小賢（以歲數來說確實是瑠璃活了更久）"
       ],
       "relationships": [
-        "為了找尋獵物，瑠璃首次來到了人潮眾多的市中心，並選中了深夜獨自走在路上的賢。然而，由於餓得太久，她的身體早已變得十分虛弱，甚至還沒能咬下去就直接昏倒了。",
-        "即使是賢也不免嚇了一跳，但在觀察過程中發現對方似乎不是人類，判斷即使報警或送醫恐怕也沒用，於是決定先將她帶回家，等她醒來再解決其他問題。",
-        "瑠璃醒來後將賢視為救命恩人，懇求對方收留自己；賢覺得也不好放著不管，半推半就之下答應了，莫名展開了一人一吸血鬼的同居生活……瑠璃實在餓得受不了時，賢會讓她喝自己的血暫時充飢，結果讓瑠璃更加依賴他了。"
+        "為了找尋獵物，瑠璃首次來到了人潮眾多的市中心，並且看上了深夜獨自走在路上的賢。然而，由於餓得太久，她的身體早已變得十分虛弱，甚至還沒能咬下去就直接昏倒了。",
+        "即使是賢也不免嚇了一跳，但在過程中察覺對方似乎不是人類，判斷即使報警或送醫恐怕也沒用，於是決定先將她帶回家，等她醒來再解決其他問題。",
+        "瑠璃醒來後將賢視為救命恩人，懇求對方收留自己；賢覺得也不好放著不管，半推半就之下答應了，就此莫名展開了一人一吸血鬼的同居生活……當瑠璃實在餓得受不了時，賢會讓她喝自己的血暫時充飢，結果讓瑠璃更加依賴他了。"
       ]
     }
   },
@@ -839,21 +841,21 @@ const CONTENT = {
       "characters": [
         [
           "瑠璃",
-          "某個虛構國家的公主。雖然身為公主，卻總是調皮搗蛋、靜不下來，擁有十分旺盛的冒險精神，經常給自己的護衛帶來許多麻煩。"
+          "某個虛構國家的公主。明明貴為公主，卻總是靜不下來，老是在調皮搗蛋。擁有十分旺盛的冒險精神，經常給護衛帶來許多麻煩。"
         ],
         [
           "賢",
-          "專門負責保護公主的騎士。從公主小的時候就一直陪伴在她身邊，拿這位活潑過頭的公主很沒輒，卻始終忠誠地守護在公主身邊。"
+          "負責保護公主的騎士。從公主小的時候就一直陪伴在她身邊，拿這位活潑過頭的公主很沒輒，卻始終忠誠地守護在公主身邊。"
         ]
       ],
       "names": [
-        "賢→瑠璃：瑠璃殿下、公主殿下，二人獨處時會在瑠璃的要求下直呼她瑠璃",
-        "瑠璃→賢：賢，鬧彆扭時會故意叫他騎士閣下"
+        "賢→瑠璃：瑠璃殿下、公主殿下",
+        "瑠璃→賢：賢。鬧彆扭的時候會故意賭氣叫他騎士閣下"
       ],
       "relationships": [
-        "瑠璃自幼便戀慕著一直守護在自己身邊的賢。雖然兩人是公主與騎士的關係，但也有諸如牽手、擁抱等的肢體接觸。（大多是瑠璃主動要求的，畢竟是公主的請求，賢也很難拒絕呢……）",
-        "瑠璃對賢懷抱著的是明確的戀愛情感，但對賢而言，這位他從小看到大的公主反而是更接近家人般的存在。即使瑠璃總是做出一大堆讓人哭笑不得的荒唐舉動，他也不曾流露出一絲不滿或埋怨。",
-        "瑠璃知道賢一直將自己視為非常重要的人，卻仍然會為了彼此之間的情感差異而感到苦惱。賢看得出來瑠璃的心意，但沒有打算戳穿。兩人維持著這樣曖昧不明的關係，是稍微有點酸澀的單戀。"
+        "瑠璃自幼便戀慕著一直溫柔守護在自己身邊的賢。雖然是公主與騎士的關係，但也有諸如牽手、擁抱等的肢體接觸。（大多是瑠璃主動要求的，畢竟是公主的請求，賢也很難拒絕呢……）",
+        "瑠璃對賢懷抱著明確的戀愛情感，但對賢而言，這位他從小看到大的公主反而是更接近家人般的存在。即使瑠璃總是做出一大堆讓人哭笑不得的荒唐舉動，他也不曾流露出一絲不滿或埋怨。",
+        "瑠璃知道賢將自己視為重要的人，卻仍然會為了彼此之間的情感差異而感到苦惱。賢看得出來瑠璃的心意，但沒有打算戳破這層窗紙。兩人維持著曖昧不明的關係，是稍微有點酸澀的單戀。"
       ]
     }
   }
@@ -861,7 +863,7 @@ const CONTENT = {
   // 相簿作品；tags 填入 PARO 名稱，會自動產生篩選按鈕。
   // images 可放一張或多張圖片；文字作品也可以填 images: []。
   works: [
-    { id: 'casual-380', title: '', date: '', images: ['album-casual-380.png'], paragraphs: ['🦄✨💞', '♯투샷 ♯여름 ♯거울샷 ♯셀피 ♯오오티디'], tags: ['原世界觀'], credit: 'ⓒ 뫙 님', url: '' },
+    { id: 'casual-380', title: '', date: '', images: ['album-casual-380.png'], paragraphs: ['🦄✨💞', '#투샷 #여름 #거울샷 #셀피 #오오티디'], tags: ['原世界觀'], credit: 'ⓒ 뫙 님', url: '' },
     // { id: 'work-01', title: '作品名稱', date: '2026-06-15', images: ['photo-01.png'], paragraphs: ['配文第一段', '配文第二段'], tags: ['原作'], credit: '繪師名字', url: '' },
     { id: 'selfie-story', title: '', date: '', images: ['story-cover.png'], paragraphs: [
       '하나, 둘, 셋 — 🐶 ⸝꙳.‎˖',
@@ -983,10 +985,10 @@ function renderNotes(section='home'){
       }      return '<section class="note-reading-section'+(entry.witch?' paro-witch':'')+'"><h3>'+escapeHTML(entry.title)+'</h3>'+content+'</section>';
     }    if(section==='stories' && entry.id==='meeting'){
       const afterConfession = [
-        '正如瑠璃所說，她絲毫沒有放棄的打算。告白非但沒有使她因尷尬而退縮，反倒因為心意已經坦白，開始更加直率而積極地向賢表達愛慕。也正是從這時起，瑠璃才真正在賢心裡留下了印象。',
-        '面對如此熱烈的追求，賢不禁有些為難……一方面無法對她的心意置之不理，另一方面又不知該如何妥善回應。所幸瑠璃雖然積極，卻未曾做出真正令他困擾的舉動，因此他暫且決定被動地維持現狀，仍將她視為普通的鄰居看待。',
-        '賢確實想過不該一直放任瑠璃纏著自己，但真要拒絕她卻又於心不忍，於是不知不覺間，瑠璃佔據了他越來越多的時間，而賢也在無意識之中漸漸習慣了瑠璃的存在。',
-        '現階段仍是瑠璃一廂情願的單戀，但她顯然不打算就此止步！至於這份鍥而不捨的愛慕之心，未來是否有機會得到回應，或許就只能交給時間證明了……！'
+        '正如瑠璃所宣告的，她絲毫沒有放棄的打算。告白非但沒有使她因尷尬而退縮，反倒因為心意已經坦白，開始更加直率積極地向賢表達愛慕。也正是從這時起，瑠璃才真正在賢心裡留下了印象。',
+        '面對瑠璃如此熱烈的直球，賢不禁有些為難……一方面無法對她的心意置之不理，另一方面又不知該如何妥善回應。所幸瑠璃雖然積極，卻未曾做出真正令他困擾的舉動，因此他暫且決定被動地維持現狀，仍將她視為普通的鄰居看待。',
+        '賢確實想過，不該一直放任瑠璃纏著自己，但真要拒絕她卻又於心不忍，於是不知不覺間，瑠璃佔據了他越來越多的時間，而賢也在無意識之中漸漸習慣了瑠璃的存在。',
+        '目前仍是瑠璃一廂情願的單戀，但她顯然不打算就此止步。至於未來是否有機會得到回應，或許只能交給時間來回答了……'
       ];
       const meetingArtwork='<figure class="meeting-art"><img src="meeting-rescue.png" alt="夜晚的巷弄裡，賢再次擋在瑠璃身前，替她解圍。" loading="lazy" width="2508" height="3399"><figcaption class="artist-credit">ⓒ 뫙 님</figcaption></figure>';
       const timelineItem=(title,body)=>'<details class="meeting-fold timeline-item"><summary><span class="meeting-arrow" aria-hidden="true">▸</span><span class="timeline-title">'+escapeHTML(title)+'</span></summary>'+(title==='相遇的開始'?paragraphs(body.slice(0,5))+meetingArtwork+paragraphs(body.slice(5)):paragraphs(body))+'</details>';
@@ -1007,13 +1009,13 @@ function renderParo(index){
   featureState={app:'notes',view:'paro-detail',index};
   featurePage('notes',entry.title,'<article class="reading-sheet"><h2>'+escapeHTML(entry.title)+'</h2>'+paragraphs(entry.paragraphs)+'</article>','‹ PARO');
 }
-function workTags(){const tags=[...new Set([...CONTENT.paros.map(p=>p.title),...CONTENT.works.flatMap(w=>w.tags||[])])];return [...tags.filter(t=>t!=='主題換裝'),...tags.filter(t=>t==='主題換裝')];}
+function workTags(){const tags=[...new Set([...CONTENT.paros.map(p=>p.title),...CONTENT.works.flatMap(w=>w.tags||[])])];return [...tags.filter(t=>t==='原世界觀'),...tags.filter(t=>t!=='原世界觀'&&t!=='主題換裝'),...tags.filter(t=>t==='主題換裝')];}
 function renderAlbum(){
   featureState={app:'photos',view:'list',index:null};
   const choices=['',...workTags()],visible=CONTENT.works.map((w,i)=>({w,i})).filter(({w})=>!albumTag||(w.tags||[]).includes(albumTag));
   const filter='<div class="tag-scroller" aria-label="依 PARO 篩選">'+choices.map((t,i)=>'<button type="button" class="tag-chip" data-tag-index="'+i+'" aria-pressed="'+(albumTag===t)+'">'+escapeHTML(t||'全部')+'</button>').join('')+'</div>';
   const cards=visible.map(({w,i})=>{const img=imageURL(w.images?.[0]);const label=w.title||w.paragraphs?.[0]||'查看作品';return '<button class="album-thumb" type="button" data-work="'+i+'" aria-label="'+escapeHTML(label)+'">'+(img?'<img src="'+escapeHTML(img)+'" alt="'+escapeHTML(w.title||'賢與瑠璃的雙人作品')+'" loading="lazy">':'<span aria-hidden="true">☷</span>')+'</button>';}).join('');
-  featurePage('photos','相簿','<div class="tag">PICTURES & WORDS</div>'+filter+(cards?'<div class="album-grid">'+cards+'</div>':emptyMessage('❀',albumTag?'這個分類還沒有作品':'等待收藏第一份回憶','圖片與配文都會一起收藏在這裡。')));
+  featurePage('photos','相簿','<div class="tag">PICTURES & WORDS</div>'+filter+(cards?'<div class="album-grid">'+cards+'</div>':emptyMessage('❀',albumTag?'這個分類還沒有作品':'等待收藏第一份回憶','')));
   $('pageBody').querySelectorAll('[data-tag-index]').forEach(b=>b.onclick=()=>{albumTag=choices[Number(b.dataset.tagIndex)];renderAlbum();});
   $('pageBody').querySelectorAll('[data-work]').forEach(b=>b.onclick=()=>openAlbumPhoto(Number(b.dataset.work),b));
 }
@@ -1104,7 +1106,7 @@ function renderCalendar(){
   renderEventList();renderUpcomingDates();updateAnniversary();
 }
 const originalOpenApp=openApp;
-openApp=function(id){if(!unlocked)return;if(id==='notes'){renderNotes();return;}if(id==='photos'){renderAlbum();return;}if(id==='messages'){renderChat();return;}if(id==='calendar'){selectedDate=taipeiToday();calendarYear=Number(selectedDate.slice(0,4));calendarMonth=Number(selectedDate.slice(5,7))-1;renderCalendar();return;}featureState={app:id,view:'list',index:null};originalOpenApp(id);};
+openApp=function(id){if(!unlocked)return;if(id==='notes'){renderNotes();return;}if(id==='photos'){albumTag='';albumPhotoReturn=null;renderAlbum();return;}if(id==='messages'){renderChat();return;}if(id==='calendar'){selectedDate=taipeiToday();calendarYear=Number(selectedDate.slice(0,4));calendarMonth=Number(selectedDate.slice(5,7))-1;renderCalendar();return;}featureState={app:id,view:'list',index:null};originalOpenApp(id);};
 $('back').onclick=()=>{
   if(currentApp==='characterMale'||currentApp==='characterFemale'){openApp('contacts');return;}
   if(currentApp==='notes'&&featureState.view==='paro-detail'){renderNotes('paros');return;}
@@ -1455,8 +1457,9 @@ window.addEventListener('resize',fitPhoneToViewport,{passive:true});
 function syncReadingWidth(){
  const body=document.getElementById('pageBody');if(!body||!body.offsetWidth)return;
  const gutter=Math.max(0,body.offsetWidth-body.clientWidth);
- const padding=19+Math.max(0,6-gutter);
- if(body.style.paddingRight!==padding+'px')body.style.paddingRight=padding+'px';
+ const left=22,right=Math.max(0,22-gutter);
+ if(body.style.paddingLeft!==left+'px')body.style.paddingLeft=left+'px';
+ if(body.style.paddingRight!==right+'px')body.style.paddingRight=right+'px';
 }
 const readingWidthObserver=new ResizeObserver(syncReadingWidth);
 readingWidthObserver.observe(document.getElementById('pageBody'));
