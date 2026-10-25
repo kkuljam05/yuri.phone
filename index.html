@@ -14,7 +14,7 @@
 
 /* 備忘錄：兩份相同格式的角色資料，可點標題收合。 */
 .character-note{border:1px solid #ead6e2;border-radius:18px;background:#fff;margin:14px 0;overflow:hidden}
-.note-content{padding:2px 16px 20px}.note-content h3{font-size:14px;font-weight:700;color:#895a74;letter-spacing:1px;border-bottom:1px solid #efdee7;padding-bottom:9px;margin:24px 0 13px}
+.note-content{padding:2px 15px 20px}.note-content h3{font-size:14px;font-weight:700;color:#895a74;letter-spacing:1px;border-bottom:1px solid #efdee7;padding-bottom:9px;margin:24px 0 13px}
 .note-content p{font-size:13px;line-height:1.6;color:#765a6a;overflow-wrap:anywhere;margin:0 0 15px}
 .note-content p:last-child{margin-bottom:0}.profile-list{list-style:none;padding:0;margin:0;color:#765a6a;font-size:13px;line-height:1.6}
 .profile-list li{margin:4px 0}.profile-list strong{font-weight:600;color:#80566f}
@@ -61,9 +61,9 @@
 .meeting-fold>summary:focus-visible{outline:2px solid #be8ca8;outline-offset:4px;border-radius:4px}
 .reading-sheet .entry-paragraph.meeting-hint{line-height:1.6;margin:6px 0 4px}
 .meeting-fold>summary{line-height:1.6}
-.reading-sheet .meeting-fold > .entry-paragraph:first-of-type{margin-top:6px}
+.reading-sheet .meeting-fold > .entry-paragraph:first-of-type{margin-top:10px}
 .timeline-title{text-decoration:underline;text-underline-offset:3px}
-.timeline-item + .timeline-item{margin-top:6px}
+.timeline-item + .timeline-item{margin-top:10px}
 .reading-sheet .names-section .entry-paragraph{margin:0}.reading-sheet .names-section .entry-paragraph + .entry-paragraph{margin-top:6px}
 /* 手機內頁捲軸：細版藕粉色與淡粉色軌道。 */
 .pagebody{scrollbar-width:thin;scrollbar-color:#c391ad #f7eaf2}
@@ -82,7 +82,7 @@
 /* 固定造型的 SVG 蝴蝶結，跨裝置不使用 Emoji。 */
 .bow{display:block;right:-20px;top:51px;width:62px;height:56px;font-size:0;transform:rotate(15deg)}
 .bow svg{display:block;width:100%;height:100%}
-.thought-perspective h4{text-decoration:underline;text-underline-offset:3px;font-size:13px;font-weight:700;line-height:1.6;color:#895a74;margin:14px 0 6px}
+.thought-perspective h4{text-decoration:underline;text-underline-offset:3px;font-size:13px;font-weight:700;line-height:1.6;color:#895a74;margin:14px 0 10px}
 .reading-sheet .thought-perspective .entry-paragraph{margin:0 0 10px}
 .reading-sheet .thought-perspective .entry-paragraph:last-child{margin-bottom:0}
 .thought-perspective + .thought-perspective{margin-top:12px;padding-top:0}
@@ -146,11 +146,11 @@
 .contact-art .artist-credit{display:block;text-align:center}
 .profile-art{position:relative;width:124px;margin:8px auto 0}
 .profile-art .character-profile-avatar{margin:0}
-.profile-art .artist-credit{position:absolute;left:calc(100% + 4px);bottom:3px;font-size:8px}
+.profile-art .artist-credit{position:absolute;left:calc(100% + 4px);bottom:1px;font-size:8px;line-height:1}
 .character-detail > .profile-art + .note-content h3:first-child{margin-top:18px}
 .outfit-drawings{margin:8px 0 0}
-.outfit-fold img{display:block;max-width:100%;height:auto;margin:6px auto 10px}
-.outfit-art{margin:8px 0 12px}.outfit-art figcaption{text-align:right}
+.outfit-fold img{display:block;max-width:100%;height:auto;margin:0 auto 10px}
+.outfit-art{margin:10px 0 0}.outfit-art figcaption{text-align:right}
 .outfit-enlarge{display:block;width:100%;padding:0;background:transparent;cursor:zoom-in}
 .outfit-viewer{border:0;padding:48px 12px 42px;width:100vw;height:100dvh;max-width:100vw;max-height:100dvh;margin:0;background:#2b1d2cf0;overflow:auto}
 .outfit-viewer::backdrop{background:#2b1d2ce8}
@@ -213,8 +213,8 @@
 .contact-card .contact-portrait-window .contact-portrait{position:absolute;top:-20.8px;left:0;width:90px;height:auto;max-width:none;margin:0;flex:none}
 .contact-reverse .contact-portrait-window{height:90px}
 .contact-card.contact-reverse .contact-portrait-window .contact-portrait{top:-23.15px}
-.contact-art{gap:5px}
-.contact-art .artist-credit{line-height:1.2}
+.contact-art{gap:6px}
+.contact-art .artist-credit{font-size:8px;line-height:1.2}
 .heart{display:block;left:-24px;bottom:56px;width:57px;height:64px;font-size:0;text-shadow:none;transform:rotate(-9deg);filter:drop-shadow(0 2px 2px #9d65816b)}.heart svg{display:block;width:100%;height:100%}
 .note-content .tmi-list{padding-left:19px;margin:0;color:#765a6a;font-size:13px;line-height:1.6}.tmi-list li{padding-left:2px;margin:0 0 15px;overflow-wrap:anywhere}.tmi-list li:last-child{margin-bottom:0}.tmi-list li::marker{color:#ac7294}
 /* Match profile paragraphs and keep bullet spacing compact and consistent. */
@@ -257,7 +257,7 @@
 .outfit-toggle{display:flex;align-items:center;gap:5px;background:transparent;padding:0;color:#765a6a;font-size:13px;line-height:1.6}
 .outfit-toggle[aria-expanded=true] .meeting-arrow{transform:rotate(90deg)}
 .outfit-panel[hidden]{display:none}
-.outfit-panel img{display:block;max-width:100%;height:auto;margin:6px auto 10px}
+.outfit-panel img{display:block;max-width:100%;height:auto;margin:0 auto 5px}
 .site-guide-list{list-style:none;padding:0;margin:0 0 10px;color:#765a6a;font-size:13px;line-height:1.6}.site-guide-list li{margin:0 0 10px}.site-guide-list strong{font-weight:600;color:#895a74}
 .site-guide-list{padding-left:12px}
 .site-guide-list li{position:relative;padding-left:0}
@@ -303,7 +303,7 @@ body{font-family:"JF Huninn",-apple-system,BlinkMacSystemFont,"Noto Sans TC","Mi
 .story-tmi-list>li{position:relative;margin:0 0 10px;padding:0}
 .story-tmi-list>li:last-child{margin-bottom:0}
 .story-tmi-list>li::before{content:"";position:absolute;left:-10px;top:.65em;width:4px;height:4px;border-radius:50%;background:#ac7294}
-.story-tmi-list>li:nth-child(3){margin-top:30.8px}
+.story-tmi-list>li:nth-child(3){margin-top:0}
 .album-post-navigation{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 14px;color:#a17a91}
 .album-post-navigation button{display:flex;align-items:center;justify-content:center;gap:3px;min-height:34px;padding:5px 7px;border-radius:10px;background:#f2e4ed;color:#895a74;font-size:11px}
 .album-post-navigation button:disabled{opacity:.35;cursor:default}
@@ -366,7 +366,7 @@ body{font-family:"JF Huninn",-apple-system,BlinkMacSystemFont,"Noto Sans TC","Mi
 .meeting-fold[open]>summary .meeting-arrow::after,.outfit-toggle[aria-expanded=true] .meeting-arrow::after{transform:rotate(90deg)}
 .meeting-fold>summary .meeting-arrow,.outfit-toggle .meeting-arrow{color:#765a6a}
 .thought-perspective h4{color:#765a6a}
-.thought-perspective + .thought-perspective{margin-top:32.8px}
+.thought-perspective + .thought-perspective{margin-top:22px}
 .meeting-fold>summary .timeline-title,.outfit-choice>.timeline-title{font-weight:400}
 .thought-perspective h4{font-weight:400}
 .thought-list{list-style:none;margin:0;padding-left:12px}
@@ -376,7 +376,7 @@ body{font-family:"JF Huninn",-apple-system,BlinkMacSystemFont,"Noto Sans TC","Mi
 .meeting-fold>.entry-paragraph{margin-left:21px}
 /* Keep expanded illustrations aligned with the inset reading text. */
 .meeting-fold>.meeting-art{margin-left:21px}
-.outfit-item+.outfit-item{margin-top:6px}
+.outfit-item+.outfit-item{margin-top:10px}
 .outfit-panel{margin-left:21px;margin-right:0}
 /* Avoid the extra text-baseline space from inline-flex outfit headings. */
 .outfit-choice{display:flex;width:fit-content;font-size:13px;line-height:1.6}
@@ -415,6 +415,68 @@ body{font-family:"JF Huninn",-apple-system,BlinkMacSystemFont,"Noto Sans TC","Mi
 .case-side-key.volume-up{left:-11px;top:158px;height:48px}
 .case-side-key.volume-down{left:-11px;top:220px;height:48px}
 .case-side-key.power{right:-11px;top:181px;height:72px;background:linear-gradient(90deg,#dfabc8,#fff0f8 52%,#d79abb)}
+/* 縮短 App 上方留白，標題以螢幕中心定位 */
+.screen:has(>.page:not(.hidden))>.status{height:47px}
+.screen>.page{top:47px}
+.pagehead{min-height:34px;padding:2px 12px}
+.pagehead h2{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max-content;max-width:58%;margin:0;text-align:center;pointer-events:none}
+.pagehead .back{position:relative;z-index:1}
+.paro-witch h4,.paro-witch h5{font-size:13px;line-height:1.6;color:inherit;margin:0 0 10px;font-weight:700}
+.paro-witch .paro-character{margin-top:14px}
+.paro-witch .paro-stage{margin-top:26px}
+.paro-witch .paro-stage-title{display:inline-block;font-size:13px;font-weight:700;padding:5px 12px;background:#f3e5ee;color:#80546e;border:0;border-radius:9px;margin:0 0 2px;letter-spacing:.5px}
+.paro-witch .paro-character>.entry-paragraph:last-child{margin-bottom:0}
+.paro-fold>summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;border-radius:8px;padding:7px 4px}
+.paro-fold>summary::-webkit-details-marker{display:none}
+.paro-fold>summary h3{margin:0;flex:1}
+.paro-fold>summary:hover{background:transparent}
+.paro-fold-arrow{display:inline-block;font-size:13px;transition:transform .18s;transform-origin:center}
+.paro-fold[open]>summary .paro-fold-arrow{transform:rotate(90deg)}
+.paro-fold-content{padding-top:8px}
+.paro-witch .paro-relationships{margin-top:24px}
+.paro-witch .paro-stage{margin-top:18px}
+.paro-witch .paro-stage-title{margin-bottom:10px}
+.paro-fold>summary{cursor:default;align-items:center;gap:5px;padding:7px 0}
+.paro-fold>summary h3{margin:0;padding:0;border:0;text-decoration:none;line-height:1.6}
+.paro-fold-content h4,.paro-fold-content h5{text-decoration:underline;text-underline-offset:3px}
+.paro-witch .paro-stage-title{display:block;padding:0;background:none;border:0;border-radius:0;color:inherit;letter-spacing:normal;margin:0 0 10px;font-weight:700}
+.paro-info{margin-top:22px}
+.paro-info>h4{font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px;margin:0 0 10px;color:inherit}
+.paro-info-list{padding-left:18px;margin:0;list-style:disc}
+.paro-info-list>li{padding-left:1px;margin:0 0 10px}
+.paro-info-list>li:last-child{margin-bottom:0}
+.paro-info-list .entry-paragraph{margin:0 0 5px}
+.paro-info-list .entry-paragraph:last-child{margin-bottom:0}
+/* 三個介紹頁：大區塊結束至下一個大標題統一為 28px。 */
+.character-detail .note-content>h3{margin-top:28px}.character-detail .note-content>h3:first-child{margin-top:20px}
+.character-detail .note-content>:has(+h3){margin-bottom:0}
+.notes-single-page>.note-reading-section{display:flow-root;margin-bottom:0}
+.notes-single-page>.note-reading-section+.note-reading-section{margin-top:28px}
+.notes-single-page>.note-reading-section>h3:first-child{margin-top:0}
+.notes-single-page>.note-reading-section>:last-child{margin-bottom:0}
+/* 隔離相鄰元素的 margin，確保指定的間距不疊加。 */
+.outfit-item,.meeting-fold,.thought-perspective,.paro-info{display:flow-root}
+.thought-perspective>h4{margin-top:0}
+/* 世界觀補充說明與正文之間保留 22px。 */
+.notes-single-page>.note-reading-section:has(>.entry-paragraph:first-child)>.entry-paragraph:nth-child(3){margin-bottom:22px}
+/* 閱前須知的大區塊間距與其他介紹頁一致。 */
+.notice-sheet>.note-reading-section{display:flow-root;margin-top:28px;margin-bottom:0}
+.notice-sheet>.note-reading-section>h3:first-child{margin-top:0}
+.notice-sheet>.note-reading-section>:last-child{margin-bottom:0}
+.notice-sheet>:has(+.note-reading-section){margin-bottom:0}
+/* 內容頁主標題統一：框頂至標題 20px，標題至首項內容 20px。 */
+.reading-sheet.notice-sheet,.reading-sheet.notes-single-page{padding-top:20px}
+.reading-sheet.notice-sheet>h2:first-child,.reading-sheet.notes-single-page>h2:first-child{margin:0 0 20px;font-size:21px;line-height:1.6}
+.reading-sheet.notice-sheet>h2:first-child+*,.reading-sheet.notes-single-page>h2:first-child+*{margin-top:0}
+/* 相簿額外空行：前段落的 10px 留白，加上 12px 空白，共 22px。 */
+.work-detail .paragraph-spacer{height:12px}
+/* 文字首行含行高留白：相較圖片補償約 4px，統一主標題下方的視覺距離。 */
+.reading-sheet.notice-sheet>h2:first-child:has(+.entry-paragraph),
+.reading-sheet.notes-single-page>h2:first-child:has(+.note-reading-section){margin-bottom:16px}
+/* 頭貼最外層細框上下均保留 20px：外框超出元素本身 1px。 */
+.character-detail>.profile-art{margin-top:6px}
+.character-detail>.profile-art+.note-content{padding-top:1px}
+.character-detail>.profile-art+.note-content>h3:first-child{margin-top:20px}
 </style></head>
 <body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="case-side-key silent" aria-hidden="true"></span><span class="case-side-key volume-up" aria-hidden="true"></span><span class="case-side-key volume-down" aria-hidden="true"></span><span class="case-side-key power" aria-hidden="true"></span><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm heart" aria-hidden="true"><svg viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="heartMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdfd"/><stop offset=".23" stop-color="#bd719e"/><stop offset=".48" stop-color="#fff"/><stop offset=".73" stop-color="#8e466f"/><stop offset="1" stop-color="#fff0fa"/></linearGradient><linearGradient id="heartGem" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff5fc"/><stop offset=".4" stop-color="#de8cbd"/><stop offset="1" stop-color="#a74786"/></linearGradient><clipPath id="heartCut"><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z"/></clipPath></defs><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="url(#heartGem)" stroke="#a25b85" stroke-width="7" stroke-linejoin="round"/><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="none" stroke="url(#heartMetal)" stroke-width="4" stroke-linejoin="round"/><g clip-path="url(#heartCut)"><path d="m9 20 14-5 9 10-13 9Z" fill="#fff8fe" opacity=".8"/><path d="m23 15 9 10 9-10-9 42Z" fill="#fff" opacity=".35"/><path d="m41 15 14 7-10 12-13-9Z" fill="#e094c3" opacity=".6"/><path d="m19 34 13-9 13 9-13 23Z" fill="#fbe1f3" opacity=".65"/><path d="m10 31 9 3 13 23Z" fill="#ae5b91" opacity=".5"/><path d="m45 34 10-3-23 26Z" fill="#c077a6" opacity=".65"/><path d="m23 15-4 19 13 23 13-23-4-19M19 34l13-9 13 9" fill="none" stroke="#fff4fc" stroke-width=".7" opacity=".7"/></g><path d="M15 25c-1-7 6-10 11-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".95"/><circle cx="12" cy="18" r="1.3" fill="#fff"/></svg></span><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right status-icons" role="img" aria-label="行動訊號良好、Wi-Fi 已連線、電量100%"><svg class="status-signal" viewBox="0 0 20 14" aria-hidden="true"><rect x="1" y="9" width="3" height="4" rx=".7"/><rect x="6" y="6" width="3" height="7" rx=".7"/><rect x="11" y="3" width="3" height="10" rx=".7"/><rect x="16" y="0" width="3" height="13" rx=".7"/></svg><svg class="status-wifi" viewBox="0 0 20 16" aria-hidden="true"><path d="M.5 4.1a14 14 0 0 1 19 0l-2.2 2.3a10.8 10.8 0 0 0-14.6 0ZM4.2 8a8.6 8.6 0 0 1 11.6 0l-2.2 2.3a5.4 5.4 0 0 0-7.2 0ZM7.9 11.9a3.2 3.2 0 0 1 4.2 0L10 14.2Z" fill="currentColor"/></svg><svg class="status-battery" viewBox="0 0 29 14" aria-hidden="true"><rect x=".6" y="1" width="24" height="12" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="2.5" y="3" width="20" height="8" rx="1.4"/><path d="M26 4.5c2 0 2 5 0 5Z" opacity=".65"/></svg></span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">The Ruriverse</div><div class="lock-art" aria-hidden="true"><svg viewBox="0 0 80 80" focusable="false"><path d="M40 67C33 60 12 45 12 29C12 12 31 10 40 25C49 10 68 12 68 29C68 45 47 60 40 67Z"/></svg></div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>您好！此為《極權教師》賢丹尼爾的夢向設定網站！</strong><p>解鎖手機即可閱覽詳細內容♡</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
@@ -459,7 +521,7 @@ $('relock').onclick=animateRelock;
 document.addEventListener('keydown',e=>{if(current!=='pin')return;if(/^\d$/.test(e.key)){e.preventDefault();digit(e.key);}if(e.key==='Backspace'){e.preventDefault();entered=entered.slice(0,-1);updateDots();}if(e.key==='Escape')$('cancelPin').click();});
 const pages={
 // 閱前須知：將下方提示段落換成你的須知內容即可。
-settings:{title:'閱前須知',html:'<article class="reading-sheet"><div class="tag">BEFORE YOU READ</div><h2>閱前須知</h2><p class="entry-paragraph">您好！感謝您的點閱♡<br>此為<strong>《極權教師》賢丹尼爾</strong>的夢向網站。</p><figure class="meeting-art"><img src="welcome.png" alt="賢與瑠璃的可愛雙人插圖" loading="lazy"><figcaption class="artist-credit">ⓒ Yuz 님</figcaption></figure><p class="entry-paragraph">本網站內包含少量的人物背景劇透及大量私設，若在閱讀過程中有任何苦手元素請直接關閉網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>網站導覽</h3><ul class="site-guide-list"><li><strong>通訊錄｜角色介紹</strong><br>賢與瑠璃的個人資料、外貌、性格、背景及TMI。</li><li><strong>備忘錄｜人物關係</strong><br>故事的世界觀、兩人的相遇與互動，以及不同設定的PARO。</li><li><strong>相簿｜圖文展示</strong><br>收藏兩人的圖片與文字作品，可依分類瀏覽。</li><li><strong>訊息｜對話彩蛋</strong><br>記錄賢與瑠璃之間的訊息與通話片段。</li><li><strong>日曆｜節日紀念</strong><br>查看節日與紀念日，點擊紫色的節日標題即可前往當天的圖文。</li></ul><p class="entry-paragraph">另外，網站內的箭頭（▸）都可以點擊，以展開或收合內容唷！</p></section><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本網站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">網站內的文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
+settings:{title:'閱前須知',html:'<article class="reading-sheet notice-sheet"><h2>閱前須知</h2><p class="entry-paragraph">您好！感謝您的點閱♡<br>此為<strong>《極權教師》賢丹尼爾</strong>的夢向網站。</p><figure class="meeting-art"><img src="welcome.png" alt="賢與瑠璃的可愛雙人插圖" loading="lazy"><figcaption class="artist-credit">ⓒ Yuz 님</figcaption></figure><p class="entry-paragraph">本網站內包含少量的人物背景劇透及大量私設，若在閱讀過程中有任何苦手元素請直接關閉網站，謝謝🤲🏻</p><section class="note-reading-section"><h3>網站導覽</h3><ul class="site-guide-list"><li><strong>通訊錄｜角色介紹</strong><br>賢與瑠璃的個人資料、外貌、性格、背景及TMI。</li><li><strong>備忘錄｜人物關係</strong><br>故事的世界觀、兩人的相遇與互動，以及不同設定的PARO。</li><li><strong>相簿｜圖文展示</strong><br>收藏兩人的圖片與文字作品，可依分類瀏覽。</li><li><strong>訊息｜對話彩蛋</strong><br>記錄賢與瑠璃之間的訊息與通話片段。</li><li><strong>日曆｜節日紀念</strong><br>查看節日與紀念日，點擊紫色的節日標題即可前往當天的圖文。</li></ul><p class="entry-paragraph">另外，網站內的箭頭（▸）都可以點擊，以展開或收合內容唷！</p></section><section class="note-reading-section"><h3>版權聲明</h3><p class="entry-paragraph">本網站為個人同人創作網站，與原作作者、出版社及官方無關。原作《極權教師》及其角色、世界觀等相關權利，均歸原作者與各權利人所有。</p><p class="entry-paragraph">網站內的文字與設定，未經同意請勿轉載、修改或挪作他用；站內使用的圖片皆為個人委託或朋友贈圖，相關權利歸各自創作者或權利人所有，請勿擅自使用、轉載、修改或挪作他用。</p></section></article>'},
 characterMale: {title:"賢丹尼爾", html:`<article class="character-detail"><div class="profile-art"><img class="character-profile-avatar" src="avatar-male.png" alt="賢丹尼爾的頭貼" width="112" height="112"><span class="artist-credit">ⓒ 햄양 님</span></div><div class="note-content">
 <h3>基本資料</h3>
 <ul class="profile-list">
@@ -588,7 +650,6 @@ const CONTENT = {
       '故事背景位於現代韓國，大部分都與現實生活無異。',
       '隨著教師的管教權受到限制，校園暴力等問題日益嚴重，為了挽救瀕臨崩壞的教育環境，韓國國會與教育部通過相關法案，成立特殊政府機關——<strong>教權保護局</strong>（簡稱教權局）。',
       '教權保護局在處理案件時擁有凌駕於法律之上的權力，會派遣「監察員」前往教權受到侵害的學校，而賢便是教權局的監察員之一。',
-      '\u00a0',
       '雖然世界觀有點嚴肅，不過夢向的互動基本上不會提到這塊（因為瑠璃是一個與校園暴力完全無緣的普通高中生），所以當作一般的現代背景看待即可！',
     ],
   },
@@ -668,11 +729,129 @@ const CONTENT = {
 ],
   // PARO：每個 title 會成為同一頁裡的小標題。新增時複製下方範例，移除行首的 //。
   paros: [
-    { id: 'witch-gathering', title: '魔女集會', subtitle: '', paragraphs: [] },
-    { id: 'hunter-succubus', title: '獵人×魅魔', subtitle: '', paragraphs: [] },
-    { id: 'modern-vampire', title: '現代吸血鬼', subtitle: '', paragraphs: [] },
-    { id: 'western-court', title: '西方宮廷', subtitle: '', paragraphs: [] },
-  ],
+  {
+    "id": "witch-gathering",
+    "title": "魔女集會",
+    "subtitle": "",
+    "image": "paro-witch.png",
+    "credit": "ⓒ 칠칠 님",
+    "paragraphs": [],
+    "witch": {
+      "ruri": "獨自生活在森林裡的魔女。雖然活了很久，各方面卻都有些笨拙……性格開朗直率，是一個讓人覺得不大可靠、放心不下的魔女。",
+      "ken": "流落街頭後被魔女撿回家的人類小孩。有著超越年齡的成熟，寡言且防備心重。長大後性格同樣冷靜沉著，稍微有些毒舌的傾向，但非常擅長照顧別人（因為從小就得幫瑠璃收拾她闖下的禍……）。",
+      "names": [
+        "賢→瑠璃：魔女小姐、瑠璃小姐，長大後偶爾會直接喚她瑠璃",
+        "瑠璃→賢：小賢！"
+      ],
+      "stages": [
+        {
+          "title": "初見之時",
+          "paragraphs": [
+            "雖然是不老不死的魔女與人類小孩，卻是後者負責照顧前者的關係。",
+            "對瑠璃來說賢是乖巧又可靠的好孩子，賢則覺得瑠璃是一個很吵但又拿她沒辦法的奇怪魔女，越相處越覺得她似乎真的不是壞人……正在漸漸卸下心防中。"
+          ]
+        },
+        {
+          "title": "多年以後",
+          "paragraphs": [
+            "兩人一直生活在一起。瑠璃沒有什麼變化，但賢已經成長為非常帥氣的大人了。",
+            "賢現已完全放下對魔女的戒心，瑠璃反而成為了對他而言最親近、也最重要的人。不過，瑠璃似乎依然把他當成小孩子看待，讓賢有些微妙的不悅（並不會表現出來）。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hunter-succubus",
+    "title": "獵人×魅魔",
+    "subtitle": "",
+    "image": "album-hunter-succubus.png",
+    "imageAlt": "獵人賢與魅魔瑠璃的雙人插圖",
+    "credit": "ⓒ 햄양 님",
+    "paragraphs": [],
+    "profile": {
+      "characters": [
+        [
+          "瑠璃",
+          "初次來到人類世界的魅魔，以人類的精氣為食。身為魅魔，誘惑人的手段卻不怎麼樣，還經常自己先害羞起來。唯有撒嬌的時候能無意識地流露出魅魔一族渾然天成的媚態。"
+        ],
+        [
+          "賢",
+          "專門驅除惡魔的獵人，以鐮刀作為武器。看上去冷酷無情，但會對並非存心作惡的惡魔網開一面，是個溫柔的人。認真起來時非常可怕。天生對惡魔有較高的抵抗力，幾乎不會被瑠璃所魅惑。"
+        ]
+      ],
+      "names": [
+        "賢→瑠璃：瑠璃",
+        "瑠璃→賢：獵人先生（賢沒有告訴她自己的名字）"
+      ],
+      "relationships": [
+        "瑠璃來到人間的第一晚，恰巧選中了賢作為吸食精氣的對象；想當然爾最後是沒有成功，但瑠璃卻在被抓住後因賢帥氣的外貌與舉止對他一見鍾情。",
+        "由於瑠璃之前未曾傷害過人類，且目前看來不會造成太大的危險，賢決定將她帶回自己的住處進行監視；瑠璃一聽能跟獵人先生同居，馬上高高興興地接受了。",
+        "瑠璃毫不掩飾自己對賢的單戀，因為魅魔的本能，總是緊緊黏著對方，試圖與賢進行肢體接觸；賢雖然放任瑠璃纏著自己，卻完全不為所動，始終以平淡的態度應對。"
+      ]
+    }
+  },
+  {
+    "id": "modern-vampire",
+    "title": "現代吸血鬼",
+    "subtitle": "",
+    "image": "paro-modern-vampire.png",
+    "imageAlt": "人類賢與吸血鬼瑠璃的雙人插圖",
+    "credit": "ⓒ 햄양 님",
+    "paragraphs": [],
+    "profile": {
+      "characters": [
+        [
+          "瑠璃",
+          "活了很久的吸血鬼。以前都躲在山上或鄉間，但隨著時代進步，想要取得血液變得越來越困難，為此涉險跑到城市裡去尋找獵物。缺乏對現代社會的常識。"
+        ],
+        [
+          "賢",
+          "普通的人類，上班族。在這個世界觀下沒有原生家庭的問題，因此整個人也顯得較為放鬆（但是性格還是一樣顯得有些冷淡，沒什麼情緒波動）。"
+        ]
+      ],
+      "names": [
+        "賢→瑠璃：瑠璃",
+        "瑠璃→賢：小賢（以歲數來說確實是瑠璃活了更久）"
+      ],
+      "relationships": [
+        "為了找尋獵物，瑠璃首次來到了人潮眾多的市中心，並選中了深夜獨自走在路上的賢。然而，由於餓得太久，她的身體早已變得十分虛弱，甚至還沒能咬下去就直接昏倒了。",
+        "即使是賢也不免嚇了一跳，但在觀察過程中發現對方似乎不是人類，判斷即使報警或送醫恐怕也沒用，於是決定先將她帶回家，等她醒來再解決其他問題。",
+        "瑠璃醒來後將賢視為救命恩人，懇求對方收留自己；賢覺得也不好放著不管，半推半就之下答應了，莫名展開了一人一吸血鬼的同居生活……瑠璃實在餓得受不了時，賢會讓她喝自己的血暫時充飢，結果讓瑠璃更加依賴他了。"
+      ]
+    }
+  },
+  {
+    "id": "western-court",
+    "title": "西方宮廷",
+    "subtitle": "",
+    "image": "paro-western-court.png",
+    "imageAlt": "西方宮廷設定中的公主瑠璃與騎士賢",
+    "credit": "ⓒ 코미 님",
+    "paragraphs": [],
+    "profile": {
+      "characters": [
+        [
+          "瑠璃",
+          "某個虛構國家的公主。雖然身為公主，卻總是調皮搗蛋、靜不下來，擁有十分旺盛的冒險精神，經常給自己的護衛帶來許多麻煩。"
+        ],
+        [
+          "賢",
+          "專門負責保護公主的騎士。從公主小的時候就一直陪伴在她身邊，拿這位活潑過頭的公主很沒輒，卻始終忠誠地守護在公主身邊。"
+        ]
+      ],
+      "names": [
+        "賢→瑠璃：瑠璃殿下、公主殿下，二人獨處時會在瑠璃的要求下直呼她瑠璃",
+        "瑠璃→賢：賢，鬧彆扭時會故意叫他騎士閣下"
+      ],
+      "relationships": [
+        "瑠璃自幼便戀慕著一直守護在自己身邊的賢。雖然兩人是公主與騎士的關係，但也有諸如牽手、擁抱等的肢體接觸。（大多是瑠璃主動要求的，畢竟是公主的請求，賢也很難拒絕呢……）",
+        "瑠璃對賢懷抱著的是明確的戀愛情感，但對賢而言，這位他從小看到大的公主反而是更接近家人般的存在。即使瑠璃總是做出一大堆讓人哭笑不得的荒唐舉動，他也不曾流露出一絲不滿或埋怨。",
+        "瑠璃知道賢一直將自己視為非常重要的人，卻仍然會為了彼此之間的情感差異而感到苦惱。賢看得出來瑠璃的心意，但沒有打算戳穿。兩人維持著這樣曖昧不明的關係，是稍微有點酸澀的單戀。"
+      ]
+    }
+  }
+],
   // 相簿作品；tags 填入 PARO 名稱，會自動產生篩選按鈕。
   // images 可放一張或多張圖片；文字作品也可以填 images: []。
   works: [
@@ -785,7 +964,18 @@ function renderNotes(section='home'){
   const category=categories[section];if(!category){renderNotes();return;}
   const data=CONTENT[section]||[];
   const text=data.length?data.map(entry=>{
-    if(section==='stories' && entry.id==='meeting'){
+    if(section==='paros'){
+      let content=paragraphs(entry.paragraphs);
+      const namesSection=items=>'<section class="paro-info"><h4>稱呼方式</h4><ul class="paro-info-list">'+items.map(text=>'<li>'+paragraphs([text])+'</li>').join('')+'</ul></section>';
+      if(entry.witch){
+        const body=entry.witch;
+        content='<figure class="meeting-art"><img src="'+escapeHTML(entry.image)+'" alt="魔女瑠璃與年幼的賢在森林小屋中一起喝茶" loading="lazy" width="2732" height="2048">'+(entry.credit?'<figcaption class="artist-credit">'+escapeHTML(entry.credit)+'</figcaption>':'')+'</figure><section class="paro-info"><h4>人物介紹</h4><ul class="paro-info-list">'+[['瑠璃',body.ruri],['賢',body.ken]].map(([name,text])=>'<li>'+paragraphs([name+'：'+text])+'</li>').join('')+'</ul></section>'+namesSection(body.names)+'<section class="paro-info"><h4>互動關係</h4><ul class="paro-info-list">'+body.stages.map(stage=>'<li>'+paragraphs([stage.title+'：'+stage.paragraphs[0],...stage.paragraphs.slice(1)])+'</li>').join('')+'</ul></section>';
+      }
+      if(entry.profile){
+        const artwork=entry.image?'<figure class="meeting-art"><img src="'+escapeHTML(entry.image)+'" alt="'+escapeHTML(entry.imageAlt||'獵人賢與魅魔瑠璃的雙人插圖')+'" loading="lazy">'+(entry.credit?'<figcaption class="artist-credit">'+escapeHTML(entry.credit)+'</figcaption>':'')+'</figure>':'';
+        content=artwork+'<section class="paro-info"><h4>人物介紹</h4><ul class="paro-info-list">'+entry.profile.characters.map(([name,text])=>'<li>'+paragraphs([name+'：'+text])+'</li>').join('')+'</ul></section>'+namesSection(entry.profile.names)+'<section class="paro-info"><h4>互動關係</h4>'+paragraphs(entry.profile.relationships)+'</section>';
+      }      return '<section class="note-reading-section'+(entry.witch?' paro-witch':'')+'"><h3>'+escapeHTML(entry.title)+'</h3>'+content+'</section>';
+    }    if(section==='stories' && entry.id==='meeting'){
       const afterConfession = [
         '正如瑠璃所說，她絲毫沒有放棄的打算。告白非但沒有使她因尷尬而退縮，反倒因為心意已經坦白，開始更加直率而積極地向賢表達愛慕。也正是從這時起，瑠璃才真正在賢心裡留下了印象。',
         '面對如此熱烈的追求，賢不禁有些為難……一方面無法對她的心意置之不理，另一方面又不知該如何妥善回應。所幸瑠璃雖然積極，卻未曾做出真正令他困擾的舉動，因此他暫且決定被動地維持現狀，仍將她視為普通的鄰居看待。',
@@ -915,7 +1105,7 @@ $('back').onclick=()=>{
   if(currentApp==='notes'&&featureState.view!=='home'){renderNotes();return;}
   if(currentApp==='photos'&&featureState.view==='work'){
     const previous=featureState.calendarReturn;
-    if(previous){calendarYear=previous.year;calendarMonth=previous.month;selectedDate=previous.date;renderCalendar();$('pageBody').scrollTop=previous.scrollTop;}
+    if(previous){animateAppSwitch(()=>{calendarYear=previous.year;calendarMonth=previous.month;selectedDate=previous.date;renderCalendar();$('pageBody').scrollTop=previous.scrollTop;},-1);}
     else closeAlbumPhoto();
     return;
   }
@@ -984,10 +1174,40 @@ document.addEventListener('click',event=>{
   dialog.addEventListener('close',()=>{dialog.remove();if(trigger.isConnected)trigger.focus();},{once:true});
   dialog.showModal();close.focus();
 });
+// 日曆與相簿之間的 App 切換。
+let appSwitchBusy=false;
+function animateAppSwitch(render,direction=1){
+ if(appSwitchBusy)return;
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){render();return;}
+ const page=$('page'),screen=page.parentElement,status=screen.querySelector('.status');
+ const makeCard=()=>{
+  const card=document.createElement('div');card.setAttribute('aria-hidden','true');card.inert=true;
+  card.style.cssText='position:absolute;inset:0;z-index:16;overflow:hidden;background:#fcf7fa;pointer-events:none;transform-origin:center;will-change:transform;border-radius:0;backface-visibility:hidden';
+  const content=page.cloneNode(true),bar=status.cloneNode(true);
+  [content,bar].forEach(root=>{root.removeAttribute('id');root.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));});
+  content.style.cssText='top:47px;visibility:visible';bar.style.cssText='position:absolute;top:0;left:0;right:0;height:47px;visibility:visible';
+  card.append(content,bar);screen.append(card);content.querySelector('.pagebody').scrollTop=$('pageBody').scrollTop;
+  return card;
+ };
+ const previous=makeCard();render();const next=makeCard();previous.style.zIndex='17';
+ appSwitchBusy=true;page.inert=true;page.style.visibility='hidden';status.style.visibility='hidden';screen.classList.add('app-opening');
+ const options={duration:430,easing:'cubic-bezier(.25,.65,.3,1)',fill:'both'};
+ const outgoing=previous.animate([
+  {offset:0,transform:'translate3d(0,0,0) scale(1)',borderRadius:'0px'},
+  {offset:.28,transform:'translate3d('+(-direction*16)+'%,0,0) scale(.8)',borderRadius:'30px'},
+  {offset:1,transform:'translate3d('+(-direction*108)+'%,0,0) scale(.76)',borderRadius:'32px'}
+ ],options);
+ const incoming=next.animate([
+  {offset:0,transform:'translate3d('+(direction*108)+'%,0,0) scale(.76)',borderRadius:'32px'},
+  {offset:.72,transform:'translate3d('+(direction*16)+'%,0,0) scale(.8)',borderRadius:'30px'},
+  {offset:1,transform:'translate3d(0,0,0) scale(1)',borderRadius:'0px'}
+ ],options);
+ Promise.allSettled([outgoing.finished,incoming.finished]).then(()=>{previous.remove();next.remove();outgoing.cancel();incoming.cancel();page.style.visibility='';status.style.visibility='';screen.classList.remove('app-opening');page.inert=false;appSwitchBusy=false;});
+}
 // Calendar links open matching album entries without a reverse calendar link.
 document.addEventListener('click',event=>{
  const link=event.target.closest('[data-calendar-work]');if(!link)return;
- renderWork(Number(link.dataset.calendarWork),'calendar');
+ animateAppSwitch(()=>renderWork(Number(link.dataset.calendarWork),'calendar'),1);
 });
 // Animate launches from home-screen icons, leaving internal navigation unchanged.
 function openAppAnimated(id,button){
