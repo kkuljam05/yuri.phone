@@ -485,6 +485,25 @@ body{font-family:"JF Huninn",-apple-system,BlinkMacSystemFont,"Noto Sans TC","Mi
 
 /* 一般插圖署名微調；不影響頭貼、相簿與通訊錄選單。 */
 .meeting-art>.artist-credit,.outfit-art>.artist-credit{position:relative;left:-.5px}
+/* 一般介紹正文保留自然字距與欄寬，僅向右微調視覺位置。 */
+.character-detail .note-content>p,
+.notice-sheet .entry-paragraph:not(li .entry-paragraph),
+.notes-single-page .entry-paragraph:not(li .entry-paragraph):not(.meeting-fold .entry-paragraph){text-align:left;text-align-last:auto;position:relative;left:1px}
+/* 相簿一般配文僅向右微調，不改變字距、欄寬與換行。 */
+.work-detail .reading-sheet>.entry-paragraph:not(.align-center):not(.align-right){position:relative;left:1px}
+/* 條列與展開內文微調；保持原本內縮、字寬及換行。 */
+.reading-sheet li>.entry-paragraph,.meeting-fold>.entry-paragraph{position:relative;left:1px}
+.profile-list>li,.names-list>li,.note-content .tmi-list>li,.site-guide-list>li{position:relative;left:1px}
+.profile-list>li::before,.names-list>li::before,.note-content .tmi-list>li::before,.site-guide-list>li::before{left:-10px}
+/* 圓點及收合箭頭同步右移，包含箭頭的固定底色區域。 */
+.story-tmi-list>li::before{translate:1px 0}
+.paro-info-list>li{position:relative;left:1px}
+.paro-info-list>li>.entry-paragraph{left:0}
+.meeting-arrow{translate:1px 0}
+/* PARO 條列圓點與內縮和人物介紹、兩人的故事一致。 */
+.paro-info-list{list-style:none;padding-left:12px;font-size:13px;line-height:1.6}
+.paro-info-list>li{padding-left:0}
+.paro-info-list>li::before{content:"";position:absolute;left:-10px;top:.65em;width:4px;height:4px;border-radius:50%;background:#ac7294}
 </style></head>
 <body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="case-side-key silent" aria-hidden="true"></span><span class="case-side-key volume-up" aria-hidden="true"></span><span class="case-side-key volume-down" aria-hidden="true"></span><span class="case-side-key power" aria-hidden="true"></span><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm heart" aria-hidden="true"><svg viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="heartMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdfd"/><stop offset=".23" stop-color="#bd719e"/><stop offset=".48" stop-color="#fff"/><stop offset=".73" stop-color="#8e466f"/><stop offset="1" stop-color="#fff0fa"/></linearGradient><linearGradient id="heartGem" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff5fc"/><stop offset=".4" stop-color="#de8cbd"/><stop offset="1" stop-color="#a74786"/></linearGradient><clipPath id="heartCut"><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z"/></clipPath></defs><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="url(#heartGem)" stroke="#a25b85" stroke-width="7" stroke-linejoin="round"/><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="none" stroke="url(#heartMetal)" stroke-width="4" stroke-linejoin="round"/><g clip-path="url(#heartCut)"><path d="m9 20 14-5 9 10-13 9Z" fill="#fff8fe" opacity=".8"/><path d="m23 15 9 10 9-10-9 42Z" fill="#fff" opacity=".35"/><path d="m41 15 14 7-10 12-13-9Z" fill="#e094c3" opacity=".6"/><path d="m19 34 13-9 13 9-13 23Z" fill="#fbe1f3" opacity=".65"/><path d="m10 31 9 3 13 23Z" fill="#ae5b91" opacity=".5"/><path d="m45 34 10-3-23 26Z" fill="#c077a6" opacity=".65"/><path d="m23 15-4 19 13 23 13-23-4-19M19 34l13-9 13 9" fill="none" stroke="#fff4fc" stroke-width=".7" opacity=".7"/></g><path d="M15 25c-1-7 6-10 11-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".95"/><circle cx="12" cy="18" r="1.3" fill="#fff"/></svg></span><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right status-icons" role="img" aria-label="行動訊號良好、Wi-Fi 已連線、電量100%"><svg class="status-signal" viewBox="0 0 20 14" aria-hidden="true"><rect x="1" y="9" width="3" height="4" rx=".7"/><rect x="6" y="6" width="3" height="7" rx=".7"/><rect x="11" y="3" width="3" height="10" rx=".7"/><rect x="16" y="0" width="3" height="13" rx=".7"/></svg><svg class="status-wifi" viewBox="0 0 20 16" aria-hidden="true"><path d="M.5 4.1a14 14 0 0 1 19 0l-2.2 2.3a10.8 10.8 0 0 0-14.6 0ZM4.2 8a8.6 8.6 0 0 1 11.6 0l-2.2 2.3a5.4 5.4 0 0 0-7.2 0ZM7.9 11.9a3.2 3.2 0 0 1 4.2 0L10 14.2Z" fill="currentColor"/></svg><svg class="status-battery" viewBox="0 0 29 14" aria-hidden="true"><rect x=".6" y="1" width="24" height="12" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="2.5" y="3" width="20" height="8" rx="1.4"/><path d="M26 4.5c2 0 2 5 0 5Z" opacity=".65"/></svg></span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">The Ruriverse</div><div class="lock-art" aria-hidden="true"><svg viewBox="0 0 80 80" focusable="false"><path d="M40 67C33 60 12 45 12 29C12 12 31 10 40 25C49 10 68 12 68 29C68 45 47 60 40 67Z"/></svg></div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>您好！此為《極權教師》賢丹尼爾的夢向設定網站！</strong><p>解鎖手機即可閱覽詳細內容♡</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
@@ -746,7 +765,7 @@ const CONTENT = {
     "paragraphs": [],
     "witch": {
       "ruri": "生活在森林裡的魔女。雖然已活了很久，各方面卻都有些笨拙……性格開朗直率，是一個讓人覺得不大可靠、放心不下的魔女。",
-      "ken": "流落街頭後被魔女撿回家的人類小孩。有著超越年齡的成熟，寡言且防備心重。長大之後同樣冷靜沉著，稍微有些毒舌的傾向，但非常擅長照顧別人（因為從小就得幫瑠璃收拾她闖下的禍……）。",
+      "ken": "流落街頭的人類小孩，暈倒後被恰好路過的魔女撿回了家。有著超越年齡的成熟，寡言且防備心重。長大之後同樣冷靜沉著，稍微有些毒舌，但非常擅長照顧別人（因為從小就得幫瑠璃收拾她闖下的禍……）。",
       "names": [
         "賢→瑠璃：瑠璃小姐。長大後偶爾會直接喚她瑠璃，不高興的時候會故意冷淡地叫魔女小姐。",
         "瑠璃→賢：小賢！"
@@ -755,15 +774,15 @@ const CONTENT = {
         {
           "title": "初見之時",
           "paragraphs": [
-            "雖然是不老不死的魔女與人類小孩，卻是後者負責照顧前者的關係。",
-            "對瑠璃來說，賢是個乖巧又可靠的好孩子，賢則覺得瑠璃是一個很吵但又拿她沒辦法的奇怪魔女，越相處越覺得她似乎真的不是壞人……正在漸漸卸下心防中。"
+            "雖是不老不死的魔女與人類小孩，卻是後者負責照顧前者的關係。",
+            "對瑠璃來說，賢是一個乖巧又可靠的好孩子，賢則覺得瑠璃是一個很吵但又拿她沒辦法的奇怪魔女，越相處越覺得她似乎真的不是壞人……正在漸漸對她卸下心防。"
           ]
         },
         {
           "title": "多年以後",
           "paragraphs": [
             "兩人始終一起生活，瑠璃沒有什麼變化，但賢已經成長為非常帥氣挺拔的大人了。",
-            "賢現已完全放下對魔女的戒心，瑠璃反而成為了對他而言最親近、也最重要的人。不過，瑠璃似乎依然把他當成小孩子看待，讓賢有些微妙的不悅（並不會表現出來）。"
+            "賢現已完全放下對魔女的戒心，瑠璃反而成為了對他而言最親近、同時也是最為重要的人。不過，瑠璃似乎依然把他當成小孩子看待，讓賢有些微妙的不悅（並不會表現出來）。"
           ]
         }
       ]
@@ -785,7 +804,7 @@ const CONTENT = {
         ],
         [
           "賢",
-          "專門驅除惡魔的獵人，以鐮刀作為武器。看上去冷酷無情，但會對並非存心作惡的惡魔網開一面，是個溫柔的人。認真起來時非常可怕。天生對惡魔有較高的抵抗力，幾乎不會被瑠璃所魅惑。"
+          "專門驅除惡魔的獵人，以巨型鐮刀作為武器。看上去冷酷無情，卻會對那些並非存心作惡的惡魔網開一面，是個溫柔的人。天生對魔法等事物有較高的抵抗力，幾乎不會被瑠璃所魅惑。"
         ]
       ],
       "names": [
@@ -811,7 +830,7 @@ const CONTENT = {
       "characters": [
         [
           "瑠璃",
-          "活了很久的吸血鬼。以前都躲在山上鄉間，但隨著時代進步，想要取得血液變得越來越困難，為此涉險跑到城市裡去尋找獵物。缺乏對現代社會的常識。"
+          "活了很久的吸血鬼。以前都躲在山上或是鄉間，但隨著時代進步，想要取得血液變得越來越困難，為此涉險跑到城市裡去尋找獵物。缺乏對現代社會的常識。"
         ],
         [
           "賢",
@@ -833,9 +852,9 @@ const CONTENT = {
     "id": "western-court",
     "title": "西方宮廷",
     "subtitle": "",
-    "image": "paro-western-court.png",
+    "image": "paro-western-court.jpg",
     "imageAlt": "西方宮廷設定中的公主瑠璃與騎士賢",
-    "credit": "ⓒ 코미 님",
+    "credit": "ⓒ YY 님",
     "paragraphs": [],
     "profile": {
       "characters": [
@@ -849,8 +868,8 @@ const CONTENT = {
         ]
       ],
       "names": [
-        "賢→瑠璃：瑠璃殿下、公主殿下",
-        "瑠璃→賢：賢。鬧彆扭的時候會故意賭氣叫他騎士閣下"
+        "賢→瑠璃：瑠璃殿下、公主殿下。獨處時偶爾會直接叫她瑠璃（通常是為了哄瑠璃高興）。",
+        "瑠璃→賢：賢。鬧彆扭的時候會故意賭氣地叫他騎士閣下。"
       ],
       "relationships": [
         "瑠璃自幼便戀慕著一直溫柔守護在自己身邊的賢。雖然是公主與騎士的關係，但也有諸如牽手、擁抱等的肢體接觸。（大多是瑠璃主動要求的，畢竟是公主的請求，賢也很難拒絕呢……）",
