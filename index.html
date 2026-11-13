@@ -113,7 +113,7 @@
 .desktop{inset:0;padding-top:67px}
 .desktop .dock{bottom:40px}
 /* 只替 APP 狀態列補底色，不改變內頁高度或間距。 */
-.screen:not(.app-closing):not(.app-opening):has(.page:not(.hidden)) .status{background:#fcf7fa}
+.screen:not(.app-closing):not(.app-opening):has(#page:not(.hidden)):not(:has(#page .call-screen)) > .status{background:#fcf7fa}
 /* 縮小 APP 標題列的上下留白。 */
 .pagehead{padding:7px 12px}
 /* 鎖定與密碼畫面使用漸層，桌面使用波點。 */
@@ -416,9 +416,12 @@ body{font-family:"JF Huninn",-apple-system,BlinkMacSystemFont,"Noto Sans TC","Mi
 .case-side-key.volume-down{left:-11px;top:220px;height:48px}
 .case-side-key.power{right:-11px;top:181px;height:72px;background:linear-gradient(90deg,#dfabc8,#fff0f8 52%,#d79abb)}
 /* 縮短 App 上方留白，標題以螢幕中心定位 */
-.screen:has(>.page:not(.hidden))>.status{height:47px}
-.screen>.page{top:47px}
-.pagehead{min-height:34px;padding:2px 12px}
+.screen{--app-status-height:39px}
+.screen:has(>#page .call-screen){--app-status-height:47px}
+.screen:has(>.page:not(.hidden))>.status{height:var(--app-status-height)}
+.screen>.page{top:var(--app-status-height)}
+.pagehead{min-height:35px;padding:0 12px}
+.pagehead .back{min-height:28px;padding:3px 10px}
 .pagehead h2{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max-content;max-width:58%;margin:0;text-align:center;pointer-events:none}
 .pagehead .back{position:relative;z-index:1}
 .paro-witch h4,.paro-witch h5{font-size:13px;line-height:1.6;color:inherit;margin:0 0 10px;font-weight:700}
@@ -504,6 +507,59 @@ body{font-family:"JF Huninn",-apple-system,BlinkMacSystemFont,"Noto Sans TC","Mi
 .paro-info-list{list-style:none;padding-left:12px;font-size:13px;line-height:1.6}
 .paro-info-list>li{padding-left:0}
 .paro-info-list>li::before{content:"";position:absolute;left:-10px;top:.65em;width:4px;height:4px;border-radius:50%;background:#ac7294}
+
+/* 聊天：左右訊息泡泡與可點開的通話紀錄。 */
+.pagebody:has(.messenger){background:#fff2fa;padding-top:14px;padding-bottom:24px}
+.page:has(.messenger) .pagehead{background:#fcf7fa}
+.messenger-date{width:fit-content;max-width:100%;margin:0 auto 22px;padding:5px 11px;border-radius:20px;background:#f3dbf0;color:#76506f;font-size:11px;text-align:center}
+.messenger-line{display:flex;align-items:flex-start;gap:7px;margin:0 0 19px;min-width:0}
+.messenger-avatar{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.messenger-message{max-width:calc(100% - 60px);min-width:0}
+.messenger-name{display:block;font-size:10px;color:#80516f;margin:0 0 5px 2px}
+.messenger-bubble{padding:10px 12px;border-radius:3px 16px 16px 16px;background:#fff;color:#58374e;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.6;box-shadow:inset 0 0 0 1px #f0dce9,0 1px 2px #80516c0a}
+.messenger-me{flex-direction:row-reverse}
+.messenger-me .messenger-bubble{background:#ffd9e8;border-radius:16px 3px 16px 16px}
+.messenger-meta{align-self:flex-end;display:flex;flex-direction:column;font-size:8px;color:#80576f;white-space:nowrap;padding-bottom:2px;gap:2px}
+.messenger-me .messenger-meta{text-align:right}
+.messenger .messenger-end{font-size:10px;line-height:1.6;text-align:center;color:#80576f;margin:25px 0 0}
+.call-record{display:block;width:100%;min-width:155px;padding:12px;background:#fff;color:#68415b;border-radius:4px 16px 16px 16px;text-align:left;box-shadow:0 1px 2px #80516c0a}
+.messenger-me .call-record{background:#ffd9e8;border-radius:16px 4px 16px 16px}
+.call-record-main{display:flex;align-items:center;gap:7px;font-size:12px}
+.call-record svg,.call-return svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.call-record-duration{display:block;margin:5px 0 8px 26px;font-size:11px;color:#80516e}
+.call-record-link{display:block;border-top:1px solid #eab8d0;padding-top:8px;font-size:10px}
+.pagebody:has(.call-screen){background:#91758d;padding-top:20px;padding-bottom:24px;min-height:100%}
+.page:has(.call-screen) .pagehead{background:#91758d;border-bottom-color:#ffffff22;color:#fff}
+.page:has(.call-screen) .pagehead h2,.page:has(.call-screen) .back{color:#fff}
+.call-screen{color:#fff;text-align:center}
+.call-person img{display:block;width:76px;height:76px;border-radius:50%;object-fit:cover;margin:0 auto 12px;border:2px solid #ffffff66}
+.call-person h2{font-size:19px;font-weight:500;margin:0 0 5px}
+.call-person p{color:#f3e5f0;font-size:11px;margin:0 0 10px;line-height:1.6}
+.call-transcript{margin-top:23px;text-align:left}
+.call-dialogue{padding:12px;margin-bottom:10px;background:#ffffff12;border:1px solid #ffffff18;border-radius:14px}
+.call-dialogue strong{display:block;font-size:10px;font-weight:500;color:#f5d5e9;margin-bottom:5px}
+.call-screen .call-dialogue p{font-size:12px;line-height:1.6;color:#fff8fc;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+.call-dialogue-me{background:#f4cce31c}
+.call-return{display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:#d27b9b;color:#fff;border-radius:50%;margin:23px auto 6px;padding:0}
+.call-return svg{width:23px;height:23px;transform:rotate(135deg)}
+.call-return-label{font-size:10px;color:#eedeea}
+
+
+/* 通話以掛斷鍵返回，隱藏內頁導覽列。 */
+.page:has(.call-screen) .pagehead{display:none}
+.page:has(.call-screen) .pagebody{padding-top:28px}
+/* 通話狀態列與內容背景連續。 */
+.screen:has(#page:not(.hidden) .call-screen) > .status{background:#91758d;color:#fff5fc}
+.page:has(.call-screen){background:#91758d}
+.call-screen .call-stage-note{display:block;color:#f3e5f0;font-size:11px;line-height:1.6;margin-top:5px}
+.chat-location{width:210px;max-width:100%;overflow:hidden;border:1px solid #ebc5da;border-radius:16px;background:#fffafd;color:#634059}
+.location-map{display:block;width:100%;height:auto;aspect-ratio:210/116}
+.chat-location-info{display:grid;gap:3px;padding:10px 11px}
+.chat-location-info strong{font-size:13px}
+.chat-location-info span{font-size:10px;overflow-wrap:anywhere}
+.chat-location-foot{display:flex;align-items:center;gap:5px;padding:7px 10px;border-top:1px solid #ead5e2;font-size:10px;color:#80516e}
+.chat-location-foot svg{width:13px;height:13px;flex:none;color:#6f9f85}
+.chat-location-foot small{margin-left:auto;font-size:8px}
 </style></head>
 <body><main class="layout"><section class="stage" aria-label="夢向介紹手機"><div class="case"><span class="case-side-key silent" aria-hidden="true"></span><span class="case-side-key volume-up" aria-hidden="true"></span><span class="case-side-key volume-down" aria-hidden="true"></span><span class="case-side-key power" aria-hidden="true"></span><span class="charm bow" aria-hidden="true"><svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="bowSilk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd4e9"/><stop offset=".5" stop-color="#f18fbd"/><stop offset="1" stop-color="#dc6aa2"/></linearGradient></defs><g stroke="#cb6598" stroke-width="1.4" stroke-linejoin="round"><path d="M43 43 25 79 37 75 43 86 54 47M54 43 76 78 64 75 60 86 47 48" fill="url(#bowSilk)"/><path d="M46 35C34 18 13 12 8 22 3 34 9 55 20 55 30 54 39 46 47 44M54 35C66 18 87 12 92 22 97 34 91 55 80 55 70 54 61 46 53 44" fill="url(#bowSilk)"/><path d="M15 28 43 39 18 46M85 28 57 39 82 46" fill="none" opacity=".55"/><rect x="42" y="31" width="16" height="19" rx="6" fill="url(#bowSilk)"/><path d="m47 35-1 10" stroke="#fff1f7" opacity=".8"/></g></svg></span><span class="charm heart" aria-hidden="true"><svg viewBox="0 0 64 72" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><linearGradient id="heartMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdfd"/><stop offset=".23" stop-color="#bd719e"/><stop offset=".48" stop-color="#fff"/><stop offset=".73" stop-color="#8e466f"/><stop offset="1" stop-color="#fff0fa"/></linearGradient><linearGradient id="heartGem" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff5fc"/><stop offset=".4" stop-color="#de8cbd"/><stop offset="1" stop-color="#a74786"/></linearGradient><clipPath id="heartCut"><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z"/></clipPath></defs><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="url(#heartGem)" stroke="#a25b85" stroke-width="7" stroke-linejoin="round"/><path d="M32 22C20 5 4 17 11 32c4 9 15 19 21 25 6-6 17-16 21-25 7-15-9-27-21-10Z" fill="none" stroke="url(#heartMetal)" stroke-width="4" stroke-linejoin="round"/><g clip-path="url(#heartCut)"><path d="m9 20 14-5 9 10-13 9Z" fill="#fff8fe" opacity=".8"/><path d="m23 15 9 10 9-10-9 42Z" fill="#fff" opacity=".35"/><path d="m41 15 14 7-10 12-13-9Z" fill="#e094c3" opacity=".6"/><path d="m19 34 13-9 13 9-13 23Z" fill="#fbe1f3" opacity=".65"/><path d="m10 31 9 3 13 23Z" fill="#ae5b91" opacity=".5"/><path d="m45 34 10-3-23 26Z" fill="#c077a6" opacity=".65"/><path d="m23 15-4 19 13 23 13-23-4-19M19 34l13-9 13 9" fill="none" stroke="#fff4fc" stroke-width=".7" opacity=".7"/></g><path d="M15 25c-1-7 6-10 11-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".95"/><circle cx="12" cy="18" r="1.3" fill="#fff"/></svg></span><div class="screen"><div id="wallpaper" class="wallpaper"></div><div class="island" aria-hidden="true"></div><div class="status"><span id="statusTime">06:15</span><span class="right status-icons" role="img" aria-label="行動訊號良好、Wi-Fi 已連線、電量100%"><svg class="status-signal" viewBox="0 0 20 14" aria-hidden="true"><rect x="1" y="9" width="3" height="4" rx=".7"/><rect x="6" y="6" width="3" height="7" rx=".7"/><rect x="11" y="3" width="3" height="10" rx=".7"/><rect x="16" y="0" width="3" height="13" rx=".7"/></svg><svg class="status-wifi" viewBox="0 0 20 16" aria-hidden="true"><path d="M.5 4.1a14 14 0 0 1 19 0l-2.2 2.3a10.8 10.8 0 0 0-14.6 0ZM4.2 8a8.6 8.6 0 0 1 11.6 0l-2.2 2.3a5.4 5.4 0 0 0-7.2 0ZM7.9 11.9a3.2 3.2 0 0 1 4.2 0L10 14.2Z" fill="currentColor"/></svg><svg class="status-battery" viewBox="0 0 29 14" aria-hidden="true"><rect x=".6" y="1" width="24" height="12" rx="3" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="2.5" y="3" width="20" height="8" rx="1.4"/><path d="M26 4.5c2 0 2 5 0 5Z" opacity=".65"/></svg></span></div>
 <section id="lock" class="view lock"><div id="date" class="date"></div><div id="clock" class="bigtime">06:15</div><div class="lock-caption">The Ruriverse</div><div class="lock-art" aria-hidden="true"><svg viewBox="0 0 80 80" focusable="false"><path d="M40 67C33 60 12 45 12 29C12 12 31 10 40 25C49 10 68 12 68 29C68 45 47 60 40 67Z"/></svg></div><div class="notice"><div class="notice-label">您有一則新訊息</div><strong>您好！此為《極權教師》賢丹尼爾的夢向設定網站！</strong><p>解鎖手機即可閱覽詳細內容♡</p></div><button id="unlock" class="unlock"><span>⌃</span>點一下，輸入密碼</button></section>
@@ -764,8 +820,8 @@ const CONTENT = {
     "credit": "ⓒ 칠칠 님",
     "paragraphs": [],
     "witch": {
-      "ruri": "生活在森林裡的魔女。雖然已活了很久，各方面卻都有些笨拙……性格開朗直率，是一個讓人覺得不大可靠、放心不下的魔女。",
-      "ken": "流落街頭的人類小孩，暈倒後被恰好路過的魔女撿回了家。有著超越年齡的成熟，寡言且防備心重。長大之後同樣冷靜沉著，稍微有些毒舌，但非常擅長照顧別人（因為從小就得幫瑠璃收拾她闖下的禍……）。",
+      "ruri": "生活在森林裡的魔女。雖然已獨自活了很久，各方面卻都有些笨拙……性格開朗直率，是一個不大可靠、讓人放心不下的魔女。",
+      "ken": "流落街頭的人類小孩，暈倒後被恰好路過的魔女撿回了家。有著超越年齡的成熟，寡言且防備心重；長大之後同樣冷靜沉著，稍微有些毒舌，但非常擅長照顧別人（因為從小就得幫瑠璃收拾她闖下的禍……）。",
       "names": [
         "賢→瑠璃：瑠璃小姐。長大後偶爾會直接喚她瑠璃，不高興的時候會故意冷淡地叫魔女小姐。",
         "瑠璃→賢：小賢！"
@@ -912,9 +968,31 @@ const CONTENT = {
   chat: {
     title: '賢丹尼爾',
     subtitle: '只屬於我們的訊息',
+    date: '11月13日(五)',
     messages: [
-      // { side: 'other', text: '在這裡填對話', time: '20:15' },
-      // { side: 'me', text: '在這裡填回覆', time: '20:16' },
+      {side:'me',time:'15:33',text:'賢先生！'},
+      {side:'me',time:'15:33',text:'那個……你今天下午有空嗎？'},
+      {side:'me',time:'15:33',text:'我聽說我們學校附近開了一間新的咖啡廳……！'},
+      {side:'other',time:'15:35',text:'可以。幾點？'},
+      {side:'me',time:'15:35',text:'我放學馬上就過去！！'},
+      {type:'location',side:'me',time:'15:35',name:'카페 모모달',address:'서울특별시 달여울구 모모길 27'},
+      {side:'other',time:'16:37',text:'人潮好像有點多。'},
+      {side:'other',time:'16:37',text:'我先來排隊了。'},
+      {side:'me',time:'16:37',text:'！！！'},
+      {side:'me',time:'16:37',text:'賢先生～～～( ˃̣̣̥ω˂̣̣̥ )'},
+      {side:'me',time:'16:38',text:'我一下課就過去！！！'},
+      {type:'call',side:'me',time:'17:02',duration:'00:52',title:'語音通話',transcript:[
+        {side:'me',text:'賢先生～～！那個，我剛剛下課了！你還在排隊嗎？'},
+        {side:'other',text:'嗯，剛好快排到了。'},
+        {side:'me',text:'嗚哇，真不好意思讓賢先生等這麼久……！'},
+        {side:'other',text:'沒事。'},
+        {side:'me',text:'我們學校離那邊很近！請再等我十、不，五分鐘就好！',note:'（背景傳來嘈雜的人聲與著急的腳步聲）'},
+        {side:'other',text:'……別摔倒了，慢慢來也可以。'},
+        {side:'me',text:'請放心吧！我會注意安全的！晚點見～！'},
+      ]},
+      {side:'other',time:'17:04',text:'晚點見。'},
+      {side:'me',time:'17:09',text:'賢先生，我到了！'},
+      {side:'me',time:'17:09',text:'啊，我看到賢先生了～！'},
     ],
   },
   // annual: true 每年重複；false 只在指定日期出現。
@@ -1051,11 +1129,97 @@ function renderWork(index,origin='album'){
 
   }
 }
-function renderChat(){
-  featureState={app:'messages',view:'chat',index:null};const chat=CONTENT.chat;
-  const bubbles=chat.messages.map(m=>'<div class="chat-line '+(m.side==='me'?'chat-me':'chat-other')+'"><div class="chat-bubble">'+escapeHTML(m.text)+'</div>'+(m.time?'<time>'+escapeHTML(m.time)+'</time>':'')+'</div>').join('');
-  featurePage('messages',SITE_CONFIG.apps.messages.name,'<div class="chat-top"><span aria-hidden="true">♡</span><div><strong>'+escapeHTML(chat.title)+'</strong><small>'+escapeHTML(chat.subtitle)+'</small></div></div><div class="chat-transcript">'+(bubbles||emptyMessage('♡','對話準備中','屬於兩人的訊息，之後會出現在這裡。'))+'</div><div class="chat-footer">♡ 收藏的一段對話</div>');
+// 訊息資料支援 type: 'call'，通話內容放在 transcript 陣列。
+const CHAT_DEMO = [
+ {side:'me',text:'（這裡會放瑠璃傳出的訊息）',time:'20:15'},
+ {side:'other',text:'（這裡會放賢的回覆）',time:'20:16'},
+ {type:'call',side:'other',time:'20:18',duration:'03:24',title:'語音通話',transcript:[
+  {side:'other',text:'（這裡會放賢在通話中說的話）'},
+  {side:'me',text:'（這裡會放瑠璃在通話中的回應）'}
+ ]}
+];
+const PHONE_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 3 5c-1 6 10 17 16 16l2-2-5-4-2 2c-3-1-6-4-7-7l2-2Z"/></svg>';
+function chatItems(){return CONTENT.chat.messages.length?CONTENT.chat.messages:CHAT_DEMO;}
+let chatReturnScroll=0;
+function renderChatLocation(message){
+ const map='<svg class="location-map" viewBox="0 0 210 116" aria-hidden="true" focusable="false"><defs><filter id="cafe-pin-shadow" x="-60%" y="-40%" width="220%" height="200%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#80566f" flood-opacity=".24"/></filter></defs><path fill="#f2eee7" d="M0 0h210v116H0z"/><path fill="#dcebd8" d="M8 12h38v25H8zm146 61h42v34h-42z"/><path fill="#e9e1dc" d="M61 11h35v23H61zm85 3h51v20h-51zM11 57h35v16H11zm0 29h37v21H11zm51-29h35v24H62zm84-3h51v12h-51z"/><path d="M0 43h210M0 80h111M53 0v116M103 0v116M141 0v116M0 109h210M201 0v116" fill="none" stroke="#d2d8dc" stroke-width="7"/><path d="M0 43h210M0 80h111M53 0v116M103 0v116M141 0v116M0 109h210M201 0v116" fill="none" stroke="#fff" stroke-width="4"/><path d="M125-5v126" stroke="#fff" stroke-width="12"/><path d="M125-5v126" stroke="#ead09a" stroke-width="7"/><g fill="#687674" font-family="system-ui,sans-serif" font-size="8"><text x="12" y="27">달여울공원</text><text x="66" y="40">달여울길</text><text x="57" y="96">모모길</text></g><path d="M125 69s-13-11-13-20a13 13 0 1 1 26 0c0 9-13 20-13 20Z" fill="#df718d" stroke="#fff" stroke-width="2" filter="url(#cafe-pin-shadow)"/><circle cx="125" cy="49" r="4" fill="#fff"/><text x="145" y="52" fill="#95546d" font-family="system-ui,sans-serif" font-size="9" font-weight="700">카페 모모달</text></svg>';
+ return '<div class="chat-location" aria-label="虛構定位">'+map+'<div class="chat-location-info"><strong lang="ko">'+escapeHTML(message.name)+'</strong><span lang="ko">'+escapeHTML(message.address)+'</span></div><div class="chat-location-foot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-8-7-8-13a8 8 0 0 1 16 0c0 6-8 13-8 13Z" fill="currentColor"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span>Location</span></div></div>';
 }
+function renderChat(restore=false){
+ featureState={app:'messages',view:'chat',index:null};
+ const chat=CONTENT.chat,demo=!chat.messages.length;
+ const lines=chatItems().map((m,index)=>{
+  const mine=m.side==='me';
+  const avatar=mine?'':'<img class="messenger-avatar" src="avatar-male.png" alt="賢">';
+  const content=m.type==='location'?renderChatLocation(m):m.type==='call'?'<button type="button" class="call-record" data-call="'+index+'" aria-label="查看'+escapeHTML(m.title||'語音通話')+'文字紀錄"><span class="call-record-main">'+PHONE_ICON+'<strong>'+escapeHTML(m.title||'語音通話')+'</strong></span><span class="call-record-duration">'+escapeHTML(m.duration||'通話紀錄')+'</span><span class="call-record-link">點擊查看通話內容 ›</span></button>':'<div class="messenger-bubble">'+escapeHTML(m.text||'')+'</div>';
+  return '<div class="messenger-line '+(mine?'messenger-me':'messenger-other')+'">'+avatar+'<div class="messenger-message">'+(!mine?'<span class="messenger-name">'+escapeHTML(chat.title)+'</span>':'')+content+'</div><span class="messenger-meta">'+(mine?'<span>已讀</span>':'')+(m.time?'<time>'+escapeHTML(m.time)+'</time>':'')+'</span></div>';
+ }).join('');
+ featurePage('messages',SITE_CONFIG.apps.messages.name,'<section class="messenger" aria-label="賢與瑠璃的聊天紀錄"><div class="messenger-date">'+(demo?'介面示範・尚非正式對話':escapeHTML(chat.date||chat.subtitle||'聊天紀錄'))+'</div>'+lines+(demo?'<p class="messenger-end">正式對話之後會放在這裡 ♡</p>':'')+'</section>');
+ $('pageBody').querySelectorAll('[data-call]').forEach(button=>button.onclick=()=>{chatReturnScroll=$('pageBody').scrollTop;openCallFromCard(Number(button.dataset.call),button);});
+ if(restore)$('pageBody').scrollTop=chatReturnScroll;
+}
+function renderCall(index){
+ const call=chatItems()[index];if(!call||call.type!=='call'){renderChat();return;}
+ featureState={app:'messages',view:'call',index};
+ const transcript=(call.transcript||[]).map(line=>'<div class="call-dialogue '+(line.side==='me'?'call-dialogue-me':'')+'"><strong>'+escapeHTML(line.side==='me'?'瑠璃':CONTENT.chat.title)+'</strong><p>'+escapeHTML(line.text||'')+(line.note?'<span class="call-stage-note">'+escapeHTML(line.note)+'</span>':'')+'</p></div>').join('');
+ featurePage('messages','通話紀錄','<section class="call-screen"><div class="call-person"><img src="avatar-male.png" alt="賢的頭貼"><h2>'+escapeHTML(CONTENT.chat.title)+'</h2><p>'+escapeHTML(call.title||'語音通話')+' · '+escapeHTML(call.duration||'已結束')+'</p></div><div class="call-transcript">'+(transcript||'<p class="call-empty">通話內容準備中。</p>')+'</div><button type="button" class="call-return" id="returnChat" aria-label="掛斷並返回訊息">'+PHONE_ICON+'</button><span class="call-return-label">掛斷</span></section>','‹ 聊天');
+ $('returnChat').onclick=hangUpCall;
+}
+
+let callTransitionBusy=false,callSourceIndex=null;
+// 動畫快照包含狀態列及通話內容，整張畫面同步縮放。
+function callSnapshot(){
+ const page=$('page'),screen=page.parentElement,status=screen.querySelector('.status');
+ const frame=document.createElement('div');
+ frame.setAttribute('aria-hidden','true');frame.inert=true;
+ frame.style.cssText='position:absolute;inset:0;z-index:16;pointer-events:none;overflow:hidden;visibility:visible;background:'+getComputedStyle(status).backgroundColor+';transform-origin:0 0';
+ const content=page.cloneNode(true),bar=status.cloneNode(true);
+ for(const copy of [content,bar]){copy.removeAttribute('id');copy.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));}
+ content.style.cssText='position:absolute;top:'+page.offsetTop+'px;left:0;right:0;bottom:0;visibility:visible;';
+ bar.style.cssText='position:absolute;top:0;left:0;right:0;height:'+status.offsetHeight+'px;visibility:visible;background:'+getComputedStyle(status).backgroundColor+';color:'+getComputedStyle(status).color+';';
+ frame.append(content,bar);screen.append(frame);
+ content.querySelector('.pagebody').scrollTop=$('pageBody').scrollTop;
+ return frame;
+}
+function callCardTransform(rect){
+ const screen=$('page').parentElement,bounds=screen.getBoundingClientRect();
+ const sx=bounds.width/screen.offsetWidth,sy=bounds.height/screen.offsetHeight;
+ const left=bounds.left+screen.clientLeft*sx,top=bounds.top+screen.clientTop*sy;
+ return 'translate('+((rect.left-left)/sx)+'px,'+((rect.top-top)/sy)+'px) scale('+Math.max(.01,rect.width/(screen.clientWidth*sx))+','+Math.max(.01,rect.height/(screen.clientHeight*sy))+')';
+}
+function finishCallTransition(frames,motion){
+ const page=$('page'),status=page.parentElement.querySelector('.status');
+ motion.cancel();frames.forEach(frame=>frame.remove());
+ page.style.visibility='';status.style.visibility='';page.inert=false;callTransitionBusy=false;
+}
+function openCallFromCard(index,button){
+ if(callTransitionBusy)return;
+ callSourceIndex=index;
+ const page=$('page'),status=page.parentElement.querySelector('.status');
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){renderCall(index);$('returnChat').focus({preventScroll:true});return;}
+ const startTransform=callCardTransform(button.getBoundingClientRect()),previous=callSnapshot();
+ renderCall(index);
+ const incoming=callSnapshot();incoming.style.zIndex='17';
+ page.inert=true;callTransitionBusy=true;page.style.visibility='hidden';status.style.visibility='hidden';
+ const motion=incoming.animate([{transform:startTransform,borderRadius:'24px'},{transform:'translate(0,0) scale(1)',borderRadius:'0px'}],{duration:420,easing:'cubic-bezier(.22,.7,.25,1)',fill:'both'});
+ motion.finished.catch(()=>{}).finally(()=>{finishCallTransition([previous,incoming],motion);if(featureState.view==='call')$('returnChat').focus({preventScroll:true});});
+}
+function hangUpCall(){
+ if(callTransitionBusy)return;
+ const page=$('page'),status=page.parentElement.querySelector('.status');
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){renderChat(true);$('pageBody').querySelector('[data-call="'+callSourceIndex+'"]')?.focus({preventScroll:true});return;}
+ const outgoing=callSnapshot();outgoing.style.zIndex='17';
+ renderChat(true);
+ // Exclude the departing call clone while capturing the chat status colour.
+ outgoing.remove();
+ const incoming=callSnapshot();page.parentElement.append(outgoing);
+ const target=$('pageBody').querySelector('[data-call="'+callSourceIndex+'"]');
+ const endTransform=target?callCardTransform(target.getBoundingClientRect()):'translate(50%,50%) scale(.01)';
+ page.inert=true;callTransitionBusy=true;page.style.visibility='hidden';status.style.visibility='hidden';
+ const motion=outgoing.animate([{transform:'translate(0,0) scale(1)',borderRadius:'0px',opacity:1},{transform:endTransform,borderRadius:'24px',opacity:0}],{duration:340,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'});
+ motion.finished.catch(()=>{}).finally(()=>{finishCallTransition([incoming,outgoing],motion);target?.focus({preventScroll:true});});
+}
+
 function taipeiToday(){const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const part=t=>parts.find(p=>p.type===t).value;return part('year')+'-'+part('month')+'-'+part('day');}
 const initialDate=taipeiToday();let calendarYear=Number(initialDate.slice(0,4)),calendarMonth=Number(initialDate.slice(5,7))-1,selectedDate=initialDate;
 function dateKey(year,month,day){return year+'-'+String(month+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');}
@@ -1127,6 +1291,7 @@ function renderCalendar(){
 const originalOpenApp=openApp;
 openApp=function(id){if(!unlocked)return;if(id==='notes'){renderNotes();return;}if(id==='photos'){albumTag='';albumPhotoReturn=null;renderAlbum();return;}if(id==='messages'){renderChat();return;}if(id==='calendar'){selectedDate=taipeiToday();calendarYear=Number(selectedDate.slice(0,4));calendarMonth=Number(selectedDate.slice(5,7))-1;renderCalendar();return;}featureState={app:id,view:'list',index:null};originalOpenApp(id);};
 $('back').onclick=()=>{
+  if(currentApp==='messages'&&featureState.view==='call')return;
   if(currentApp==='characterMale'||currentApp==='characterFemale'){openApp('contacts');return;}
   if(currentApp==='notes'&&featureState.view==='paro-detail'){renderNotes('paros');return;}
   if(currentApp==='notes'&&featureState.view!=='home'){renderNotes();return;}
@@ -1212,7 +1377,7 @@ function animateAppSwitch(render,direction=1){
   card.style.cssText='position:absolute;inset:0;z-index:16;overflow:hidden;background:#fcf7fa;pointer-events:none;transform-origin:center;will-change:transform;border-radius:0;backface-visibility:hidden';
   const content=page.cloneNode(true),bar=status.cloneNode(true);
   [content,bar].forEach(root=>{root.removeAttribute('id');root.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));});
-  content.style.cssText='top:47px;visibility:visible';bar.style.cssText='position:absolute;top:0;left:0;right:0;height:47px;visibility:visible';
+  content.style.cssText='top:'+page.offsetTop+'px;visibility:visible';bar.style.cssText='position:absolute;top:0;left:0;right:0;height:'+status.offsetHeight+'px;visibility:visible';
   card.append(content,bar);screen.append(card);content.querySelector('.pagebody').scrollTop=$('pageBody').scrollTop;
   return card;
  };
@@ -1485,6 +1650,9 @@ readingWidthObserver.observe(document.getElementById('pageBody'));
 window.addEventListener('resize',syncReadingWidth,{passive:true});
 syncReadingWidth();
 </script></body></html>
+
+
+
 
 
 
