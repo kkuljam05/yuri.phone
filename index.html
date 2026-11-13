@@ -1161,7 +1161,7 @@ function renderChat(restore=false){
 function renderCall(index){
  const call=chatItems()[index];if(!call||call.type!=='call'){renderChat();return;}
  featureState={app:'messages',view:'call',index};
- const transcript=(call.transcript||[]).map(line=>'<div class="call-dialogue '+(line.side==='me'?'call-dialogue-me':'')+'"><strong>'+escapeHTML(line.side==='me'?'瑠璃':CONTENT.chat.title)+'</strong><p>'+escapeHTML(line.text||'')+(line.note?'<span class="call-stage-note">'+escapeHTML(line.note)+'</span>':'')+'</p></div>').join('');
+ const transcript=(call.transcript||[]).map(line=>'<div class="call-dialogue '+(line.side==='me'?'call-dialogue-me':'')+'"><strong>'+escapeHTML(line.side==='me'?'都瑠璃':CONTENT.chat.title)+'</strong><p>'+escapeHTML(line.text||'')+(line.note?'<span class="call-stage-note">'+escapeHTML(line.note)+'</span>':'')+'</p></div>').join('');
  featurePage('messages','通話紀錄','<section class="call-screen"><div class="call-person"><img src="avatar-male.png" alt="賢的頭貼"><h2>'+escapeHTML(CONTENT.chat.title)+'</h2><p>'+escapeHTML(call.title||'語音通話')+' · '+escapeHTML(call.duration||'已結束')+'</p></div><div class="call-transcript">'+(transcript||'<p class="call-empty">通話內容準備中。</p>')+'</div><button type="button" class="call-return" id="returnChat" aria-label="掛斷並返回訊息">'+PHONE_ICON+'</button><span class="call-return-label">掛斷</span></section>','‹ 聊天');
  $('returnChat').onclick=hangUpCall;
 }
